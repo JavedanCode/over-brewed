@@ -1,3 +1,5 @@
 import "./styles.css";
+import Canvas from "./canvas";
 
-console.log("Webpack is working");
+//add Canvas to body
+Canvas();
