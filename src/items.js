@@ -43,4 +43,6 @@ const ingredients = {
 
 const potions = {};
 
-export { ingredients };
+const getIndex = (n) => 31 - Math.clz32(n);
+
+export { ingredients, getIndex };
