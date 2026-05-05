@@ -2,6 +2,7 @@ import keys from "./input.js";
 import objects from "./objects.js";
 import player from "./player.js";
 import { checkCollision } from "./collision.js";
+import { getActiveInteractable } from "./interaction.js";
 
 const WORLD_WIDTH = 1920;
 const WORLD_HEIGHT = 1080;
@@ -55,5 +56,11 @@ export default function update() {
 
   if (player.y + player.height > WORLD_HEIGHT) {
     player.y = WORLD_HEIGHT - player.height;
+  }
+
+  const active = getActiveInteractable();
+
+  if (active) {
+    console.log("Near:", active);
   }
 }

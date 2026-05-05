@@ -1,5 +1,6 @@
 import objects from "./objects";
 import player from "./player";
+import { getActiveInteractable } from "./interaction.js";
 
 const CANVAS_WIDTH = 1920;
 const CANVAS_HEIGHT = 1080;
@@ -17,7 +18,10 @@ export default (ctx, canvas) => {
 
   // SORT ENTITIES BY Y POSITION
   allEntities.sort((a, b) => {
-    return a.y + a.height - (b.y + b.height);
+    const aSortY = a.getSortY ? a.getSortY() : a.y + a.height;
+    const bSortY = b.getSortY ? b.getSortY() : b.y + b.height;
+
+    return aSortY - bSortY;
   });
 
   // DRAW IN ORDER
@@ -29,6 +33,24 @@ export default (ctx, canvas) => {
   objects.forEach((obj) => {
     const hb = obj.getHitbox();
     ctx.strokeStyle = "red";
+    ctx.lineWidth = 1;
     ctx.strokeRect(hb.x, hb.y, hb.width, hb.height);
   });
+
+  objects.forEach((obj) => {
+    const zone = obj.getInteractZone();
+    if (!zone) return;
+
+    ctx.strokeStyle = "yellow";
+    ctx.strokeRect(zone.x, zone.y, zone.width, zone.height);
+  });
+
+  const active = getActiveInteractable();
+
+  if (active) {
+    ctx.strokeStyle = "lime";
+    ctx.lineWidth = 3;
+
+    ctx.strokeRect(active.x, active.y, active.width, active.height);
+  }
 };
