@@ -20,11 +20,12 @@ export default function update() {
 
   objects.forEach((obj) => {
     if (checkCollision(player, obj.getHitbox())) {
+      const hb = obj.getHitbox();
       if (player.velocityX > 0) {
-        player.x = obj.x - player.width;
+        player.x = hb.x - player.width;
       }
       if (player.velocityX < 0) {
-        player.x = obj.x + player.width;
+        player.x = hb.x + hb.width;
       }
     }
   });
