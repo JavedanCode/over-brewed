@@ -1,5 +1,5 @@
 const keys = {};
-export const justPressed = {};
+export let justPressed = {};
 
 window.addEventListener("keydown", (e) => {
   const key = e.key.toLowerCase();
@@ -16,9 +16,7 @@ window.addEventListener("keyup", (e) => {
 });
 
 export function clearJustPressed() {
-  for (let key in justPressed) {
-    delete justPressed[key];
-  }
+  justPressed = {};
 }
 
 export default keys;
