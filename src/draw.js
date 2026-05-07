@@ -1,6 +1,7 @@
 import objects from "./objects";
 import player from "./player";
 import { getActiveInteractable } from "./interaction.js";
+import { background } from "./assets.js";
 
 const CANVAS_WIDTH = 1920;
 const CANVAS_HEIGHT = 1080;
@@ -12,6 +13,9 @@ export default (ctx, canvas) => {
   ctx.setTransform(scaleX, 0, 0, scaleY, 0, 0);
 
   ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+  //DRAW BACKGROUND
+  ctx.drawImage(background, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
   //DRAW ENTITIES
   const allEntities = [...objects, player];
@@ -26,31 +30,36 @@ export default (ctx, canvas) => {
 
   // DRAW IN ORDER
   allEntities.forEach((entity) => {
+    if (entity.draw) {
+      entity.draw(ctx);
+      return;
+    }
+
     ctx.fillStyle = entity.color;
     ctx.fillRect(entity.x, entity.y, entity.width, entity.height);
   });
 
-  objects.forEach((obj) => {
-    const hb = obj.getHitbox();
-    ctx.strokeStyle = "red";
-    ctx.lineWidth = 1;
-    ctx.strokeRect(hb.x, hb.y, hb.width, hb.height);
-  });
+  // objects.forEach((obj) => {
+  //   const hb = obj.getHitbox();
+  //   ctx.strokeStyle = "red";
+  //   ctx.lineWidth = 1;
+  //   ctx.strokeRect(hb.x, hb.y, hb.width, hb.height);
+  // });
 
-  objects.forEach((obj) => {
-    const zone = obj.getInteractZone();
-    if (!zone) return;
+  // objects.forEach((obj) => {
+  //   const zone = obj.getInteractZone();
+  //   if (!zone) return;
 
-    ctx.strokeStyle = "yellow";
-    ctx.strokeRect(zone.x, zone.y, zone.width, zone.height);
-  });
+  //   ctx.strokeStyle = "yellow";
+  //   ctx.strokeRect(zone.x, zone.y, zone.width, zone.height);
+  // });
 
-  const active = getActiveInteractable();
+  // const active = getActiveInteractable();
 
-  if (active) {
-    ctx.strokeStyle = "lime";
-    ctx.lineWidth = 3;
+  // if (active) {
+  //   ctx.strokeStyle = "lime";
+  //   ctx.lineWidth = 3;
 
-    ctx.strokeRect(active.x, active.y, active.width, active.height);
-  }
+  //   ctx.strokeRect(active.x, active.y, active.width, active.height);
+  // }
 };
