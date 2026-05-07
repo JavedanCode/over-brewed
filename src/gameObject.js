@@ -9,6 +9,7 @@ export default class GameObject {
     interactZone,
     sortOffset = 0,
     type = "",
+    sprite,
   }) {
     this.x = x;
     this.y = y;
@@ -29,6 +30,8 @@ export default class GameObject {
     this.sortOffset = sortOffset;
 
     this.type = type;
+
+    this.sprite = sprite || null;
   }
 
   getHitbox() {
@@ -56,6 +59,11 @@ export default class GameObject {
   }
 
   draw(ctx) {
+    if (this.sprite && this.sprite.complete) {
+      ctx.drawImage(this.sprite, this.x, this.y, this.width, this.height);
+      return;
+    }
+
     ctx.fillStyle = this.color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
   }

@@ -1,8 +1,8 @@
 const player = {
-  x: 900,
+  x: 1400,
   y: 600,
-  width: 50,
-  height: 100,
+  width: 80,
+  height: 180,
   color: "blue",
   speed: 4,
 
