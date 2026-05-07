@@ -19,22 +19,6 @@ const objects = [
     color: "#a09797",
   }),
 
-  //TOP TABLE
-  new GameObject({
-    x: 400,
-    y: 0,
-    width: 570,
-    height: 140,
-    color: "#a09797",
-
-    hitbox: {
-      offsetX: 0,
-      offsetY: 30,
-      width: 570,
-      height: 60,
-    },
-  }),
-
   //BOTTOM TABLE
   new GameObject({
     x: 540,
@@ -77,6 +61,8 @@ const objects = [
 
     sortOffset: 100,
 
+    type: "cutting",
+
     interactZone: {
       offsetX: 0,
       offsetY: -60,
@@ -94,6 +80,8 @@ const objects = [
     color: "#05c46b",
 
     sortOffset: 100,
+
+    type: "crushing",
 
     interactZone: {
       offsetX: 0,
@@ -113,6 +101,8 @@ const objects = [
 
     sortOffset: 100,
 
+    type: "cauldron",
+
     interactZone: {
       offsetX: 0,
       offsetY: 50,
@@ -130,6 +120,8 @@ const objects = [
     color: "#3d3131",
 
     sortOffset: 100,
+
+    type: "cauldron",
 
     interactZone: {
       offsetX: 0,
@@ -149,6 +141,8 @@ const objects = [
 
     sortOffset: 100,
 
+    type: "cauldron",
+
     interactZone: {
       offsetX: 0,
       offsetY: 50,
@@ -164,6 +158,8 @@ const objects = [
     width: 120,
     height: 120,
     color: "#c45105",
+
+    type: "oil-base",
 
     interactZone: {
       offsetX: 0,
@@ -181,6 +177,8 @@ const objects = [
     height: 120,
     color: "#a6c51d",
 
+    type: "water-base",
+
     interactZone: {
       offsetX: 0,
       offsetY: 60,
@@ -197,6 +195,8 @@ const objects = [
     height: 120,
     color: "#1bc6fa",
 
+    type: "wine-base",
+
     interactZone: {
       offsetX: 0,
       offsetY: 60,
@@ -212,6 +212,8 @@ const objects = [
     width: 80,
     height: 80,
     color: "#3a2301",
+
+    type: "ingredient",
 
     sortOffset: 100,
 
@@ -231,6 +233,8 @@ const objects = [
     height: 80,
     color: "#f044ca",
 
+    type: "ingredient",
+
     sortOffset: 100,
 
     interactZone: {
@@ -248,6 +252,8 @@ const objects = [
     width: 80,
     height: 80,
     color: "#160944",
+
+    type: "ingredient",
 
     sortOffset: 100,
 
@@ -267,6 +273,8 @@ const objects = [
     height: 80,
     color: "#571f3e",
 
+    type: "ingredient",
+
     sortOffset: 100,
 
     interactZone: {
@@ -285,6 +293,8 @@ const objects = [
     height: 100,
     color: "#058ec4",
 
+    type: "container",
+
     sortOffset: 500,
 
     interactZone: {
@@ -302,6 +312,8 @@ const objects = [
     width: 100,
     height: 100,
     color: "#05a7c4",
+
+    type: "container",
 
     sortOffset: 1000,
 
@@ -323,6 +335,8 @@ const objects = [
 
     sortOffset: 1000,
 
+    type: "bell",
+
     interactZone: {
       offsetX: -100,
       offsetY: -20,
@@ -341,6 +355,8 @@ const objects = [
 
     sortOffset: 1000,
 
+    type: "bell",
+
     interactZone: {
       offsetX: -100,
       offsetY: -20,
@@ -358,6 +374,8 @@ const objects = [
     color: "#ffd13b",
 
     sortOffset: 1000,
+
+    type: "bell",
 
     interactZone: {
       offsetX: -100,

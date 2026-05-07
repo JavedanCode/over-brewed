@@ -8,6 +8,7 @@ export default class GameObject {
     hitbox,
     interactZone,
     sortOffset = 0,
+    type = "",
   }) {
     this.x = x;
     this.y = y;
@@ -26,6 +27,8 @@ export default class GameObject {
     this.interactZone = interactZone || null;
 
     this.sortOffset = sortOffset;
+
+    this.type = type;
   }
 
   getHitbox() {

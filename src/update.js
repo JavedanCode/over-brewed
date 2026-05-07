@@ -3,6 +3,8 @@ import objects from "./objects.js";
 import player from "./player.js";
 import { checkCollision } from "./collision.js";
 import { getActiveInteractable } from "./interaction.js";
+import { justPressed } from "./input.js";
+import { handleInteraction } from "./actions.js";
 
 const WORLD_WIDTH = 1920;
 const WORLD_HEIGHT = 1080;
@@ -61,7 +63,7 @@ export default function update() {
 
   const active = getActiveInteractable();
 
-  if (active) {
-    console.log("Near:", active);
+  if (active && justPressed["e"]) {
+    handleInteraction(active);
   }
 }
