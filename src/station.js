@@ -58,8 +58,42 @@ const Station = (action) => {
   };
 };
 
-const cutStation = Station(CUT);
-const crushStation = Station(CRUSH);
+const Ingredient = (ing) => {
+  return {
+    inventory: ing,
+
+    canWork: () => false,
+    canPlace: () => false,
+
+    canTake: (playerInv) => playerInv.empty(),
+    take: (playerInv) => {
+      if (canTake(playerInv)) {
+        playerInv.ingredient = inventory;
+        return true;
+      }
+      return false;
+    },
+  };
+};
+
+const Glass = (glassType) => {
+  return {
+    inventory: glassType,
+
+    canWork: () => false,
+    canPlace: () => false,
+
+    canTake: (playerInv) => playerInv.empty(),
+    take: (playerInv) => {
+      if (canTake(playerInv)) {
+        playerInv.glass.type = inventory;
+        playerInv.glass.inventory = 0;
+        return true;
+      }
+      return false;
+    },
+  };
+};
 
 const cauldron = {
   inventory: 0,
@@ -106,4 +140,27 @@ const cauldron = {
     }
     inventory = new_inventory;
   },
+};
+
+const cutStation = Station(CUT);
+const crushStation = Station(CRUSH);
+
+const roundGlassBox = Glass("ROUND");
+const squareGlassBox = Glass("SQUARE");
+
+const petalBox = Ingredient(ingredients.AsphodelPetals);
+const scaleBox = Ingredient(ingredients.DragonScales);
+const mandrakeBox = Ingredient(ingredients.Mandrake);
+const figBox = Ingredient(ingredients.Shrivelfig);
+
+export {
+  cauldron,
+  cutStation,
+  crushStation,
+  roundGlassBox,
+  squareGlassBox,
+  petalBox,
+  scaleBox,
+  mandrakeBox,
+  figBox,
 };
