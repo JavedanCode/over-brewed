@@ -5,7 +5,6 @@ import {
   CUT,
   CRUSH,
   VARIATION_COUNT,
-  hasGlass,
 } from "./items";
 
 // Is this a valid ingredient for the task
@@ -31,21 +30,20 @@ const Station = (action) => {
 
     canPlace: (playerInv) =>
       playerInv.ingredient < ingredients.CUTOFF &&
-      !hasGlass(playerInv) &&
+      !playerInv.hasGlass() &&
       inventory === 0 &&
       canAction(playerInv.ingredient),
 
     place: (playerInv) => {
       if (canPlace(playerInv)) {
         inventory = playerInv.ingredient;
-        playerInv.ingredient = ingredients.Empty;
+        playerInv.ingredient = 0;
         return true;
       }
       return false;
     },
 
-    canTake: (playerInv) =>
-      playerInv.ingredient === ingredients.Empty && !hasGlass(playerInv),
+    canTake: (playerInv) => playerInv.ingredient === 0 && !playerInv.hasGlass(),
     take: (playerInv) => {
       if (canTake(playerInv)) {
         canWork = true;

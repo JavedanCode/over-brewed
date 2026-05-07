@@ -34,7 +34,6 @@ const ingredients = {
   CrushedShrivelfig: 1 << (3 * VARIATION_COUNT + CRUSH),
 
   CUTOFF: 1 << 25,
-  Empty: 1 << 26,
   Vinum: 1 << 27,
   Oleum: 1 << 28,
   Aqua: 1 << 29,
@@ -46,13 +45,12 @@ const ingredients = {
 const player_inventory = {
   glass: {
     type: "NONE",
-    inventory: ingredients.Empty,
+    inventory: 0,
   },
-  ingredient: ingredients.Empty,
+  ingredient: 0,
+  hasGlass: () => glass.type !== "NONE" && glass.inventory !== 0,
+  empty: () => !hasGlass() && ingredient === 0,
 };
-const hasGlass = (inv) =>
-  inv.glass.type !== "NONE" && inv.glass.inventory !== ingredients.Empty;
-
 const getIndex = (n) => 31 - Math.clz32(n);
 
 export {
@@ -63,5 +61,4 @@ export {
   CRUSH,
   VARIATION_COUNT,
   player_inventory,
-  hasGlass,
 };
