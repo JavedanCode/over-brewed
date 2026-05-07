@@ -12,6 +12,8 @@ const BREW = 1;
 const CUT = 2;
 const CRUSH = 3;
 
+const getIndex = (n) => 31 - Math.clz32(n);
+
 const ingredients = {
   AsphodelPetals: 1 << (0 * VARIATION_COUNT),
   BrewedAsphodelPetals: 1 << (0 * VARIATION_COUNT + BREW),
@@ -40,6 +42,13 @@ const ingredients = {
   Overbrewed: 1 << 30,
 };
 
+const brew_map = {
+  [getIndex(ingredients.AsphodelPetals)]: ingredients.BrewedAsphodelPetals,
+  [getIndex(ingredients.DragonScales)]: ingredients.BrewedDragonScales,
+  [getIndex(ingredients.Mandrake)]: ingredients.BrewedMandrake,
+  [getIndex(ingredients.Shrivelfig)]: ingredients.BrewedShrivelfig,
+};
+
 // glass types:
 // NONE, ROUND, SQUARE
 const player_inventory = {
@@ -48,17 +57,17 @@ const player_inventory = {
     inventory: 0,
   },
   ingredient: 0,
-  hasGlass: () => glass.type !== "NONE" && glass.inventory !== 0,
+  hasGlass: () => glass.type !== "NONE",
   empty: () => !hasGlass() && ingredient === 0,
 };
-const getIndex = (n) => 31 - Math.clz32(n);
 
 export {
-  ingredients,
   getIndex,
+  ingredients,
   BREW,
   CUT,
   CRUSH,
   VARIATION_COUNT,
   player_inventory,
+  brew_map,
 };
