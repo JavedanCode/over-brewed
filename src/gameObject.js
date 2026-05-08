@@ -10,6 +10,7 @@ export default class GameObject {
     sortOffset = 0,
     type = "",
     sprite,
+    station,
   }) {
     this.x = x;
     this.y = y;
@@ -32,6 +33,8 @@ export default class GameObject {
     this.type = type;
 
     this.sprite = sprite || null;
+
+    this.station = station || null;
   }
 
   getHitbox() {

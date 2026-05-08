@@ -10,6 +10,21 @@ import {
 } from "./assets.js";
 import GameObject from "./gameObject.js";
 
+import {
+  cauldron,
+  cutStation,
+  crushStation,
+  petalBox,
+  scaleBox,
+  mandrakeBox,
+  figBox,
+  roundGlassBox,
+  squareGlassBox,
+  olemVase,
+  vinumVase,
+  aquaVase,
+} from "./station.js";
+
 const objects = [
   //LEFT TABLE
   new GameObject({
@@ -69,45 +84,47 @@ const objects = [
     sprite: centerTableImg,
   }),
 
-  // //CUTTING BOARD
-  // new GameObject({
-  //   x: 700,
-  //   y: 500,
-  //   width: 70,
-  //   height: 50,
-  //   color: "#6805c4",
+  //CUTTING BOARD
+  new GameObject({
+    x: 700,
+    y: 500,
+    width: 70,
+    height: 50,
+    color: "#6805c4",
 
-  //   sortOffset: 1000,
+    sortOffset: 1000,
 
-  //   type: "cutting",
+    type: "cutting",
 
-  //   interactZone: {
-  //     offsetX: 0,
-  //     offsetY: -60,
-  //     width: 70,
-  //     height: 110,
-  //   },
-  // }),
+    station: cutStation,
 
-  // //CRUSHING STATION
-  // new GameObject({
-  //   x: 1000,
-  //   y: 500,
-  //   width: 70,
-  //   height: 50,
-  //   color: "#05c46b",
+    interactZone: {
+      offsetX: 0,
+      offsetY: -60,
+      width: 70,
+      height: 110,
+    },
+  }),
 
-  //   sortOffset: 1000,
+  //CRUSHING STATION
+  new GameObject({
+    x: 1000,
+    y: 500,
+    width: 70,
+    height: 50,
+    color: "#05c46b",
 
-  //   type: "crushing",
+    sortOffset: 1000,
 
-  //   interactZone: {
-  //     offsetX: 0,
-  //     offsetY: -60,
-  //     width: 70,
-  //     height: 110,
-  //   },
-  // }),
+    station: crushStation,
+
+    interactZone: {
+      offsetX: 0,
+      offsetY: -60,
+      width: 70,
+      height: 110,
+    },
+  }),
 
   //CAULDRON 1
   new GameObject({
@@ -118,6 +135,8 @@ const objects = [
     color: "#3d3131",
 
     type: "cauldron",
+
+    station: cauldron,
 
     interactZone: {
       offsetX: 0,
@@ -146,6 +165,8 @@ const objects = [
 
     type: "cauldron",
 
+    station: cauldron,
+
     interactZone: {
       offsetX: 0,
       offsetY: 180,
@@ -172,6 +193,8 @@ const objects = [
     color: "#3d3131",
 
     type: "cauldron",
+
+    station: cauldron,
 
     interactZone: {
       offsetX: 0,
@@ -200,6 +223,8 @@ const objects = [
 
     type: "oil-base",
 
+    station: olemVase,
+
     interactZone: {
       offsetX: 0,
       offsetY: 220,
@@ -226,6 +251,8 @@ const objects = [
     color: "#c45105",
 
     type: "oil-base",
+
+    station: aquaVase,
 
     interactZone: {
       offsetX: 0,
@@ -254,6 +281,8 @@ const objects = [
 
     type: "oil-base",
 
+    station: vinumVase,
+
     interactZone: {
       offsetX: 0,
       offsetY: 220,
@@ -271,7 +300,7 @@ const objects = [
     sprite: wineVaseImg,
   }),
 
-  //INGREDIENT 1
+  //MANDRAKES
   new GameObject({
     x: 600,
     y: 890,
@@ -281,6 +310,8 @@ const objects = [
 
     type: "ingredient",
 
+    station: mandrakeBox,
+
     sortOffset: 1000,
 
     interactZone: {
@@ -300,7 +331,7 @@ const objects = [
     sprite: ingredientImg,
   }),
 
-  //INGREDIENT 2
+  //PETALS
   new GameObject({
     x: 800,
     y: 890,
@@ -310,6 +341,8 @@ const objects = [
 
     type: "ingredient",
 
+    station: petalBox,
+
     sortOffset: 1000,
 
     interactZone: {
@@ -329,7 +362,7 @@ const objects = [
     sprite: ingredientImg,
   }),
 
-  //INGREDIENT 3
+  //SCALES
   new GameObject({
     x: 1000,
     y: 890,
@@ -339,6 +372,8 @@ const objects = [
 
     type: "ingredient",
 
+    station: scaleBox,
+
     sortOffset: 1000,
 
     interactZone: {
@@ -358,7 +393,7 @@ const objects = [
     sprite: ingredientImg,
   }),
 
-  //INGREDIENT 4
+  //FIGS
   new GameObject({
     x: 1200,
     y: 890,
@@ -368,6 +403,8 @@ const objects = [
 
     type: "ingredient",
 
+    station: figBox,
+
     sortOffset: 1000,
 
     interactZone: {
@@ -387,45 +424,49 @@ const objects = [
     sprite: ingredientImg,
   }),
 
-  // //ROUND CONTAINERS
-  // new GameObject({
-  //   x: 100,
-  //   y: 340,
-  //   width: 100,
-  //   height: 100,
-  //   color: "#058ec4",
+  //ROUND CONTAINERS
+  new GameObject({
+    x: 100,
+    y: 340,
+    width: 100,
+    height: 100,
+    color: "#058ec4",
 
-  //   type: "container",
+    type: "container",
 
-  //   sortOffset: 500,
+    station: roundGlassBox,
 
-  //   interactZone: {
-  //     offsetX: 100,
-  //     offsetY: 0,
-  //     width: 80,
-  //     height: 100,
-  //   },
-  // }),
+    sortOffset: 500,
 
-  // //SQUARE CONTAINERS
-  // new GameObject({
-  //   x: 100,
-  //   y: 660,
-  //   width: 100,
-  //   height: 100,
-  //   color: "#05a7c4",
+    interactZone: {
+      offsetX: 100,
+      offsetY: 0,
+      width: 80,
+      height: 100,
+    },
+  }),
 
-  //   type: "container",
+  //SQUARE CONTAINERS
+  new GameObject({
+    x: 100,
+    y: 660,
+    width: 100,
+    height: 100,
+    color: "#05a7c4",
 
-  //   sortOffset: 1000,
+    type: "container",
 
-  //   interactZone: {
-  //     offsetX: 100,
-  //     offsetY: 0,
-  //     width: 80,
-  //     height: 100,
-  //   },
-  // }),
+    station: squareGlassBox,
+
+    sortOffset: 1000,
+
+    interactZone: {
+      offsetX: 100,
+      offsetY: 0,
+      width: 80,
+      height: 100,
+    },
+  }),
 
   // //BELL 1
   // new GameObject({

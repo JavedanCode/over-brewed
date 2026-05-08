@@ -51,15 +51,15 @@ const brew_map = {
 
 // glass types:
 // NONE, ROUND, SQUARE
-const player_inventory = {
-  glass: {
+function player_inventory() {
+  this.glass = {
     type: "NONE",
     inventory: 0,
-  },
-  ingredient: 0,
-  hasGlass: () => glass.type !== "NONE",
-  empty: () => !hasGlass() && ingredient === 0,
-};
+  };
+  this.ingredient = 0;
+  this.hasGlass = () => this.glass.type !== "NONE";
+  this.empty = () => !this.hasGlass() && this.ingredient === 0;
+}
 
 export {
   getIndex,
