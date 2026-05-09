@@ -4,7 +4,7 @@ import player from "./player.js";
 import { checkCollision } from "./collision.js";
 import { getActiveInteractable } from "./interaction.js";
 import { justPressed } from "./input.js";
-import { interact } from "./actions.js";
+import { interact, takePlace, work } from "./actions.js";
 
 const WORLD_WIDTH = 1920;
 const WORLD_HEIGHT = 1080;
@@ -63,6 +63,10 @@ export default function update() {
 
   if (justPressed["e"]) {
     const active = getActiveInteractable();
-    if (active) interact(active);
+    if (active) takePlace(active);
+  }
+  if (justPressed["f"]) {
+    const active = getActiveInteractable();
+    if (active) work(active);
   }
 }

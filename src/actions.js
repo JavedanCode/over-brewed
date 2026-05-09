@@ -1,6 +1,6 @@
 import player from "./player.js";
 
-export function interact(obj) {
+export function takePlace(obj) {
   if (!obj.station) return;
 
   const station = obj.station;
@@ -9,6 +9,13 @@ export function interact(obj) {
   if (station.canTake(player.inventory)) {
     // station.take(player.inventory);
     console.log("Did take: " + station.take(player.inventory));
+
+    console.log(
+      "Player Inventory: " +
+        player.inventory.ingredient +
+        " Glass: " +
+        player.glass,
+    );
     return;
   }
 
@@ -17,6 +24,12 @@ export function interact(obj) {
     console.log("Did place: " + station.place(player.inventory));
     return;
   }
+}
+
+export function work(obj) {
+  if (!obj.station) return;
+
+  const station = obj.station;
 
   // WORK
   if (station.canWork) {
