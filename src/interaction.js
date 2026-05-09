@@ -1,6 +1,6 @@
-import objects from './objects.js';
-import player from './player.js';
-import { checkCollision } from './collision.js';
+import objects from "./objects.js";
+import player from "./player.js";
+import { checkCollision } from "./collision.js";
 
 function getPlayerBox(player) {
   return {

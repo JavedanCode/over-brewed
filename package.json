@@ -9,7 +9,7 @@
     "lint": "eslint src",
     "start": "webpack serve --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "watch": "jest --watch *.js",
     "watchAll": "jest --watchAll",
     "deploy": "gh-pages -d dist"
@@ -52,8 +52,7 @@
   "prettier": {
     "trailingComma": "es5",
     "tabWidth": 2,
-    "semi": true,
-    "singleQuote": true
+    "semi": true
   },
   "babel": {
     "presets": [
