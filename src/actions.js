@@ -14,7 +14,9 @@ export function takePlace(obj) {
       "Player Invetory: " +
         player.inventory.ingredient +
         " Glass: " +
-        player.inventory.glass.inventory
+        player.inventory.glass.inventory +
+        " Type: " +
+        player.inventory.glass.type
     );
     return;
   }
