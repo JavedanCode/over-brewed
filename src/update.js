@@ -20,29 +20,37 @@ export default function update() {
 
   player.x += player.velocityX;
 
+  let playerHitbox = player.getHitbox();
+
   objects.forEach((obj) => {
-    if (checkCollision(player, obj.getHitbox())) {
+    if (checkCollision(playerHitbox, obj.getHitbox())) {
       const hb = obj.getHitbox();
       if (player.velocityX > 0) {
-        player.x = hb.x - player.width;
+        player.x = hb.x - player.hitbox.offsetX - player.hitbox.width;
       }
       if (player.velocityX < 0) {
-        player.x = hb.x + hb.width;
+        player.x = hb.x + hb.width - player.hitbox.offsetX;
       }
+
+      playerHitbox = player.getHitbox();
     }
   });
 
   player.y += player.velocityY;
 
+  playerHitbox = player.getHitbox();
+
   objects.forEach((obj) => {
-    if (checkCollision(player, obj.getHitbox())) {
+    if (checkCollision(playerHitbox, obj.getHitbox())) {
       const hb = obj.getHitbox();
       if (player.velocityY > 0) {
-        player.y = hb.y - player.height;
+        player.y = hb.y - player.hitbox.offsetY - player.hitbox.height;
       }
       if (player.velocityY < 0) {
-        player.y = hb.y + hb.height;
+        player.y = hb.y + hb.height - player.hitbox.offsetY;
       }
+
+      playerHitbox = player.getHitbox();
     }
   });
 

@@ -2,17 +2,8 @@ import objects from "./objects.js";
 import player from "./player.js";
 import { checkCollision } from "./collision.js";
 
-function getPlayerBox(player) {
-  return {
-    x: player.x,
-    y: player.y,
-    width: player.width,
-    height: player.height,
-  };
-}
-
 export function getActiveInteractable() {
-  const playerBox = getPlayerBox(player);
+  const playerBox = player.getHitbox();
 
   let closest = null;
   let closestDistance = Infinity;
