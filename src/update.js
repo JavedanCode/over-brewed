@@ -16,13 +16,13 @@ export default function update() {
   if (keys["d"]) player.velocityX += player.acceleration;
 
   player.velocityX = Math.max(
-    -player.speed,
-    Math.min(player.speed, player.velocityX)
+    -player.maxSpeed,
+    Math.min(player.maxSpeed, player.velocityX)
   );
 
   player.velocityY = Math.max(
-    -player.speed,
-    Math.min(player.speed, player.velocityY)
+    -player.maxSpeed,
+    Math.min(player.maxSpeed, player.velocityY)
   );
 
   if (!keys["a"] && !keys["d"]) {

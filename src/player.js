@@ -15,7 +15,7 @@ class Player {
     hitbox,
     sprite,
     inventory,
-    speed,
+    maxSpeed,
     acceleration,
     deceleration,
   }) {
@@ -39,7 +39,7 @@ class Player {
 
     this.inventory = inventory || null;
 
-    this.speed = speed;
+    this.maxSpeed = maxSpeed;
 
     this.acceleration = acceleration;
     this.deceleration = deceleration;
@@ -71,7 +71,7 @@ const player = new Player({
   width: 110,
   height: 180,
   color: "blue",
-  speed: 4,
+  maxSpeed: 6,
 
   //CHANGE THESE TO CHANGE THE CURVES
   acceleration: 0.1,
