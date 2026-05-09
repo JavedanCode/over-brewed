@@ -10,7 +10,12 @@ export function takePlace(obj) {
     // station.take(player.inventory);
     console.log("Did take: " + station.take(player.inventory));
 
-    console.log("Player Invetory: " + player.inventory.ingredient);
+    console.log(
+      "Player Invetory: " +
+        player.inventory.ingredient +
+        " Glass: " +
+        player.inventory.glass.inventory
+    );
     return;
   }
 
