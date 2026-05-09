@@ -1,4 +1,4 @@
-import { player_inventory } from "./items";
+import { player_inventory } from "./items.js";
 
 const player = {
   x: 1400,

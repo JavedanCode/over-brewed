@@ -1,6 +1,6 @@
-import objects from "./objects";
-import player from "./player";
-import { getActiveInteractable } from "./interaction.js";
+import objects from "./objects.js";
+import player from "./player.js";
+// import { getActiveInteractable } from "./interaction.js";
 import { background } from "./assets.js";
 
 const CANVAS_WIDTH = 1920;
