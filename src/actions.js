@@ -1,4 +1,4 @@
-import player from "./player.js";
+import player from './player.js';
 
 export function takePlace(obj) {
   if (!obj.station) return;
@@ -8,20 +8,20 @@ export function takePlace(obj) {
   // TAKE
   if (station.canTake(player.inventory)) {
     // station.take(player.inventory);
-    console.log("Did take: " + station.take(player.inventory));
+    console.log('Did take: ' + station.take(player.inventory));
 
     console.log(
-      "Player Inventory: " +
+      'Player Inventory: ' +
         player.inventory.ingredient +
-        " Glass: " +
-        player.glass,
+        ' Glass: ' +
+        player.glass
     );
     return;
   }
 
   // PLACE
   if (station.canPlace(player.inventory)) {
-    console.log("Did place: " + station.place(player.inventory));
+    console.log('Did place: ' + station.place(player.inventory));
     return;
   }
 }
@@ -34,6 +34,6 @@ export function work(obj) {
   // WORK
   if (station.canWork) {
     station.doWork();
-    console.log("working");
+    console.log('working');
   }
 }

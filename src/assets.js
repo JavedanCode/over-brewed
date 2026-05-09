@@ -1,12 +1,12 @@
-import floor from "./assets/floor.png";
-import cauldron from "./assets/cauldron.png";
-import oilVase from "./assets/oil.png";
-import waterVase from "./assets/water.png";
-import wineVase from "./assets/wine.png";
-import centerTable from "./assets/center-table.png";
-import bottomTable from "./assets/bottom-table.png";
-import ingredient from "./assets/ingredient.png";
-import sideTable from "./assets/side-table.png";
+import floor from './assets/floor.png';
+import cauldron from './assets/cauldron.png';
+import oilVase from './assets/oil.png';
+import waterVase from './assets/water.png';
+import wineVase from './assets/wine.png';
+import centerTable from './assets/center-table.png';
+import bottomTable from './assets/bottom-table.png';
+import ingredient from './assets/ingredient.png';
+import sideTable from './assets/side-table.png';
 
 const background = new Image();
 background.src = floor;
