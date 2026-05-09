@@ -10,55 +10,41 @@ const WORLD_WIDTH = 1920;
 const WORLD_HEIGHT = 1080;
 
 export default function update() {
-  if (keys["w"]) player.velocityY -= player.acceleration;
-  if (keys["s"]) player.velocityY += player.acceleration;
-  if (keys["a"]) player.velocityX -= player.acceleration;
-  if (keys["d"]) player.velocityX += player.acceleration;
+  let yDir = 0;
+  let xDir = 0;
 
-  player.velocityX = Math.max(
-    -player.maxSpeed,
-    Math.min(player.maxSpeed, player.velocityX)
-  );
+  if (keys["w"]) yDir--;
+  if (keys["s"]) yDir++;
+  if (keys["a"]) xDir--;
+  if (keys["d"]) xDir++;
 
-  player.velocityY = Math.max(
-    -player.maxSpeed,
-    Math.min(player.maxSpeed, player.velocityY)
-  );
-
-  if (!keys["a"] && !keys["d"]) {
-    if (player.velocityX > 0) {
-      player.velocityX -= player.deceleration;
-
-      if (player.velocityX < 0) {
-        player.velocityX = 0;
-      }
-    }
-
-    if (player.velocityX < 0) {
-      player.velocityX += player.deceleration;
-
-      if (player.velocityX > 0) {
-        player.velocityX = 0;
-      }
-    }
+  //If no direction is held or two opposing directions are held together
+  if (yDir === 0) {
+    let absVel = Math.abs(player.velocityY);
+    absVel -= player.deceleration;
+    absVel = Math.max(0, absVel);
+    player.velocityY = absVel * Math.sign(player.velocityY);
+  }
+  //If only one opposing direction is held
+  else {
+    player.velocityY += player.acceleration * yDir;
+    player.velocityY = Math.max(
+      -player.maxSpeed,
+      Math.min(player.maxSpeed, player.velocityY)
+    );
   }
 
-  if (!keys["w"] && !keys["s"]) {
-    if (player.velocityY > 0) {
-      player.velocityY -= player.deceleration;
-
-      if (player.velocityY < 0) {
-        player.velocityY = 0;
-      }
-    }
-
-    if (player.velocityY < 0) {
-      player.velocityY += player.deceleration;
-
-      if (player.velocityY > 0) {
-        player.velocityY = 0;
-      }
-    }
+  if (xDir === 0) {
+    let absVel = Math.abs(player.velocityX);
+    absVel -= player.deceleration;
+    absVel = Math.max(0, absVel);
+    player.velocityX = absVel * Math.sign(player.velocityX);
+  } else {
+    player.velocityX += player.acceleration * xDir;
+    player.velocityX = Math.max(
+      -player.maxSpeed,
+      Math.min(player.maxSpeed, player.velocityX)
+    );
   }
 
   player.x += player.velocityX;
