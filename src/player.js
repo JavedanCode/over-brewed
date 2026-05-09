@@ -71,11 +71,11 @@ const player = new Player({
   width: 110,
   height: 180,
   color: "blue",
-  maxSpeed: 6,
+  maxSpeed: 4.5,
 
   //CHANGE THESE TO CHANGE THE CURVES
-  acceleration: 1,
-  deceleration: 0.5,
+  acceleration: 0.4,
+  deceleration: 0.2,
 
   velocityX: 0,
   velocityY: 0,
