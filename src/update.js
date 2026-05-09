@@ -10,13 +10,56 @@ const WORLD_WIDTH = 1920;
 const WORLD_HEIGHT = 1080;
 
 export default function update() {
-  player.velocityX = 0;
-  player.velocityY = 0;
+  if (keys["w"]) player.velocityY -= player.acceleration;
+  if (keys["s"]) player.velocityY += player.acceleration;
+  if (keys["a"]) player.velocityX -= player.acceleration;
+  if (keys["d"]) player.velocityX += player.acceleration;
 
-  if (keys["w"]) player.velocityY = -player.speed;
-  if (keys["s"]) player.velocityY = player.speed;
-  if (keys["a"]) player.velocityX = -player.speed;
-  if (keys["d"]) player.velocityX = player.speed;
+  player.velocityX = Math.max(
+    -player.speed,
+    Math.min(player.speed, player.velocityX)
+  );
+
+  player.velocityY = Math.max(
+    -player.speed,
+    Math.min(player.speed, player.velocityY)
+  );
+
+  if (!keys["a"] && !keys["d"]) {
+    if (player.velocityX > 0) {
+      player.velocityX -= player.deceleration;
+
+      if (player.velocityX < 0) {
+        player.velocityX = 0;
+      }
+    }
+
+    if (player.velocityX < 0) {
+      player.velocityX += player.deceleration;
+
+      if (player.velocityX > 0) {
+        player.velocityX = 0;
+      }
+    }
+  }
+
+  if (!keys["w"] && !keys["s"]) {
+    if (player.velocityY > 0) {
+      player.velocityY -= player.deceleration;
+
+      if (player.velocityY < 0) {
+        player.velocityY = 0;
+      }
+    }
+
+    if (player.velocityY < 0) {
+      player.velocityY += player.deceleration;
+
+      if (player.velocityY > 0) {
+        player.velocityY = 0;
+      }
+    }
+  }
 
   player.x += player.velocityX;
 

@@ -16,6 +16,8 @@ class Player {
     sprite,
     inventory,
     speed,
+    acceleration,
+    deceleration,
   }) {
     this.x = x;
     this.y = y;
@@ -38,6 +40,9 @@ class Player {
     this.inventory = inventory || null;
 
     this.speed = speed;
+
+    this.acceleration = acceleration;
+    this.deceleration = deceleration;
   }
 
   getHitbox() {
@@ -67,6 +72,10 @@ const player = new Player({
   height: 180,
   color: "blue",
   speed: 4,
+
+  //CHANGE THESE TO CHANGE THE CURVES
+  acceleration: 0.1,
+  deceleration: 0.2,
 
   velocityX: 0,
   velocityY: 0,
