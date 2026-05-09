@@ -1,6 +1,6 @@
 import objects from "./objects.js";
 import player from "./player.js";
-// import { getActiveInteractable } from "./interaction.js";
+import { getActiveInteractable } from "./interaction.js";
 import { background } from "./assets.js";
 
 const CANVAS_WIDTH = 1920;
@@ -39,27 +39,32 @@ export default (ctx, canvas) => {
     ctx.fillRect(entity.x, entity.y, entity.width, entity.height);
   });
 
-  // objects.forEach((obj) => {
-  //   const hb = obj.getHitbox();
-  //   ctx.strokeStyle = "red";
-  //   ctx.lineWidth = 1;
-  //   ctx.strokeRect(hb.x, hb.y, hb.width, hb.height);
-  // });
+  objects.forEach((obj) => {
+    const hb = obj.getHitbox();
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 1;
+    ctx.strokeRect(hb.x, hb.y, hb.width, hb.height);
+  });
 
-  // objects.forEach((obj) => {
-  //   const zone = obj.getInteractZone();
-  //   if (!zone) return;
+  const hb = player.getHitbox();
+  ctx.strokeStyle = "red";
+  ctx.lineWidth = 1;
+  ctx.strokeRect(hb.x, hb.y, hb.width, hb.height);
 
-  //   ctx.strokeStyle = "yellow";
-  //   ctx.strokeRect(zone.x, zone.y, zone.width, zone.height);
-  // });
+  objects.forEach((obj) => {
+    const zone = obj.getInteractZone();
+    if (!zone) return;
 
-  // const active = getActiveInteractable();
+    ctx.strokeStyle = "yellow";
+    ctx.strokeRect(zone.x, zone.y, zone.width, zone.height);
+  });
 
-  // if (active) {
-  //   ctx.strokeStyle = "lime";
-  //   ctx.lineWidth = 3;
+  const active = getActiveInteractable();
 
-  //   ctx.strokeRect(active.x, active.y, active.width, active.height);
-  // }
+  if (active) {
+    ctx.strokeStyle = "lime";
+    ctx.lineWidth = 3;
+
+    ctx.strokeRect(active.x, active.y, active.width, active.height);
+  }
 };
