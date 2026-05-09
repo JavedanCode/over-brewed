@@ -1,12 +1,4 @@
-import {
-  ingredients,
-  getIndex,
-  BREW,
-  CUT,
-  CRUSH,
-  VARIATION_COUNT,
-  brew_map,
-} from "./items";
+import { ingredients, getIndex, VARIATION_COUNT, brew_map } from "./items";
 
 // Is this a valid ingredient for the task
 const canAction = (ing) => {
@@ -21,7 +13,7 @@ class Station {
     this.inventory = 0;
     this.canMoveWhileWorking = false;
 
-    this.canWork = true;
+    this.canWork = false;
     this.doWork = () => {
       if (this.canWork) {
         this.canWork = false;
@@ -31,25 +23,28 @@ class Station {
     };
 
     this.canPlace = (playerInv) =>
+      playerInv.ingredient !== 0 &&
       playerInv.ingredient < ingredients.CUTOFF &&
       !playerInv.hasGlass() &&
       this.inventory === 0 &&
-      this.canAction(playerInv.ingredient);
+      canAction(playerInv.ingredient);
 
     this.place = (playerInv) => {
       if (this.canPlace(playerInv)) {
         this.inventory = playerInv.ingredient;
         playerInv.ingredient = 0;
+        this.canWork = true;
         return true;
       }
       return false;
     };
 
     this.canTake = (playerInv) =>
-      playerInv.ingredient === 0 && !playerInv.hasGlass();
+      this.inventory !== 0 &&
+      playerInv.ingredient === 0 &&
+      !playerInv.hasGlass();
     this.take = (playerInv) => {
       if (this.canTake(playerInv)) {
-        this.canWork = true;
         playerInv.ingredient = this.inventory;
         this.inventory = 0;
         return true;
@@ -63,7 +58,7 @@ class Ingredient {
   constructor(ing) {
     this.inventory = ing;
 
-    this.canWork = () => false;
+    this.canWork = false;
     this.canPlace = () => false;
 
     this.canTake = (playerInv) => playerInv.empty();
@@ -81,7 +76,7 @@ class Glass {
   constructor(glassType) {
     this.inventory = glassType;
 
-    this.canWork = () => false;
+    this.canWork = false;
     this.canPlace = () => false;
 
     this.canTake = (playerInv) => playerInv.empty();
@@ -146,33 +141,4 @@ class Cauldron {
   }
 }
 
-const cauldron = new Cauldron();
-
-const cutStation = new Station(CUT);
-const crushStation = new Station(CRUSH);
-
-const roundGlassBox = new Glass("ROUND");
-const squareGlassBox = new Glass("SQUARE");
-
-const petalBox = new Ingredient(ingredients.AsphodelPetals);
-const scaleBox = new Ingredient(ingredients.DragonScales);
-const mandrakeBox = new Ingredient(ingredients.Mandrake);
-const figBox = new Ingredient(ingredients.Shrivelfig);
-const vinumVase = new Ingredient(ingredients.Vinum);
-const olemVase = new Ingredient(ingredients.Olem);
-const aquaVase = new Ingredient(ingredients.Aqua);
-
-export {
-  cauldron,
-  cutStation,
-  crushStation,
-  roundGlassBox,
-  squareGlassBox,
-  petalBox,
-  scaleBox,
-  mandrakeBox,
-  figBox,
-  olemVase,
-  vinumVase,
-  aquaVase,
-};
+export { Cauldron, Station, Ingredient, Glass };

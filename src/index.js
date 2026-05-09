@@ -3,7 +3,6 @@ import Canvas from "./canvas.js";
 import draw from "./draw.js";
 import update from "./update.js";
 import { clearJustPressed } from "./input.js";
-import { crushStation } from "./station.js";
 
 const { canvas, ctx } = Canvas();
 

@@ -10,20 +10,8 @@ import {
 } from "./assets.js";
 import GameObject from "./gameObject.js";
 
-import {
-  cauldron,
-  cutStation,
-  crushStation,
-  petalBox,
-  scaleBox,
-  mandrakeBox,
-  figBox,
-  roundGlassBox,
-  squareGlassBox,
-  olemVase,
-  vinumVase,
-  aquaVase,
-} from "./station.js";
+import { Cauldron, Station, Ingredient, Glass } from "./station.js";
+import { CRUSH, CUT, ingredients } from "./items.js";
 
 const objects = [
   //LEFT TABLE
@@ -96,7 +84,7 @@ const objects = [
 
     type: "cutting",
 
-    station: cutStation,
+    station: new Station(CUT),
 
     interactZone: {
       offsetX: 0,
@@ -116,7 +104,7 @@ const objects = [
 
     sortOffset: 1000,
 
-    station: crushStation,
+    station: new Station(CRUSH),
 
     interactZone: {
       offsetX: 0,
@@ -136,7 +124,7 @@ const objects = [
 
     type: "cauldron",
 
-    station: cauldron,
+    station: new Cauldron(),
 
     interactZone: {
       offsetX: 0,
@@ -165,7 +153,7 @@ const objects = [
 
     type: "cauldron",
 
-    station: cauldron,
+    station: new Cauldron(),
 
     interactZone: {
       offsetX: 0,
@@ -194,7 +182,7 @@ const objects = [
 
     type: "cauldron",
 
-    station: cauldron,
+    station: new Cauldron(),
 
     interactZone: {
       offsetX: 0,
@@ -223,7 +211,7 @@ const objects = [
 
     type: "oil-base",
 
-    station: olemVase,
+    station: new Ingredient(ingredients.Oleum),
 
     interactZone: {
       offsetX: 0,
@@ -252,7 +240,7 @@ const objects = [
 
     type: "oil-base",
 
-    station: aquaVase,
+    station: new Ingredient(ingredients.Aqua),
 
     interactZone: {
       offsetX: 0,
@@ -281,7 +269,7 @@ const objects = [
 
     type: "oil-base",
 
-    station: vinumVase,
+    station: new Ingredient(ingredients.Vinum),
 
     interactZone: {
       offsetX: 0,
@@ -310,7 +298,7 @@ const objects = [
 
     type: "ingredient",
 
-    station: mandrakeBox,
+    station: new Ingredient(ingredients.Mandrake),
 
     sortOffset: 1000,
 
@@ -341,7 +329,7 @@ const objects = [
 
     type: "ingredient",
 
-    station: petalBox,
+    station: new Ingredient(ingredients.AsphodelPetals),
 
     sortOffset: 1000,
 
@@ -372,7 +360,7 @@ const objects = [
 
     type: "ingredient",
 
-    station: scaleBox,
+    station: new Ingredient(ingredients.DragonScales),
 
     sortOffset: 1000,
 
@@ -403,7 +391,7 @@ const objects = [
 
     type: "ingredient",
 
-    station: figBox,
+    station: new Ingredient(ingredients.Shrivelfig),
 
     sortOffset: 1000,
 
@@ -434,7 +422,7 @@ const objects = [
 
     type: "container",
 
-    station: roundGlassBox,
+    station: new Glass("ROUND"),
 
     sortOffset: 500,
 
@@ -456,7 +444,7 @@ const objects = [
 
     type: "container",
 
-    station: squareGlassBox,
+    station: new Glass("SQUARE"),
 
     sortOffset: 1000,
 

@@ -1,29 +1,26 @@
-import { player_inventory } from "./items.js";
+import player from "./player.js";
 
 export function interact(obj) {
   if (!obj.station) return;
 
-  const inv = new player_inventory();
-
   const station = obj.station;
 
   // TAKE
-  if (crushStation.canTake(inv)) {
-    crushStation.take(inv);
-    console.log("taking");
+  if (station.canTake(player.inventory)) {
+    // station.take(player.inventory);
+    console.log("Did take: " + station.take(player.inventory));
     return;
   }
 
   // PLACE
-  if (station.canPlace(inv)) {
-    station.place(inv);
-    console.log("placing");
+  if (station.canPlace(player.inventory)) {
+    console.log("Did place: " + station.place(player.inventory));
     return;
   }
 
   // WORK
   if (station.canWork) {
-    station.doWork?.();
+    station.doWork();
     console.log("working");
   }
 }

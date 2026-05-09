@@ -1,3 +1,5 @@
+import { player_inventory } from "./items";
+
 const player = {
   x: 1400,
   y: 600,
@@ -8,6 +10,8 @@ const player = {
 
   velocityX: 0,
   velocityY: 0,
+
+  inventory: new player_inventory(),
 };
 
 export default player;
