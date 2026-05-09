@@ -8,7 +8,7 @@ export default class GameObject {
     hitbox,
     interactZone,
     sortOffset = 0,
-    type = '',
+    type = "",
     sprite,
     station,
   }) {
@@ -17,7 +17,7 @@ export default class GameObject {
     this.width = width;
     this.height = height;
 
-    this.color = color || 'gray';
+    this.color = color || "gray";
 
     this.hitbox = hitbox || {
       offsetX: 0,

@@ -1,10 +1,10 @@
-import keys from './input.js';
-import objects from './objects.js';
-import player from './player.js';
-import { checkCollision } from './collision.js';
-import { getActiveInteractable } from './interaction.js';
-import { justPressed } from './input.js';
-import { interact } from './actions.js';
+import keys from "./input.js";
+import objects from "./objects.js";
+import player from "./player.js";
+import { checkCollision } from "./collision.js";
+import { getActiveInteractable } from "./interaction.js";
+import { justPressed } from "./input.js";
+import { interact } from "./actions.js";
 
 const WORLD_WIDTH = 1920;
 const WORLD_HEIGHT = 1080;
@@ -13,10 +13,10 @@ export default function update() {
   player.velocityX = 0;
   player.velocityY = 0;
 
-  if (keys['w']) player.velocityY = -player.speed;
-  if (keys['s']) player.velocityY = player.speed;
-  if (keys['a']) player.velocityX = -player.speed;
-  if (keys['d']) player.velocityX = player.speed;
+  if (keys["w"]) player.velocityY = -player.speed;
+  if (keys["s"]) player.velocityY = player.speed;
+  if (keys["a"]) player.velocityX = -player.speed;
+  if (keys["d"]) player.velocityX = player.speed;
 
   player.x += player.velocityX;
 
@@ -61,7 +61,7 @@ export default function update() {
     player.y = WORLD_HEIGHT - player.height;
   }
 
-  if (justPressed['e']) {
+  if (justPressed["e"]) {
     const active = getActiveInteractable();
     if (active) interact(active);
   }

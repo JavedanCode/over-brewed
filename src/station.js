@@ -1,4 +1,4 @@
-import { ingredients, getIndex, VARIATION_COUNT, brew_map } from './items';
+import { ingredients, getIndex, VARIATION_COUNT, brew_map } from "./items";
 
 // Is this a valid ingredient for the task
 const canAction = (ing) => {

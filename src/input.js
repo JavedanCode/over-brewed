@@ -1,7 +1,7 @@
 const keys = {};
 export let justPressed = {};
 
-window.addEventListener('keydown', (e) => {
+window.addEventListener("keydown", (e) => {
   const key = e.key.toLowerCase();
 
   if (!keys[key]) {
@@ -11,7 +11,7 @@ window.addEventListener('keydown', (e) => {
   keys[key] = true;
 });
 
-window.addEventListener('keyup', (e) => {
+window.addEventListener("keyup", (e) => {
   keys[e.key.toLowerCase()] = false;
 });
 
