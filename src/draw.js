@@ -1,7 +1,7 @@
-import objects from "./objects";
-import player from "./player";
-import { getActiveInteractable } from "./interaction.js";
-import { background } from "./assets.js";
+import objects from './objects';
+import player from './player';
+import { getActiveInteractable } from './interaction.js';
+import { background } from './assets.js';
 
 const CANVAS_WIDTH = 1920;
 const CANVAS_HEIGHT = 1080;

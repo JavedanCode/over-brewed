@@ -7,11 +7,11 @@ import {
   bottomTableImg,
   ingredientImg,
   sideTableImg,
-} from "./assets.js";
-import GameObject from "./gameObject.js";
+} from './assets.js';
+import GameObject from './gameObject.js';
 
-import { Cauldron, Station, Ingredient, Glass } from "./station.js";
-import { CRUSH, CUT, ingredients } from "./items.js";
+import { Cauldron, Station, Ingredient, Glass } from './station.js';
+import { CRUSH, CUT, ingredients } from './items.js';
 
 const objects = [
   //LEFT TABLE
@@ -20,7 +20,7 @@ const objects = [
     y: 350,
     width: 240,
     height: 500,
-    color: "#a09797",
+    color: '#a09797',
 
     sprite: sideTableImg,
   }),
@@ -31,7 +31,7 @@ const objects = [
     y: 300,
     width: 340,
     height: 700,
-    color: "#a09797",
+    color: '#a09797',
 
     sprite: sideTableImg,
   }),
@@ -42,7 +42,7 @@ const objects = [
     y: 940,
     width: 800,
     height: 300,
-    color: "#a09797",
+    color: '#a09797',
 
     hitbox: {
       offsetX: 15,
@@ -60,7 +60,7 @@ const objects = [
     y: 470,
     width: 550,
     height: 250,
-    color: "#a09797",
+    color: '#a09797',
 
     hitbox: {
       offsetX: 3,
@@ -78,11 +78,11 @@ const objects = [
     y: 500,
     width: 70,
     height: 50,
-    color: "#6805c4",
+    color: '#6805c4',
 
     sortOffset: 1000,
 
-    type: "cutting",
+    type: 'cutting',
 
     station: new Station(CUT),
 
@@ -100,7 +100,7 @@ const objects = [
     y: 500,
     width: 70,
     height: 50,
-    color: "#05c46b",
+    color: '#05c46b',
 
     sortOffset: 1000,
 
@@ -120,9 +120,9 @@ const objects = [
     y: 80,
     width: 150,
     height: 180,
-    color: "#3d3131",
+    color: '#3d3131',
 
-    type: "cauldron",
+    type: 'cauldron',
 
     station: new Cauldron(),
 
@@ -149,9 +149,9 @@ const objects = [
     y: 80,
     width: 150,
     height: 180,
-    color: "#3d3131",
+    color: '#3d3131',
 
-    type: "cauldron",
+    type: 'cauldron',
 
     station: new Cauldron(),
 
@@ -178,9 +178,9 @@ const objects = [
     y: 80,
     width: 150,
     height: 180,
-    color: "#3d3131",
+    color: '#3d3131',
 
-    type: "cauldron",
+    type: 'cauldron',
 
     station: new Cauldron(),
 
@@ -207,9 +207,9 @@ const objects = [
     y: 40,
     width: 100,
     height: 220,
-    color: "#c45105",
+    color: '#c45105',
 
-    type: "oil-base",
+    type: 'oil-base',
 
     station: new Ingredient(ingredients.Oleum),
 
@@ -236,9 +236,9 @@ const objects = [
     y: 40,
     width: 100,
     height: 220,
-    color: "#c45105",
+    color: '#c45105',
 
-    type: "oil-base",
+    type: 'oil-base',
 
     station: new Ingredient(ingredients.Aqua),
 
@@ -265,9 +265,9 @@ const objects = [
     y: 40,
     width: 100,
     height: 220,
-    color: "#c45105",
+    color: '#c45105',
 
-    type: "oil-base",
+    type: 'oil-base',
 
     station: new Ingredient(ingredients.Vinum),
 
@@ -294,9 +294,9 @@ const objects = [
     y: 890,
     width: 95,
     height: 140,
-    color: "#3a2301",
+    color: '#3a2301',
 
-    type: "ingredient",
+    type: 'ingredient',
 
     station: new Ingredient(ingredients.Mandrake),
 
@@ -325,9 +325,9 @@ const objects = [
     y: 890,
     width: 95,
     height: 140,
-    color: "#3a2301",
+    color: '#3a2301',
 
-    type: "ingredient",
+    type: 'ingredient',
 
     station: new Ingredient(ingredients.AsphodelPetals),
 
@@ -356,9 +356,9 @@ const objects = [
     y: 890,
     width: 95,
     height: 140,
-    color: "#3a2301",
+    color: '#3a2301',
 
-    type: "ingredient",
+    type: 'ingredient',
 
     station: new Ingredient(ingredients.DragonScales),
 
@@ -387,9 +387,9 @@ const objects = [
     y: 890,
     width: 95,
     height: 140,
-    color: "#3a2301",
+    color: '#3a2301',
 
-    type: "ingredient",
+    type: 'ingredient',
 
     station: new Ingredient(ingredients.Shrivelfig),
 
@@ -418,11 +418,11 @@ const objects = [
     y: 340,
     width: 100,
     height: 100,
-    color: "#058ec4",
+    color: '#058ec4',
 
-    type: "container",
+    type: 'container',
 
-    station: new Glass("ROUND"),
+    station: new Glass('ROUND'),
 
     sortOffset: 500,
 
@@ -440,11 +440,11 @@ const objects = [
     y: 660,
     width: 100,
     height: 100,
-    color: "#05a7c4",
+    color: '#05a7c4',
 
-    type: "container",
+    type: 'container',
 
-    station: new Glass("SQUARE"),
+    station: new Glass('SQUARE'),
 
     sortOffset: 1000,
 
