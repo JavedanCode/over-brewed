@@ -58,6 +58,7 @@ class Station {
 class Ingredient {
   constructor(ing) {
     this.inventory = ing;
+    this.canPlace = () => false;
 
     this.canTake = (playerInv) => playerInv.empty();
     this.take = (playerInv) => {
@@ -73,6 +74,7 @@ class Ingredient {
 class Glass {
   constructor(glassType) {
     this.inventory = glassType;
+    this.canPlace = () => false;
 
     this.canTake = (playerInv) => playerInv.empty();
     this.take = (playerInv) => {
