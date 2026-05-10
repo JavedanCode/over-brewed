@@ -1,10 +1,12 @@
-import objects from "./objects.js";
+import { ingredientsAndContainers, tables, stations } from "./objects.js";
 import player from "./player.js";
 import { getActiveInteractable } from "./interaction.js";
 import { background } from "./assets.js";
 
 const CANVAS_WIDTH = 1920;
 const CANVAS_HEIGHT = 1080;
+
+const objects = [...stations, ...tables, ...ingredientsAndContainers];
 
 export default (ctx, canvas) => {
   const scaleX = canvas.width / CANVAS_WIDTH;
@@ -59,7 +61,7 @@ export default (ctx, canvas) => {
     ctx.strokeRect(zone.x, zone.y, zone.width, zone.height);
   });
 
-  const active = getActiveInteractable();
+  const active = getActiveInteractable(objects);
 
   if (active) {
     ctx.strokeStyle = "lime";
