@@ -8,10 +8,11 @@ import { takePlace, work } from "./actions.js";
 
 const WORLD_WIDTH = 1920;
 const WORLD_HEIGHT = 1080;
-
 const objects = [...stations, ...tables, ...ingredientsAndContainers];
+let baseTime = 3000; // in ms
+let currentInteraction = null;
 
-export default function update(timeStep) {
+function calculateVelocity(timeStep) {
   let yDir = 0;
   let xDir = 0;
 
@@ -54,10 +55,11 @@ export default function update(timeStep) {
     player.velocityX = (player.velocityX / speed) * player.maxSpeed;
     player.velocityY = (player.velocityY / speed) * player.maxSpeed;
   }
+}
 
+function calculatePosition() {
   player.x += player.velocityX;
   let playerHitbox = player.getHitbox();
-
   objects.forEach((obj) => {
     if (checkCollision(playerHitbox, obj.getHitbox())) {
       const hb = obj.getHitbox();
@@ -74,7 +76,6 @@ export default function update(timeStep) {
 
   player.y += player.velocityY;
   playerHitbox = player.getHitbox();
-
   objects.forEach((obj) => {
     if (checkCollision(playerHitbox, obj.getHitbox())) {
       const hb = obj.getHitbox();
@@ -103,18 +104,32 @@ export default function update(timeStep) {
   if (player.y + player.height > WORLD_HEIGHT) {
     player.y = WORLD_HEIGHT - player.height;
   }
+}
+
+export default function update(timeStep) {
+  // update Stations
+  for (let st of stations) {
+    st.station.doWork(timeStep);
+  }
+
+  if (!currentInteraction) {
+    calculateVelocity(timeStep);
+    calculatePosition();
+
+    if (justPressed["e"]) {
+      const active = getActiveInteractable([
+        ...stations,
+        ...ingredientsAndContainers,
+      ]);
+      if (active) takePlace(active);
+    }
+    if (justPressed["f"]) {
+      const active = getActiveInteractable(stations);
+      if (active) currentInteraction = work(active, baseTime);
+    }
+  } else {
+    if (!currentInteraction._work_lock) currentInteraction = null;
+  }
 
   player.updateAnimation();
-
-  if (justPressed["e"]) {
-    const active = getActiveInteractable([
-      ...stations,
-      ...ingredientsAndContainers,
-    ]);
-    if (active) takePlace(active);
-  }
-  if (justPressed["f"]) {
-    const active = getActiveInteractable(stations);
-    if (active) work(active);
-  }
 }

@@ -4,39 +4,35 @@ export function takePlace(obj) {
   const station = obj.station;
 
   // TAKE
-  if (station.canTake(player.inventory)) {
-    // station.take(player.inventory);
-    console.log("Did take: " + station.take(player.inventory));
-
-    console.log(
-      "Player Invetory: " +
-        player.inventory.ingredient +
-        " Glass: " +
-        player.inventory.glass.inventory +
-        " Type: " +
-        player.inventory.glass.type
-    );
-    return;
-  }
-
-  // PLACE
-  if (station.canPlace(player.inventory)) {
-    console.log("Did place: " + station.place(player.inventory));
-    return;
+  if (player.inventory.empty()) {
+    if (station.canTake(player.inventory)) {
+      station.take(player.inventory);
+      console.log(
+        "Player Invetory: " +
+          player.inventory.ingredient +
+          " Glass: " +
+          player.inventory.glass.inventory +
+          " Type: " +
+          player.inventory.glass.type
+      );
+    }
+  } else {
+    // PLACE
+    if (station.canPlace(player.inventory)) {
+      station.place(player.inventory);
+      console.log("Placed");
+    }
   }
 }
 
-export function work(obj) {
+export function work(obj, baseTime) {
   const station = obj.station;
 
   // WORK
   if (station.canWork()) {
-    station.startWorking();
-    console.log("started working");
-
-    setTimeout(() => {
-      station.doWork();
-      console.log("Finished Working...");
-    }, 3000);
+    station.startWorking(baseTime);
+    console.log(`started working with baseTime: ${baseTime}`);
+    if (!station.canMoveWhileWorking) return station;
   }
+  return null;
 }
