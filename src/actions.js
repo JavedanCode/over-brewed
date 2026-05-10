@@ -34,8 +34,13 @@ export function work(obj) {
   const station = obj.station;
 
   // WORK
-  if (station.canWork) {
-    station.doWork();
-    console.log("working");
+  if (station.canWork()) {
+    station.startWorking();
+    console.log("started working");
+
+    setTimeout(() => {
+      station.doWork();
+      console.log("Finished Working...");
+    }, 3000);
   }
 }
