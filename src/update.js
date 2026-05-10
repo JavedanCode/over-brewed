@@ -20,33 +20,39 @@ export default function update(timeStep) {
   if (keys["a"]) xDir--;
   if (keys["d"]) xDir++;
 
-  //If no direction is held or two opposing directions are held together
+  // Normalize input direction
+  let length = Math.hypot(xDir, yDir);
+
+  if (length > 0) {
+    xDir /= length;
+    yDir /= length;
+  }
+
+  // Apply acceleration
+  player.velocityX += xDir * player.acceleration * timeStep;
+  player.velocityY += yDir * player.acceleration * timeStep;
+
+  // Deceleration when no input
+  if (xDir === 0) {
+    let absVel = Math.abs(player.velocityX);
+    absVel -= player.deceleration * timeStep;
+    absVel = Math.max(0, absVel);
+    player.velocityX = absVel * Math.sign(player.velocityX);
+  }
+
   if (yDir === 0) {
     let absVel = Math.abs(player.velocityY);
     absVel -= player.deceleration * timeStep;
     absVel = Math.max(0, absVel);
     player.velocityY = absVel * Math.sign(player.velocityY);
   }
-  //If only one opposing direction is held
-  else {
-    player.velocityY += player.acceleration * timeStep * yDir;
-    player.velocityY = Math.max(
-      -player.maxSpeed,
-      Math.min(player.maxSpeed, player.velocityY)
-    );
-  }
 
-  if (xDir === 0) {
-    let absVel = Math.abs(player.velocityX);
-    absVel -= player.deceleration * timeStep;
-    absVel = Math.max(0, absVel);
-    player.velocityX = absVel * Math.sign(player.velocityX);
-  } else {
-    player.velocityX += player.acceleration * timeStep * xDir;
-    player.velocityX = Math.max(
-      -player.maxSpeed,
-      Math.min(player.maxSpeed, player.velocityX)
-    );
+  // Clamp total velocity magnitude
+  let speed = Math.hypot(player.velocityX, player.velocityY);
+
+  if (speed > player.maxSpeed) {
+    player.velocityX = (player.velocityX / speed) * player.maxSpeed;
+    player.velocityY = (player.velocityY / speed) * player.maxSpeed;
   }
 
   player.x += player.velocityX;
