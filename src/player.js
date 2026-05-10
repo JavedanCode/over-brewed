@@ -18,31 +18,59 @@ class Player {
     maxSpeed,
     acceleration,
     deceleration,
+    animations,
+    currentAnimation,
+    currentFrame,
+    frameTimer,
+    frameDelay,
+    facing,
+    frameWidth,
+    frameHeight,
   }) {
+    //START POSITION AND DIMENSIONS
     this.x = x;
     this.y = y;
     this.width = width;
     this.height = height;
 
-    this.velocityX = velocityX;
-    this.velocityY = velocityY;
-
+    //COLOR (ONLY USED IF THERE IS NO SPRITE DEFINED)
     this.color = color || "gray";
 
+    //HITBOX
     this.hitbox = hitbox || {
       offsetX: 0,
       offsetY: 0,
       width: width,
       height: height,
     };
+
+    //SPRITE
     this.sprite = sprite || null;
 
+    //INVENTORY
     this.inventory = inventory || null;
 
+    //MAX SPEED AND ACCEL/DECEL
     this.maxSpeed = maxSpeed;
+
+    this.velocityX = velocityX;
+    this.velocityY = velocityY;
 
     this.acceleration = acceleration;
     this.deceleration = deceleration;
+
+    //ANIMATIONS
+    this.animations = animations || {};
+    this.currentAnimation = currentAnimation || "idleDown";
+    this.currentFrame = currentFrame || 0;
+
+    this.frameTimer = frameTimer || 0;
+    this.frameDelay = frameDelay || 24;
+
+    this.facing = facing || "right";
+
+    this.frameWidth = frameWidth || 16;
+    this.frameHeight = frameHeight || 16;
   }
 
   getHitbox() {
@@ -54,9 +82,83 @@ class Player {
     };
   }
 
+  updateAnimation() {
+    let newAnimation = this.currentAnimation;
+
+    //MOVEMENT ANIMATIONS
+    if (this.velocityY < 0) {
+      newAnimation = "walkUp";
+    } else if (this.velocityY > 0) {
+      newAnimation = "walkDown";
+    } else if (this.velocityX < 0) {
+      newAnimation = "walkLeft";
+    } else if (this.velocityX > 0) {
+      newAnimation = "walkRight";
+    }
+
+    //IDLE
+    else {
+      if (newAnimation === "walkUp") {
+        newAnimation = "idleUp";
+      } else if (newAnimation === "walkDown") {
+        newAnimation = "idleDown";
+      } else if (newAnimation === "walkLeft") {
+        newAnimation = "idleLeft";
+      } else if (newAnimation === "walkRight") {
+        newAnimation = "idleRight";
+      }
+    }
+
+    //APPLY NEW ANIMATION
+    if (newAnimation !== this.currentAnimation) {
+      this.currentAnimation = newAnimation;
+
+      this.currentFrame = 0;
+      this.frameTimer = 0;
+    }
+
+    //FRAME TIMING
+
+    this.frameTimer++;
+
+    if (this.frameTimer >= this.frameDelay) {
+      this.frameTimer = 0;
+
+      const anim = this.animations[newAnimation];
+
+      if (!anim) return;
+
+      this.currentFrame++;
+
+      if (this.currentFrame >= anim.frames) {
+        this.currentFrame = 0;
+      }
+    }
+  }
+
   draw(ctx) {
     if (this.sprite && this.sprite.complete) {
-      ctx.drawImage(this.sprite, this.x, this.y, this.width, this.height);
+      const anim = this.animations[this.currentAnimation];
+
+      if (!anim) return;
+
+      const sourceX = this.currentFrame * this.frameWidth;
+      const sourceY = anim.row * this.frameHeight;
+
+      ctx.drawImage(
+        this.sprite,
+
+        sourceX,
+        sourceY,
+        this.frameWidth,
+        this.frameHeight,
+
+        this.x,
+        this.y,
+        this.width,
+        this.height
+      );
+
       return;
     }
 
@@ -68,8 +170,8 @@ class Player {
 const player = new Player({
   x: 1400,
   y: 600,
-  width: 110,
-  height: 180,
+  width: 160,
+  height: 260,
   color: "blue",
   maxSpeed: 4.5,
 
@@ -83,8 +185,49 @@ const player = new Player({
   hitbox: {
     offsetX: 25,
     offsetY: 0,
-    width: 85,
-    height: 180,
+    width: 110,
+    height: 260,
+  },
+
+  animations: {
+    idleDown: {
+      row: 0,
+      frames: 4,
+    },
+
+    idleUp: {
+      row: 1,
+      frames: 4,
+    },
+
+    idleLeft: {
+      row: 2,
+      frames: 4,
+    },
+
+    idleRight: {
+      row: 3,
+      frames: 4,
+    },
+
+    walkDown: {
+      row: 4,
+      frames: 4,
+    },
+
+    walkUp: {
+      row: 5,
+      frames: 4,
+    },
+
+    walkLeft: {
+      row: 6,
+      frames: 4,
+    },
+    walkRight: {
+      row: 7,
+      frames: 4,
+    },
   },
 
   sprite: snapeImg,
