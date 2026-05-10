@@ -93,7 +93,11 @@ class Cauldron {
     this.progress = 0;
 
     this.canPlace = (playerInv) => {
-      if (!this.canWork() || playerInv.hasGlass() || playerInv.ingredient === 0)
+      if (
+        !(!this._first_brew && this.duration === 0) ||
+        playerInv.hasGlass() ||
+        playerInv.ingredient === 0
+      )
         return false;
 
       const this_base = this._get_base(this.inventory);
@@ -124,7 +128,10 @@ class Cauldron {
     };
 
     // to be re-written
-    this.canWork = () => !this._first_brew && this.duration === 0;
+    this.canWork = () =>
+      !this._first_brew &&
+      this.duration === 0 &&
+      this._get_base(this.inventory) !== 0;
     this.startWorking = (baseTime) => {
       this.duration = 2 * baseTime;
       this._first_brew = true;
