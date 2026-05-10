@@ -9,7 +9,7 @@ import { takePlace, work } from "./actions.js";
 const WORLD_WIDTH = 1920;
 const WORLD_HEIGHT = 1080;
 
-export default function update() {
+export default function update(timeStep) {
   let yDir = 0;
   let xDir = 0;
 
@@ -21,13 +21,13 @@ export default function update() {
   //If no direction is held or two opposing directions are held together
   if (yDir === 0) {
     let absVel = Math.abs(player.velocityY);
-    absVel -= player.deceleration;
+    absVel -= player.deceleration * timeStep;
     absVel = Math.max(0, absVel);
     player.velocityY = absVel * Math.sign(player.velocityY);
   }
   //If only one opposing direction is held
   else {
-    player.velocityY += player.acceleration * yDir;
+    player.velocityY += player.acceleration * timeStep * yDir;
     player.velocityY = Math.max(
       -player.maxSpeed,
       Math.min(player.maxSpeed, player.velocityY)
@@ -36,11 +36,11 @@ export default function update() {
 
   if (xDir === 0) {
     let absVel = Math.abs(player.velocityX);
-    absVel -= player.deceleration;
+    absVel -= player.deceleration * timeStep;
     absVel = Math.max(0, absVel);
     player.velocityX = absVel * Math.sign(player.velocityX);
   } else {
-    player.velocityX += player.acceleration * xDir;
+    player.velocityX += player.acceleration * timeStep * xDir;
     player.velocityX = Math.max(
       -player.maxSpeed,
       Math.min(player.maxSpeed, player.velocityX)
@@ -48,7 +48,6 @@ export default function update() {
   }
 
   player.x += player.velocityX;
-
   let playerHitbox = player.getHitbox();
 
   objects.forEach((obj) => {
@@ -66,7 +65,6 @@ export default function update() {
   });
 
   player.y += player.velocityY;
-
   playerHitbox = player.getHitbox();
 
   objects.forEach((obj) => {
@@ -97,6 +95,8 @@ export default function update() {
   if (player.y + player.height > WORLD_HEIGHT) {
     player.y = WORLD_HEIGHT - player.height;
   }
+
+  player.updateAnimation();
 
   if (justPressed["e"]) {
     const active = getActiveInteractable();

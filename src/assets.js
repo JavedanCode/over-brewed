@@ -6,7 +6,10 @@ import wineVase from "./assets/wine.png";
 import centerTable from "./assets/center-table.png";
 import bottomTable from "./assets/bottom-table.png";
 import ingredient from "./assets/ingredient.png";
-import sideTable from "./assets/side-table.png";
+import leftTable from "./assets/left-table.png";
+import cubicCont from "./assets/cubic-container.png";
+import roundCont from "./assets/round-container.png";
+import rightTable from "./assets/right-table.png";
 
 const background = new Image();
 background.src = floor;
@@ -32,8 +35,17 @@ bottomTableImg.src = bottomTable;
 const ingredientImg = new Image();
 ingredientImg.src = ingredient;
 
-const sideTableImg = new Image();
-sideTableImg.src = sideTable;
+const leftTableImg = new Image();
+leftTableImg.src = leftTable;
+
+const cubicContImg = new Image();
+cubicContImg.src = cubicCont;
+
+const roundContImg = new Image();
+roundContImg.src = roundCont;
+
+const rightTableImg = new Image();
+rightTableImg.src = rightTable;
 export {
   background,
   cauldronImg,
@@ -43,5 +55,8 @@ export {
   centerTableImg,
   bottomTableImg,
   ingredientImg,
-  sideTableImg,
+  leftTableImg,
+  cubicContImg,
+  roundContImg,
+  rightTableImg,
 };

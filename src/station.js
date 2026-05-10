@@ -13,13 +13,14 @@ class Station {
     this.inventory = 0;
     this.canMoveWhileWorking = false;
 
-    this.canWork = false;
+    this.canWork = () => canAction(this.inventory) && !this._work_lock;
+    this._work_lock = false;
+    this.startWorking = () => {
+      this._work_lock = true;
+    };
     this.doWork = () => {
-      if (this.canWork) {
-        this.canWork = false;
-        // wait timer
-        this.inventory <<= action;
-      }
+      this.inventory <<= action;
+      this._work_lock = false;
     };
 
     this.canPlace = (playerInv) =>
@@ -33,13 +34,13 @@ class Station {
       if (this.canPlace(playerInv)) {
         this.inventory = playerInv.ingredient;
         playerInv.ingredient = 0;
-        this.canWork = true;
         return true;
       }
       return false;
     };
 
     this.canTake = (playerInv) =>
+      !this._work_lock &&
       this.inventory !== 0 &&
       playerInv.ingredient === 0 &&
       !playerInv.hasGlass();
@@ -57,8 +58,6 @@ class Station {
 class Ingredient {
   constructor(ing) {
     this.inventory = ing;
-
-    this.canWork = false;
     this.canPlace = () => false;
 
     this.canTake = (playerInv) => playerInv.empty();
@@ -75,8 +74,6 @@ class Ingredient {
 class Glass {
   constructor(glassType) {
     this.inventory = glassType;
-
-    this.canWork = false;
     this.canPlace = () => false;
 
     this.canTake = (playerInv) => playerInv.empty();
@@ -96,6 +93,7 @@ class Cauldron {
     this.inventory = 0;
     this.canMoveWhileWorking = true;
     this.fire = false;
+    this._work_lock = false;
 
     this.canPlace = (playerInv) =>
       !playerInv.hasGlass() && playerInv.ingredient !== 0;
@@ -109,6 +107,7 @@ class Cauldron {
     };
 
     this.canTake = (playerInv) =>
+      !this._work_lock &&
       playerInv.ingredient === 0 &&
       playerInv.hasGlass() &&
       playerInv.glass.inventory === 0;
@@ -120,7 +119,9 @@ class Cauldron {
       }
     };
 
-    this.canWork = true;
+    // to be re-written
+    this.canWork = () => true;
+    this.startWorking = () => {};
     this.doWork = () => {
       if (this.fire) this.fire = false;
       else this.fire = true;
