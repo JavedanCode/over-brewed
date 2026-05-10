@@ -2,24 +2,24 @@ import player from "./player.js";
 
 export function takePlace(obj) {
   const station = obj.station;
-
+  const playerInv = player.inventory;
   // TAKE
-  if (player.inventory.empty()) {
-    if (station.canTake(player.inventory)) {
-      station.take(player.inventory);
+  if (playerInv.ingredient === 0 && playerInv.glass.inventory === 0) {
+    if (station.canTake(playerInv)) {
+      station.take(playerInv);
       console.log(
         "Player Invetory: " +
-          player.inventory.ingredient +
+          playerInv.ingredient +
           " Glass: " +
-          player.inventory.glass.inventory +
+          playerInv.glass.inventory +
           " Type: " +
-          player.inventory.glass.type
+          playerInv.glass.type
       );
     }
   } else {
     // PLACE
-    if (station.canPlace(player.inventory)) {
-      station.place(player.inventory);
+    if (station.canPlace(playerInv)) {
+      station.place(playerInv);
       console.log("Placed");
     }
   }
