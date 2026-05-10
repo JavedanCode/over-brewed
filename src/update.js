@@ -1,5 +1,5 @@
 import keys from "./input.js";
-import objects from "./objects.js";
+import { stations, ingredientsAndContainers, tables } from "./objects.js";
 import player from "./player.js";
 import { checkCollision } from "./collision.js";
 import { getActiveInteractable } from "./interaction.js";
@@ -8,6 +8,8 @@ import { takePlace, work } from "./actions.js";
 
 const WORLD_WIDTH = 1920;
 const WORLD_HEIGHT = 1080;
+
+const objects = [...stations, ...tables, ...ingredientsAndContainers];
 
 export default function update(timeStep) {
   let yDir = 0;
@@ -99,11 +101,14 @@ export default function update(timeStep) {
   player.updateAnimation();
 
   if (justPressed["e"]) {
-    const active = getActiveInteractable();
+    const active = getActiveInteractable([
+      ...stations,
+      ...ingredientsAndContainers,
+    ]);
     if (active) takePlace(active);
   }
   if (justPressed["f"]) {
-    const active = getActiveInteractable();
+    const active = getActiveInteractable(stations);
     if (active) work(active);
   }
 }

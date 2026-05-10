@@ -16,65 +16,7 @@ import GameObject from "./gameObject.js";
 import { Cauldron, Station, Ingredient, Glass } from "./station.js";
 import { CRUSH, CUT, ingredients } from "./items.js";
 
-const objects = [
-  //LEFT TABLE
-  new GameObject({
-    x: 0,
-    y: 340,
-    width: 250,
-    height: 640,
-    color: "#a09797",
-
-    sprite: leftTableImg,
-  }),
-
-  //RIGHT TABLE
-  new GameObject({
-    x: 1670,
-    y: 340,
-    width: 250,
-    height: 640,
-    color: "#a09797",
-
-    sprite: rightTableImg,
-  }),
-
-  //BOTTOM TABLE
-  new GameObject({
-    x: 540,
-    y: 940,
-    width: 800,
-    height: 300,
-    color: "#a09797",
-
-    hitbox: {
-      offsetX: 15,
-      offsetY: 30,
-      width: 770,
-      height: 100,
-    },
-
-    sprite: bottomTableImg,
-  }),
-
-  //CENTER TABLE
-  new GameObject({
-    x: 610,
-    y: 470,
-    width: 650,
-    height: 330,
-    color: "#a09797",
-
-    hitbox: {
-      offsetX: 3,
-      offsetY: 50,
-      width: 640,
-      height: 40,
-    },
-
-    sprite: centerTableImg,
-  }),
-
+const stations = [
   //CUTTING BOARD
   new GameObject({
     x: 730,
@@ -218,6 +160,68 @@ const objects = [
     sprite: cauldronImg,
   }),
 
+  // //BELL 1
+  // new GameObject({
+  //   x: 1720,
+  //   y: 300,
+  //   width: 50,
+  //   height: 50,
+  //   color: "#ffd13b",
+
+  //   sortOffset: 1000,
+
+  //   type: "bell",
+
+  //   interactZone: {
+  //     offsetX: -100,
+  //     offsetY: -20,
+  //     width: 100,
+  //     height: 100,
+  //   },
+  // }),
+
+  // //BELL 2
+  // new GameObject({
+  //   x: 1720,
+  //   y: 520,
+  //   width: 50,
+  //   height: 50,
+  //   color: "#ffd13b",
+
+  //   sortOffset: 1000,
+
+  //   type: "bell",
+
+  //   interactZone: {
+  //     offsetX: -100,
+  //     offsetY: -20,
+  //     width: 100,
+  //     height: 100,
+  //   },
+  // }),
+
+  // //BELL 3
+  // new GameObject({
+  //   x: 1720,
+  //   y: 740,
+  //   width: 50,
+  //   height: 50,
+  //   color: "#ffd13b",
+
+  //   sortOffset: 1000,
+
+  //   type: "bell",
+
+  //   interactZone: {
+  //     offsetX: -100,
+  //     offsetY: -20,
+  //     width: 100,
+  //     height: 100,
+  //   },
+  // }),
+];
+
+const ingredientsAndContainers = [
   //OIL BASE
   new GameObject({
     x: 1080,
@@ -475,66 +479,66 @@ const objects = [
       height: 120,
     },
   }),
-
-  // //BELL 1
-  // new GameObject({
-  //   x: 1720,
-  //   y: 300,
-  //   width: 50,
-  //   height: 50,
-  //   color: "#ffd13b",
-
-  //   sortOffset: 1000,
-
-  //   type: "bell",
-
-  //   interactZone: {
-  //     offsetX: -100,
-  //     offsetY: -20,
-  //     width: 100,
-  //     height: 100,
-  //   },
-  // }),
-
-  // //BELL 2
-  // new GameObject({
-  //   x: 1720,
-  //   y: 520,
-  //   width: 50,
-  //   height: 50,
-  //   color: "#ffd13b",
-
-  //   sortOffset: 1000,
-
-  //   type: "bell",
-
-  //   interactZone: {
-  //     offsetX: -100,
-  //     offsetY: -20,
-  //     width: 100,
-  //     height: 100,
-  //   },
-  // }),
-
-  // //BELL 3
-  // new GameObject({
-  //   x: 1720,
-  //   y: 740,
-  //   width: 50,
-  //   height: 50,
-  //   color: "#ffd13b",
-
-  //   sortOffset: 1000,
-
-  //   type: "bell",
-
-  //   interactZone: {
-  //     offsetX: -100,
-  //     offsetY: -20,
-  //     width: 100,
-  //     height: 100,
-  //   },
-  // }),
 ];
 
-export default objects;
+const tables = [
+  //LEFT TABLE
+  new GameObject({
+    x: 0,
+    y: 340,
+    width: 250,
+    height: 640,
+    color: "#a09797",
+
+    sprite: leftTableImg,
+  }),
+
+  //RIGHT TABLE
+  new GameObject({
+    x: 1670,
+    y: 340,
+    width: 250,
+    height: 640,
+    color: "#a09797",
+
+    sprite: rightTableImg,
+  }),
+
+  //BOTTOM TABLE
+  new GameObject({
+    x: 540,
+    y: 940,
+    width: 800,
+    height: 300,
+    color: "#a09797",
+
+    hitbox: {
+      offsetX: 15,
+      offsetY: 30,
+      width: 770,
+      height: 100,
+    },
+
+    sprite: bottomTableImg,
+  }),
+
+  //CENTER TABLE
+  new GameObject({
+    x: 610,
+    y: 470,
+    width: 650,
+    height: 330,
+    color: "#a09797",
+
+    hitbox: {
+      offsetX: 3,
+      offsetY: 50,
+      width: 640,
+      height: 40,
+    },
+
+    sprite: centerTableImg,
+  }),
+];
+
+export { ingredientsAndContainers, tables, stations };

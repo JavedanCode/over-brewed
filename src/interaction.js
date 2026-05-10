@@ -1,14 +1,13 @@
-import objects from "./objects.js";
 import player from "./player.js";
 import { checkCollision } from "./collision.js";
 
-export function getActiveInteractable() {
+export function getActiveInteractable(intractables) {
   const playerBox = player.getHitbox();
 
   let closest = null;
   let closestDistance = Infinity;
 
-  for (let obj of objects) {
+  for (let obj of intractables) {
     const zone = obj.getInteractZone();
     if (!zone) continue;
 

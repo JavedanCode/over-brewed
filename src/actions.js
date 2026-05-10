@@ -1,8 +1,6 @@
 import player from "./player.js";
 
 export function takePlace(obj) {
-  if (!obj.station) return;
-
   const station = obj.station;
 
   // TAKE
@@ -29,8 +27,6 @@ export function takePlace(obj) {
 }
 
 export function work(obj) {
-  if (!obj.station) return;
-
   const station = obj.station;
 
   // WORK
