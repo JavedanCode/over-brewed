@@ -1,5 +1,6 @@
 import { player_inventory } from "./items.js";
 import snape from "./assets/snape.png";
+import itemAssets from "./itemsAssets.js";
 const snapeImg = new Image();
 snapeImg.src = snape;
 
@@ -158,12 +159,16 @@ class Player {
         this.width,
         this.height
       );
-
-      return;
+    } else {
+      ctx.fillStyle = this.color;
+      ctx.fillRect(this.x, this.y, this.width, this.height);
     }
 
-    ctx.fillStyle = this.color;
-    ctx.fillRect(this.x, this.y, this.width, this.height);
+    const heldItem = itemAssets[player.inventory.ingredient];
+
+    if (heldItem) {
+      ctx.drawImage(heldItem.sprite, this.x + 50, this.y - 110, 90, 90);
+    }
   }
 }
 
