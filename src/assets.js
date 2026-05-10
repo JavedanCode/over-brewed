@@ -7,6 +7,8 @@ import centerTable from "./assets/center-table.png";
 import bottomTable from "./assets/bottom-table.png";
 import ingredient from "./assets/ingredient.png";
 import sideTable from "./assets/side-table.png";
+import cubicCont from "./assets/cubic-container.png";
+import roundCont from "./assets/round-container.png";
 
 const background = new Image();
 background.src = floor;
@@ -34,6 +36,12 @@ ingredientImg.src = ingredient;
 
 const sideTableImg = new Image();
 sideTableImg.src = sideTable;
+
+const cubicContImg = new Image();
+cubicContImg.src = cubicCont;
+
+const roundContImg = new Image();
+roundContImg.src = roundCont;
 export {
   background,
   cauldronImg,
@@ -44,4 +52,6 @@ export {
   bottomTableImg,
   ingredientImg,
   sideTableImg,
+  cubicContImg,
+  roundContImg,
 };

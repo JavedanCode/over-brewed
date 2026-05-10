@@ -7,6 +7,8 @@ import {
   bottomTableImg,
   ingredientImg,
   sideTableImg,
+  cubicContImg,
+  roundContImg,
 } from "./assets.js";
 import GameObject from "./gameObject.js";
 
@@ -414,14 +416,15 @@ const objects = [
 
   //ROUND CONTAINERS
   new GameObject({
-    x: 100,
-    y: 340,
+    x: 40,
+    y: 390,
     width: 100,
     height: 100,
     color: "#058ec4",
 
     type: "container",
 
+    sprite: roundContImg,
     station: new Glass("ROUND"),
 
     sortOffset: 500,
@@ -436,13 +439,15 @@ const objects = [
 
   //SQUARE CONTAINERS
   new GameObject({
-    x: 100,
-    y: 660,
+    x: 40,
+    y: 560,
     width: 100,
     height: 100,
     color: "#05a7c4",
 
     type: "container",
+
+    sprite: cubicContImg,
 
     station: new Glass("SQUARE"),
 
