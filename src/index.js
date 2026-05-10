@@ -6,8 +6,13 @@ import { clearJustPressed } from "./input.js";
 
 const { canvas, ctx } = Canvas();
 
+let previousFrame = Date.now();
 function loop() {
-  update();
+  const now = Date.now();
+  const timeStep = now - previousFrame; // Time in milliseconds since last frame
+  previousFrame = now;
+
+  update(timeStep);
   draw(ctx, canvas);
 
   clearJustPressed();

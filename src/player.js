@@ -74,8 +74,8 @@ const player = new Player({
   maxSpeed: 4.5,
 
   //CHANGE THESE TO CHANGE THE CURVES
-  acceleration: 0.4,
-  deceleration: 0.2,
+  acceleration: 0.4 / 17, // divided by 17 due to expecting ~17ms per frame
+  deceleration: 0.2 / 17,
 
   velocityX: 0,
   velocityY: 0,
