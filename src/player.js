@@ -65,7 +65,7 @@ class Player {
     this.currentFrame = currentFrame || 0;
 
     this.frameTimer = frameTimer || 0;
-    this.frameDelay = frameDelay || 15;
+    this.frameDelay = frameDelay || 24;
 
     this.facing = facing || "right";
 
@@ -170,8 +170,8 @@ class Player {
 const player = new Player({
   x: 1400,
   y: 600,
-  width: 110,
-  height: 180,
+  width: 160,
+  height: 260,
   color: "blue",
   maxSpeed: 8,
 
@@ -185,8 +185,8 @@ const player = new Player({
   hitbox: {
     offsetX: 25,
     offsetY: 0,
-    width: 85,
-    height: 180,
+    width: 110,
+    height: 260,
   },
 
   animations: {

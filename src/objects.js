@@ -6,9 +6,10 @@ import {
   centerTableImg,
   bottomTableImg,
   ingredientImg,
-  sideTableImg,
+  leftTableImg,
   cubicContImg,
   roundContImg,
+  rightTableImg,
 } from "./assets.js";
 import GameObject from "./gameObject.js";
 
@@ -18,24 +19,24 @@ import { CRUSH, CUT, ingredients } from "./items.js";
 const objects = [
   //LEFT TABLE
   new GameObject({
-    x: -40,
-    y: 350,
-    width: 240,
-    height: 500,
+    x: 0,
+    y: 340,
+    width: 250,
+    height: 640,
     color: "#a09797",
 
-    sprite: sideTableImg,
+    sprite: leftTableImg,
   }),
 
   //RIGHT TABLE
   new GameObject({
-    x: 1630,
-    y: 300,
-    width: 340,
-    height: 700,
+    x: 1670,
+    y: 340,
+    width: 250,
+    height: 640,
     color: "#a09797",
 
-    sprite: sideTableImg,
+    sprite: rightTableImg,
   }),
 
   //BOTTOM TABLE
@@ -58,17 +59,17 @@ const objects = [
 
   //CENTER TABLE
   new GameObject({
-    x: 670,
+    x: 610,
     y: 470,
-    width: 550,
-    height: 250,
+    width: 650,
+    height: 330,
     color: "#a09797",
 
     hitbox: {
       offsetX: 3,
-      offsetY: 30,
-      width: 545,
-      height: 70,
+      offsetY: 50,
+      width: 640,
+      height: 40,
     },
 
     sprite: centerTableImg,
@@ -76,22 +77,29 @@ const objects = [
 
   //CUTTING BOARD
   new GameObject({
-    x: 700,
+    x: 730,
     y: 500,
-    width: 70,
-    height: 50,
+    width: 120,
+    height: 70,
     color: "#6805c4",
 
     sortOffset: 1000,
 
     type: "cutting",
 
+    hitbox: {
+      offsetX: 20000,
+      offsetY: 0,
+      width: 0,
+      height: 0,
+    },
+
     station: new Station(CUT),
 
     interactZone: {
       offsetX: 0,
-      offsetY: -60,
-      width: 70,
+      offsetY: -110,
+      width: 120,
       height: 110,
     },
   }),
@@ -100,18 +108,25 @@ const objects = [
   new GameObject({
     x: 1000,
     y: 500,
-    width: 70,
-    height: 50,
+    width: 120,
+    height: 70,
     color: "#05c46b",
 
     sortOffset: 1000,
+
+    hitbox: {
+      offsetX: 20000,
+      offsetY: 0,
+      width: 0,
+      height: 0,
+    },
 
     station: new Station(CRUSH),
 
     interactZone: {
       offsetX: 0,
-      offsetY: -60,
-      width: 70,
+      offsetY: -110,
+      width: 120,
       height: 110,
     },
   }),
@@ -416,10 +431,10 @@ const objects = [
 
   //ROUND CONTAINERS
   new GameObject({
-    x: 40,
+    x: 70,
     y: 390,
-    width: 100,
-    height: 100,
+    width: 120,
+    height: 120,
     color: "#058ec4",
 
     type: "container",
@@ -430,19 +445,19 @@ const objects = [
     sortOffset: 500,
 
     interactZone: {
-      offsetX: 100,
+      offsetX: 120,
       offsetY: 0,
-      width: 80,
-      height: 100,
+      width: 150,
+      height: 120,
     },
   }),
 
   //SQUARE CONTAINERS
   new GameObject({
-    x: 40,
-    y: 560,
-    width: 100,
-    height: 100,
+    x: 60,
+    y: 630,
+    width: 120,
+    height: 120,
     color: "#05a7c4",
 
     type: "container",
@@ -454,10 +469,10 @@ const objects = [
     sortOffset: 1000,
 
     interactZone: {
-      offsetX: 100,
+      offsetX: 120,
       offsetY: 0,
-      width: 80,
-      height: 100,
+      width: 150,
+      height: 120,
     },
   }),
 
