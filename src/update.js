@@ -98,6 +98,8 @@ export default function update() {
     player.y = WORLD_HEIGHT - player.height;
   }
 
+  player.updateAnimation();
+
   if (justPressed["e"]) {
     const active = getActiveInteractable();
     if (active) takePlace(active);
