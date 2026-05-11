@@ -5,11 +5,17 @@ import waterVase from "./assets/water.png";
 import wineVase from "./assets/wine.png";
 import centerTable from "./assets/center-table.png";
 import bottomTable from "./assets/bottom-table.png";
-import ingredient from "./assets/ingredient.png";
+import mandrakeBag from "./assets/mandrake-bag.png";
+import petalBag from "./assets/petals-bag.png";
+import scalesBag from "./assets/scales-bag.png";
+import figTree from "./assets/fig-tree.png";
 import leftTable from "./assets/left-table.png";
 import cubicCont from "./assets/cubic-container.png";
 import roundCont from "./assets/round-container.png";
 import rightTable from "./assets/right-table.png";
+import bell from "./assets/bell.png";
+import cuttingBoard from "./assets/cutting-station.png";
+import crushStation from "./assets/crush-station.png";
 
 const background = new Image();
 background.src = floor;
@@ -32,8 +38,17 @@ centerTableImg.src = centerTable;
 const bottomTableImg = new Image();
 bottomTableImg.src = bottomTable;
 
-const ingredientImg = new Image();
-ingredientImg.src = ingredient;
+const mandrakeBagImg = new Image();
+mandrakeBagImg.src = mandrakeBag;
+
+const petalBagImg = new Image();
+petalBagImg.src = petalBag;
+
+const scalesBagImg = new Image();
+scalesBagImg.src = scalesBag;
+
+const figTreeImg = new Image();
+figTreeImg.src = figTree;
 
 const leftTableImg = new Image();
 leftTableImg.src = leftTable;
@@ -46,6 +61,15 @@ roundContImg.src = roundCont;
 
 const rightTableImg = new Image();
 rightTableImg.src = rightTable;
+
+const bellImg = new Image();
+bellImg.src = bell;
+
+const cuttingImg = new Image();
+cuttingImg.src = cuttingBoard;
+
+const crushStationImg = new Image();
+crushStationImg.src = crushStation;
 export {
   background,
   cauldronImg,
@@ -54,9 +78,15 @@ export {
   wineVaseImg,
   centerTableImg,
   bottomTableImg,
-  ingredientImg,
+  mandrakeBagImg,
+  petalBagImg,
+  scalesBagImg,
+  figTreeImg,
   leftTableImg,
   cubicContImg,
   roundContImg,
   rightTableImg,
+  bellImg,
+  cuttingImg,
+  crushStationImg,
 };

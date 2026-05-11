@@ -165,9 +165,14 @@ class Player {
     }
 
     const heldItem = itemAssets[player.inventory.ingredient];
+    const heldContainer = itemAssets[player.inventory.glass.type];
 
     if (heldItem) {
-      ctx.drawImage(heldItem.sprite, this.x + 50, this.y - 110, 90, 90);
+      ctx.drawImage(heldItem.sprite, this.x + 40, this.y - 110, 90, 90);
+    }
+
+    if (heldContainer) {
+      ctx.drawImage(heldContainer.sprite, this.x + 40, this.y - 110, 90, 100);
     }
   }
 }

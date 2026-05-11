@@ -5,11 +5,17 @@ import {
   wineVaseImg,
   centerTableImg,
   bottomTableImg,
-  ingredientImg,
+  mandrakeBagImg,
+  petalBagImg,
+  scalesBagImg,
+  figTreeImg,
   leftTableImg,
   cubicContImg,
   roundContImg,
   rightTableImg,
+  bellImg,
+  crushStationImg,
+  cuttingImg,
 } from "./assets.js";
 import GameObject from "./gameObject.js";
 
@@ -38,6 +44,8 @@ const stations = [
 
     station: new Station(CUT),
 
+    sprite: cuttingImg,
+
     interactZone: {
       offsetX: 0,
       offsetY: -110,
@@ -49,12 +57,14 @@ const stations = [
   //CRUSHING STATION
   new GameObject({
     x: 1000,
-    y: 500,
-    width: 120,
-    height: 70,
+    y: 470,
+    width: 100,
+    height: 100,
     color: "#05c46b",
 
     sortOffset: 1000,
+
+    sprite: crushStationImg,
 
     hitbox: {
       offsetX: 20000,
@@ -67,7 +77,7 @@ const stations = [
 
     interactZone: {
       offsetX: 0,
-      offsetY: -110,
+      offsetY: -80,
       width: 120,
       height: 110,
     },
@@ -160,65 +170,37 @@ const stations = [
     sprite: cauldronImg,
   }),
 
-  // //BELL 1
-  // new GameObject({
-  //   x: 1720,
-  //   y: 300,
-  //   width: 50,
-  //   height: 50,
-  //   color: "#ffd13b",
+  //BELL 1
+  new GameObject({
+    x: 1750,
+    y: 500,
+    width: 90,
+    height: 100,
+    color: "#ffd13b",
 
-  //   sortOffset: 1000,
+    sortOffset: 1000,
 
-  //   type: "bell",
+    type: "bell",
 
-  //   interactZone: {
-  //     offsetX: -100,
-  //     offsetY: -20,
-  //     width: 100,
-  //     height: 100,
-  //   },
-  // }),
+    //NEED TO CHANGE THIS TO DELIVERY STATION LATER
+    station: new Cauldron(),
 
-  // //BELL 2
-  // new GameObject({
-  //   x: 1720,
-  //   y: 520,
-  //   width: 50,
-  //   height: 50,
-  //   color: "#ffd13b",
+    sprite: bellImg,
 
-  //   sortOffset: 1000,
+    interactZone: {
+      offsetX: -200,
+      offsetY: -50,
+      width: 200,
+      height: 200,
+    },
 
-  //   type: "bell",
-
-  //   interactZone: {
-  //     offsetX: -100,
-  //     offsetY: -20,
-  //     width: 100,
-  //     height: 100,
-  //   },
-  // }),
-
-  // //BELL 3
-  // new GameObject({
-  //   x: 1720,
-  //   y: 740,
-  //   width: 50,
-  //   height: 50,
-  //   color: "#ffd13b",
-
-  //   sortOffset: 1000,
-
-  //   type: "bell",
-
-  //   interactZone: {
-  //     offsetX: -100,
-  //     offsetY: -20,
-  //     width: 100,
-  //     height: 100,
-  //   },
-  // }),
+    hitbox: {
+      offsetX: 9999,
+      offsetY: 0,
+      width: 0,
+      height: 0,
+    },
+  }),
 ];
 
 const ingredientsAndContainers = [
@@ -337,7 +319,7 @@ const ingredientsAndContainers = [
       height: 0,
     },
 
-    sprite: ingredientImg,
+    sprite: mandrakeBagImg,
   }),
 
   //PETALS
@@ -368,7 +350,7 @@ const ingredientsAndContainers = [
       height: 0,
     },
 
-    sprite: ingredientImg,
+    sprite: petalBagImg,
   }),
 
   //SCALES
@@ -399,15 +381,15 @@ const ingredientsAndContainers = [
       height: 0,
     },
 
-    sprite: ingredientImg,
+    sprite: scalesBagImg,
   }),
 
   //FIGS
   new GameObject({
-    x: 1200,
-    y: 890,
-    width: 95,
-    height: 140,
+    x: 1160,
+    y: 840,
+    width: 130,
+    height: 190,
     color: "#3a2301",
 
     type: "ingredient",
@@ -417,8 +399,8 @@ const ingredientsAndContainers = [
     sortOffset: 1000,
 
     interactZone: {
-      offsetX: 0,
-      offsetY: -20,
+      offsetX: 20,
+      offsetY: 30,
       width: 95,
       height: 80,
     },
@@ -430,7 +412,7 @@ const ingredientsAndContainers = [
       height: 0,
     },
 
-    sprite: ingredientImg,
+    sprite: figTreeImg,
   }),
 
   //ROUND CONTAINERS
@@ -453,6 +435,13 @@ const ingredientsAndContainers = [
       offsetY: 0,
       width: 150,
       height: 120,
+    },
+
+    hitbox: {
+      offsetX: -1000,
+      offsetY: 0,
+      width: 0,
+      height: 0,
     },
   }),
 
@@ -478,6 +467,13 @@ const ingredientsAndContainers = [
       width: 150,
       height: 120,
     },
+
+    hitbox: {
+      offsetX: -1000,
+      offsetY: 0,
+      width: 0,
+      height: 0,
+    },
   }),
 ];
 
@@ -491,6 +487,13 @@ const tables = [
     color: "#a09797",
 
     sprite: leftTableImg,
+
+    hitbox: {
+      offsetX: -10,
+      offsetY: 80,
+      width: 250,
+      height: 350,
+    },
   }),
 
   //RIGHT TABLE
@@ -502,6 +505,13 @@ const tables = [
     color: "#a09797",
 
     sprite: rightTableImg,
+
+    hitbox: {
+      offsetX: 10,
+      offsetY: 80,
+      width: 250,
+      height: 350,
+    },
   }),
 
   //BOTTOM TABLE
