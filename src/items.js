@@ -71,6 +71,20 @@ function player_inventory() {
   this.empty = () => !this.hasGlass() && this.ingredient === 0;
 }
 
+const getIngredientsFromMask = (mask) => {
+  const result = [];
+
+  for (let i = 0; i < 31; i++) {
+    const bit = 1 << i;
+
+    if ((mask & bit) !== 0) {
+      result.push(bit);
+    }
+  }
+
+  return result;
+};
+
 export {
   getIndex,
   ingredients,
@@ -79,4 +93,5 @@ export {
   CRUSH,
   VARIATION_COUNT,
   player_inventory,
+  getIngredientsFromMask,
 };
