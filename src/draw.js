@@ -41,6 +41,13 @@ export default (ctx, canvas) => {
     ctx.fillRect(entity.x, entity.y, entity.width, entity.height);
   });
 
+  stations.forEach((station) => {
+    if (station.inventoryRenderer) {
+      station.inventoryRenderer(ctx, station);
+      return;
+    }
+  });
+
   objects.forEach((obj) => {
     const hb = obj.getHitbox();
     ctx.strokeStyle = "red";

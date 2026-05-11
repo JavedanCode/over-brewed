@@ -22,6 +22,8 @@ import GameObject from "./gameObject.js";
 import { Cauldron, Station, Ingredient, Glass } from "./station.js";
 import { CRUSH, CUT, ingredients } from "./items.js";
 
+import { drawSingleItem, drawCauldronItems } from "./inventoryRenderer.js";
+
 const stations = [
   //CUTTING BOARD
   new GameObject({
@@ -43,6 +45,8 @@ const stations = [
     },
 
     station: new Station(CUT),
+
+    inventoryRenderer: drawSingleItem,
 
     sprite: cuttingImg,
 
@@ -74,6 +78,8 @@ const stations = [
     },
 
     station: new Station(CRUSH),
+
+    inventoryRenderer: drawSingleItem,
 
     interactZone: {
       offsetX: 0,
@@ -109,6 +115,8 @@ const stations = [
       height: 70,
     },
 
+    inventoryRenderer: drawCauldronItems,
+
     sprite: cauldronImg,
   }),
 
@@ -138,6 +146,8 @@ const stations = [
       height: 70,
     },
 
+    inventoryRenderer: drawCauldronItems,
+
     sprite: cauldronImg,
   }),
 
@@ -166,6 +176,8 @@ const stations = [
       width: 150,
       height: 70,
     },
+
+    inventoryRenderer: drawCauldronItems,
 
     sprite: cauldronImg,
   }),

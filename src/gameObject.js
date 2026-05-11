@@ -11,6 +11,7 @@ export default class GameObject {
     type = "",
     sprite,
     station,
+    inventoryRenderer,
   }) {
     this.x = x;
     this.y = y;
@@ -35,6 +36,8 @@ export default class GameObject {
     this.sprite = sprite || null;
 
     this.station = station || null;
+
+    this.inventoryRenderer = inventoryRenderer || null;
   }
 
   getHitbox() {
@@ -66,7 +69,6 @@ export default class GameObject {
       ctx.drawImage(this.sprite, this.x, this.y, this.width, this.height);
       return;
     }
-
     ctx.fillStyle = this.color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
   }
