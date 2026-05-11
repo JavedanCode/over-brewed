@@ -12,6 +12,7 @@ export default class GameObject {
     sprite,
     station,
     inventoryRenderer,
+    progressRenderer,
   }) {
     this.x = x;
     this.y = y;
@@ -36,6 +37,8 @@ export default class GameObject {
     this.sprite = sprite || null;
 
     this.station = station || null;
+
+    this.progressRenderer = progressRenderer || null;
 
     this.inventoryRenderer = inventoryRenderer || null;
   }

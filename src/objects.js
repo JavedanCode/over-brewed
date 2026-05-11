@@ -23,6 +23,7 @@ import { Cauldron, Station, Ingredient, Glass } from "./station.js";
 import { CRUSH, CUT, ingredients } from "./items.js";
 
 import { drawSingleItem, drawCauldronItems } from "./inventoryRenderer.js";
+import { drawCauldronProgress, drawProgressBar } from "./progressRenderer.js";
 
 const stations = [
   //CUTTING BOARD
@@ -47,6 +48,7 @@ const stations = [
     station: new Station(CUT),
 
     inventoryRenderer: drawSingleItem,
+    progressRenderer: drawProgressBar,
 
     sprite: cuttingImg,
 
@@ -80,6 +82,7 @@ const stations = [
     station: new Station(CRUSH),
 
     inventoryRenderer: drawSingleItem,
+    progressRenderer: drawProgressBar,
 
     interactZone: {
       offsetX: 0,
@@ -116,6 +119,7 @@ const stations = [
     },
 
     inventoryRenderer: drawCauldronItems,
+    progressRenderer: drawCauldronProgress,
 
     sprite: cauldronImg,
   }),
@@ -147,6 +151,7 @@ const stations = [
     },
 
     inventoryRenderer: drawCauldronItems,
+    progressRenderer: drawCauldronProgress,
 
     sprite: cauldronImg,
   }),
@@ -178,6 +183,7 @@ const stations = [
     },
 
     inventoryRenderer: drawCauldronItems,
+    progressRenderer: drawCauldronProgress,
 
     sprite: cauldronImg,
   }),

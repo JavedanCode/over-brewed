@@ -44,7 +44,9 @@ export default (ctx, canvas) => {
   stations.forEach((station) => {
     if (station.inventoryRenderer) {
       station.inventoryRenderer(ctx, station);
-      return;
+    }
+    if (station.progressRenderer) {
+      station.progressRenderer(ctx, station);
     }
   });
 
