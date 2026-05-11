@@ -18,6 +18,11 @@ import figIngImg from "./assets/fig-ing.png";
 import cutFigIngImg from "./assets/cut-fig-ing.png";
 import crushFigIngImg from "./assets/crush-fig-ing.png";
 
+//BASES IMPORT
+import oilBase from "./assets/oil-base.png";
+import waterBase from "./assets/water-base.png";
+import wineBase from "./assets/wine-base.png";
+
 //EMPTY CONTAINER
 import emptyCubicContainer from "./assets/empty-cubic-container.png";
 import emptyRoundContainer from "./assets/empty-round-container.png";
@@ -124,6 +129,30 @@ images[ingredients.CutShrivelfig] = {
 images[ingredients.CrushedShrivelfig] = {
   name: "Crushed Shrivelfig",
   sprite: crushFigSprite,
+};
+
+//BASES SPRITES
+const oilBaseSprite = new Image();
+const waterBaseSprite = new Image();
+const wineBaseSprite = new Image();
+
+oilBaseSprite.src = oilBase;
+waterBaseSprite.src = waterBase;
+wineBaseSprite.src = wineBase;
+
+images[ingredients.Oleum] = {
+  name: "Oil Base",
+  sprite: oilBaseSprite,
+};
+
+images[ingredients.Aqua] = {
+  name: "Water Base",
+  sprite: waterBaseSprite,
+};
+
+images[ingredients.Vinum] = {
+  name: "Wine Base",
+  sprite: wineBaseSprite,
 };
 
 //EMPTY CONTAINER SPRITE
