@@ -1,43 +1,43 @@
 //MANDRAKE IMPORTS
-import mandrakeIngImg from "./assets/mandrake-ing.png";
-import cutMandrakeIngImg from "./assets/cut-mandrake-ing.png";
-import crushMandrakeIngImg from "./assets/crush-mandrake-ing.png";
+import mandrakeIngImg from "./assets/items/mandrake-ing.png";
+import cutMandrakeIngImg from "./assets/items/cut-mandrake-ing.png";
+import crushMandrakeIngImg from "./assets/items/crush-mandrake-ing.png";
 
 //PETALS IMPORTS
-import petalsIngImg from "./assets/petals-ing.png";
-import cutPetalsIngImg from "./assets/cut-petals-ing.png";
-import crushPetalsIngImg from "./assets/crush-petals-ing.png";
+import petalsIngImg from "./assets/items/petals-ing.png";
+import cutPetalsIngImg from "./assets/items/cut-petals-ing.png";
+import crushPetalsIngImg from "./assets/items/crush-petals-ing.png";
 
 //SCALES IMPORTS
-import scalesIngImg from "./assets/scales-ing.png";
-import cutScalesIngImg from "./assets/cut-scales-ing.png";
-import crushScalesIngImg from "./assets/crush-scales-ing.png";
+import scalesIngImg from "./assets/items/scales-ing.png";
+import cutScalesIngImg from "./assets/items/cut-scales-ing.png";
+import crushScalesIngImg from "./assets/items/crush-scales-ing.png";
 
 //SHRIVELFIG IMPORT
-import figIngImg from "./assets/fig-ing.png";
-import cutFigIngImg from "./assets/cut-fig-ing.png";
-import crushFigIngImg from "./assets/crush-fig-ing.png";
+import figIngImg from "./assets/items/fig-ing.png";
+import cutFigIngImg from "./assets/items/cut-fig-ing.png";
+import crushFigIngImg from "./assets/items/crush-fig-ing.png";
 
 //BASES IMPORT
-import oilBase from "./assets/oil-base.png";
-import waterBase from "./assets/water-base.png";
-import wineBase from "./assets/wine-base.png";
+import oilBase from "./assets/items/oil-base.png";
+import waterBase from "./assets/items/water-base.png";
+import wineBase from "./assets/items/wine-base.png";
 
 //EMPTY CONTAINER
-import emptyCubicContainer from "./assets/empty-cubic-container.png";
-import emptyRoundContainer from "./assets/empty-round-container.png";
+import emptyCubicContainer from "./assets/items/empty-cubic-container.png";
+import emptyRoundContainer from "./assets/items/empty-round-container.png";
 
 //POTION
-import blueRoundPotion from "./assets/blue-round-potion.png";
-import goldRoundPotion from "./assets/gold-round-potion.png";
-import purpleRoundPotion from "./assets/purple-round-potion.png";
-import greenCubicPotion from "./assets/green-cubic-potion.png";
-import pinkCubicPotion from "./assets/pink-cubic-potion.png";
-import redCubicPotion from "./assets/red-cubic-potion.png";
+import blueRoundPotion from "./assets/items/blue-round-potion.png";
+import goldRoundPotion from "./assets/items/gold-round-potion.png";
+import purpleRoundPotion from "./assets/items/purple-round-potion.png";
+import greenCubicPotion from "./assets/items/green-cubic-potion.png";
+import pinkCubicPotion from "./assets/items/pink-cubic-potion.png";
+import redCubicPotion from "./assets/items/red-cubic-potion.png";
 
 //OVERBREWED
-import overbrewedCubicPotion from "./assets/overbrewed-cubic-potion.png";
-import overbrewedRoundPotion from "./assets/overbrewed-round-potion.png";
+import overbrewedCubicPotion from "./assets/items/overbrewed-cubic-potion.png";
+import overbrewedRoundPotion from "./assets/items/overbrewed-round-potion.png";
 
 import { ingredients } from "./items.js";
 
