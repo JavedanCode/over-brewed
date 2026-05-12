@@ -14,7 +14,7 @@ const CRUSH = 2;
 
 const getIndex = (n) => 31 - Math.clz32(n);
 
-const ingredients = {
+const INGREDIENTS = {
   AsphodelPetals: 1 << (0 * VARIATION_COUNT), // 0
   CutAsphodelPetals: 1 << (0 * VARIATION_COUNT + CUT), // 1
   CrushedAsphodelPetals: 1 << (0 * VARIATION_COUNT + CRUSH), // 2
@@ -59,6 +59,73 @@ const ingredients = {
   Overbrewed: 1 << 30,
 };
 
+const RECIPES = [
+  {
+    name: "manegro_potion",
+    description: "Causes hair on drinker's head to grow rapidly!",
+    recipe:
+      INGREDIENTS["Oleum"] |
+      INGREDIENTS["CrushedMandrake"] |
+      INGREDIENTS["CrushedShrivelfig"] |
+      INGREDIENTS["CutDragonScales"],
+    icon: "green_cubic",
+  },
+
+  {
+    name: "potion_of_all_potential",
+    description: "Unlocks all potential within the drinker.",
+    recipe:
+      INGREDIENTS["Oleum"] |
+      INGREDIENTS["DragonScales"] |
+      INGREDIENTS["CutMandrake"] |
+      INGREDIENTS["CutShrivelfig"] |
+      INGREDIENTS["AsphodelPetals"],
+    icon: "gold_round",
+  },
+
+  {
+    name: "love_potion",
+    description: "Creates feelings of affection and attraction.",
+    recipe:
+      INGREDIENTS["Vinum"] |
+      INGREDIENTS["CrushedAsphodelPetals"] |
+      INGREDIENTS["CrushedShrivelfig"],
+    icon: "pink_cubic",
+  },
+
+  {
+    name: "screaming_potion",
+    description: "Causes uncontrollable screaming.",
+    recipe:
+      INGREDIENTS["Aqua"] |
+      INGREDIENTS["Mandrake"] |
+      INGREDIENTS["CrushedShrivelfig"],
+    icon: "violet_round",
+  },
+
+  {
+    name: "dragon_poison",
+    description: "A deadly poison infused with dragon essence.",
+    recipe:
+      INGREDIENTS["Vinum"] |
+      INGREDIENTS["CrushedDragonScales"] |
+      INGREDIENTS["CutDragonScales"] |
+      INGREDIENTS["CutAsphodelPetals"] |
+      INGREDIENTS["Shrivelfig"],
+    icon: "red_cubic",
+  },
+
+  {
+    name: "weakness_potion",
+    description: "Temporarily weakens the drinker.",
+    recipe:
+      INGREDIENTS["Aqua"] |
+      INGREDIENTS["AsphodelPetals"] |
+      INGREDIENTS["CrushedMandrake"] |
+      INGREDIENTS["CutDragonScales"],
+    icon: "blue_round",
+  },
+];
 // glass types:
 // NONE, ROUND, SQUARE
 function player_inventory() {
@@ -87,7 +154,8 @@ const getIngredientsFromMask = (mask) => {
 
 export {
   getIndex,
-  ingredients,
+  INGREDIENTS,
+  RECIPES,
   BREW,
   CUT,
   CRUSH,

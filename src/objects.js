@@ -21,7 +21,7 @@ import {
 import GameObject from "./gameObject.js";
 
 import { Cauldron, Station, Ingredient, Glass, TrashCan } from "./station.js";
-import { CRUSH, CUT, ingredients } from "./items.js";
+import { CRUSH, CUT, INGREDIENTS } from "./items.js";
 
 import { drawSingleItem, drawCauldronItems } from "./inventoryRenderer.js";
 import { drawCauldronProgress, drawProgressBar } from "./progressRenderer.js";
@@ -233,7 +233,7 @@ const ingredientsAndContainers = [
 
     type: "oil-base",
 
-    station: new Ingredient(ingredients.Oleum),
+    station: new Ingredient(INGREDIENTS.Oleum),
 
     interactZone: {
       offsetX: 0,
@@ -262,7 +262,7 @@ const ingredientsAndContainers = [
 
     type: "oil-base",
 
-    station: new Ingredient(ingredients.Aqua),
+    station: new Ingredient(INGREDIENTS.Aqua),
 
     interactZone: {
       offsetX: 0,
@@ -291,7 +291,7 @@ const ingredientsAndContainers = [
 
     type: "oil-base",
 
-    station: new Ingredient(ingredients.Vinum),
+    station: new Ingredient(INGREDIENTS.Vinum),
 
     interactZone: {
       offsetX: 0,
@@ -320,7 +320,7 @@ const ingredientsAndContainers = [
 
     type: "ingredient",
 
-    station: new Ingredient(ingredients.Mandrake),
+    station: new Ingredient(INGREDIENTS.Mandrake),
 
     sortOffset: 1000,
 
@@ -351,7 +351,7 @@ const ingredientsAndContainers = [
 
     type: "ingredient",
 
-    station: new Ingredient(ingredients.AsphodelPetals),
+    station: new Ingredient(INGREDIENTS.AsphodelPetals),
 
     sortOffset: 1000,
 
@@ -382,7 +382,7 @@ const ingredientsAndContainers = [
 
     type: "ingredient",
 
-    station: new Ingredient(ingredients.DragonScales),
+    station: new Ingredient(INGREDIENTS.DragonScales),
 
     sortOffset: 1000,
 
@@ -413,7 +413,7 @@ const ingredientsAndContainers = [
 
     type: "ingredient",
 
-    station: new Ingredient(ingredients.Shrivelfig),
+    station: new Ingredient(INGREDIENTS.Shrivelfig),
 
     sortOffset: 1000,
 

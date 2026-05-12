@@ -1,4 +1,4 @@
-import { ingredients, getIndex, VARIATION_COUNT, BREW } from "./items.js";
+import { INGREDIENTS, getIndex, VARIATION_COUNT, BREW } from "./items.js";
 
 // Is this a valid ingredient for the task
 const canAction = (ing) => {
@@ -169,7 +169,7 @@ class Cauldron {
 
     this._overbrew = () => {
       const overbrewed = (this.inventory >> BREW) & ((1 << BREW) - 1);
-      if (overbrewed !== 0) this.inventory |= ingredients.Overbrewed;
+      if (overbrewed !== 0) this.inventory |= INGREDIENTS.Overbrewed;
     };
 
     this._get_base = (ings) => {
