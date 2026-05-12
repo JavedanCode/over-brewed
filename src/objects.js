@@ -35,7 +35,7 @@ const stations = [
     height: 70,
     color: "#6805c4",
 
-    sortOffset: 1000,
+    sortOffset: 245,
 
     type: "cutting",
 
@@ -55,9 +55,9 @@ const stations = [
 
     interactZone: {
       offsetX: 0,
-      offsetY: -110,
+      offsetY: -90,
       width: 120,
-      height: 110,
+      height: 230,
     },
   }),
 
@@ -69,7 +69,7 @@ const stations = [
     height: 100,
     color: "#05c46b",
 
-    sortOffset: 1000,
+    sortOffset: 245,
 
     sprite: crushStationImg,
 
@@ -86,10 +86,10 @@ const stations = [
     progressRenderer: drawProgressBar,
 
     interactZone: {
-      offsetX: 0,
-      offsetY: -80,
+      offsetX: -10,
+      offsetY: -70,
       width: 120,
-      height: 110,
+      height: 230,
     },
   }),
 
