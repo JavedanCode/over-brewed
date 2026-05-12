@@ -75,8 +75,6 @@ export default (ctx, canvas) => {
   //   ctx.strokeRect(zone.x, zone.y, zone.width, zone.height);
   // });
 
-  // const active = getActiveInteractable(objects);
-
   // if (active) {
   //   ctx.strokeStyle = "lime";
   //   ctx.lineWidth = 3;

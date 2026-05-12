@@ -95,7 +95,7 @@ const stations = [
 
   //CAULDRON 1
   new GameObject({
-    x: 400,
+    x: 280,
     y: 80,
     width: 150,
     height: 180,
@@ -127,7 +127,7 @@ const stations = [
 
   //CAULDRON 2
   new GameObject({
-    x: 630,
+    x: 520,
     y: 80,
     width: 150,
     height: 180,
@@ -159,7 +159,7 @@ const stations = [
 
   //CAULDRON 3
   new GameObject({
-    x: 850,
+    x: 760,
     y: 80,
     width: 150,
     height: 180,
@@ -225,7 +225,7 @@ const stations = [
 const ingredientsAndContainers = [
   //OIL BASE
   new GameObject({
-    x: 1080,
+    x: 1000,
     y: 40,
     width: 100,
     height: 220,
@@ -254,7 +254,7 @@ const ingredientsAndContainers = [
 
   //WATER BASE
   new GameObject({
-    x: 1240,
+    x: 1150,
     y: 40,
     width: 100,
     height: 220,
@@ -283,7 +283,7 @@ const ingredientsAndContainers = [
 
   //WINE BASE
   new GameObject({
-    x: 1400,
+    x: 1300,
     y: 40,
     width: 100,
     height: 220,

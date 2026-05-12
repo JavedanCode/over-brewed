@@ -32,7 +32,7 @@ export function drawCauldronItems(ctx, obj) {
 
     ctx.drawImage(
       asset.sprite,
-      obj.x + 15 + index * spacing,
+      obj.x - 30 + index * spacing,
       obj.y - 35,
       itemSize,
       itemSize
