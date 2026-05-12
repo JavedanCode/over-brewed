@@ -61,69 +61,69 @@ const INGREDIENTS = {
 
 const RECIPES = [
   {
-    name: "manegro_potion",
+    name: "Manegro Potion",
     description: "Causes hair on drinker's head to grow rapidly!",
     recipe:
       INGREDIENTS["Oleum"] |
-      INGREDIENTS["CrushedMandrake"] |
-      INGREDIENTS["CrushedShrivelfig"] |
-      INGREDIENTS["CutDragonScales"],
-    icon: "green_cubic",
+      INGREDIENTS["BrewedCrushedMandrake"] |
+      INGREDIENTS["BrewedCrushedShrivelfig"] |
+      INGREDIENTS["BrewedCutDragonScales"],
+    icon: "greenCubicPotion",
   },
 
   {
-    name: "potion_of_all_potential",
+    name: "Potion of All Potential",
     description: "Unlocks all potential within the drinker.",
     recipe:
       INGREDIENTS["Oleum"] |
-      INGREDIENTS["DragonScales"] |
-      INGREDIENTS["CutMandrake"] |
-      INGREDIENTS["CutShrivelfig"] |
-      INGREDIENTS["AsphodelPetals"],
-    icon: "gold_round",
+      INGREDIENTS["BrewedDragonScales"] |
+      INGREDIENTS["BrewedCutMandrake"] |
+      INGREDIENTS["BrewedCutShrivelfig"] |
+      INGREDIENTS["BrewedAsphodelPetals"],
+    icon: "goldRoundPotion",
   },
 
   {
-    name: "love_potion",
+    name: "Love Potion",
     description: "Creates feelings of affection and attraction.",
     recipe:
       INGREDIENTS["Vinum"] |
-      INGREDIENTS["CrushedAsphodelPetals"] |
-      INGREDIENTS["CrushedShrivelfig"],
-    icon: "pink_cubic",
+      INGREDIENTS["BrewedCrushedAsphodelPetals"] |
+      INGREDIENTS["BrewedCrushedShrivelfig"],
+    icon: "pinkCubicPotion",
   },
 
   {
-    name: "screaming_potion",
+    name: "Screaming Potion",
     description: "Causes uncontrollable screaming.",
     recipe:
       INGREDIENTS["Aqua"] |
-      INGREDIENTS["Mandrake"] |
-      INGREDIENTS["CrushedShrivelfig"],
-    icon: "violet_round",
+      INGREDIENTS["BrewedMandrake"] |
+      INGREDIENTS["BrewedCrushedShrivelfig"],
+    icon: "purpleRoundPotion",
   },
 
   {
-    name: "dragon_poison",
+    name: "Dragon Poison",
     description: "A deadly poison infused with dragon essence.",
     recipe:
       INGREDIENTS["Vinum"] |
-      INGREDIENTS["CrushedDragonScales"] |
-      INGREDIENTS["CutDragonScales"] |
-      INGREDIENTS["CutAsphodelPetals"] |
-      INGREDIENTS["Shrivelfig"],
-    icon: "red_cubic",
+      INGREDIENTS["BrewedCrushedDragonScales"] |
+      INGREDIENTS["BrewedCutDragonScales"] |
+      INGREDIENTS["BrewedCutAsphodelPetals"] |
+      INGREDIENTS["BrewedShrivelfig"],
+    icon: "redCubicPotion",
   },
 
   {
-    name: "weakness_potion",
+    name: "Weakness Potion",
     description: "Temporarily weakens the drinker.",
     recipe:
       INGREDIENTS["Aqua"] |
-      INGREDIENTS["AsphodelPetals"] |
-      INGREDIENTS["CrushedMandrake"] |
-      INGREDIENTS["CutDragonScales"],
-    icon: "blue_round",
+      INGREDIENTS["BrewedAsphodelPetals"] |
+      INGREDIENTS["BrewedCrushedMandrake"] |
+      INGREDIENTS["BrewedCutDragonScales"],
+    icon: "blueRoundPotion",
   },
 ];
 // glass types:
