@@ -16,10 +16,11 @@ import {
   bellImg,
   crushStationImg,
   cuttingImg,
+  trashCanImg,
 } from "./assets.js";
 import GameObject from "./gameObject.js";
 
-import { Cauldron, Station, Ingredient, Glass } from "./station.js";
+import { Cauldron, Station, Ingredient, Glass, TrashCan } from "./station.js";
 import { CRUSH, CUT, ingredients } from "./items.js";
 
 import { drawSingleItem, drawCauldronItems } from "./inventoryRenderer.js";
@@ -491,6 +492,36 @@ const ingredientsAndContainers = [
       offsetY: 0,
       width: 0,
       height: 0,
+    },
+  }),
+
+  //TRASHCAN
+  new GameObject({
+    x: 300,
+    y: 900,
+    width: 160,
+    height: 260,
+
+    color: "gray",
+
+    type: "trash",
+
+    sprite: trashCanImg,
+
+    station: new TrashCan(),
+
+    interactZone: {
+      offsetX: 0,
+      offsetY: -20,
+      width: 160,
+      height: 100,
+    },
+
+    hitbox: {
+      offsetX: 0,
+      offsetY: 80,
+      width: 160,
+      height: 120,
     },
   }),
 ];
