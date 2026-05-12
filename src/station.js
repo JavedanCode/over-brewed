@@ -114,7 +114,6 @@ class Cauldron {
     this.place = (playerInv) => {
       this.inventory |= playerInv.ingredient;
       playerInv.ingredient = 0;
-      this.progress = 0;
       this.itemCount++;
     };
 
@@ -133,9 +132,7 @@ class Cauldron {
 
     // to be re-written
     this.canWork = () =>
-      !this._first_brew &&
-      this.duration === 0 &&
-      this._get_base(this.inventory) !== 0;
+      this.duration === 0 && this._get_base(this.inventory) !== 0;
 
     this.startWorking = (baseTime) => {
       this.duration = 2 * baseTime;
@@ -148,17 +145,12 @@ class Cauldron {
         this.progress += timeStep;
 
         if (this.progress >= this.duration) {
-          console.log("first brew done.");
           this._brew();
           this._first_brew = false;
         }
       } else {
         this.progress += timeStep;
-
-        if (this.progress >= 1.5 * this.duration) {
-          console.log("overbrewed!");
-          this._overbrew();
-        }
+        if (this.progress >= 1.5 * this.duration) this._overbrew();
       }
     };
 
