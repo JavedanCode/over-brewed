@@ -5,22 +5,9 @@ export function takePlace(obj) {
   const playerInv = player.inventory;
 
   // PLACE
-  if (station.canPlace(playerInv)) {
-    station.place(playerInv);
-    console.log("Placed");
-  }
+  if (station.canPlace(playerInv)) station.place(playerInv);
   // TAKE
-  else if (station.canTake(playerInv)) {
-    station.take(playerInv);
-    console.log(
-      "Player Invetory: " +
-        playerInv.ingredient +
-        " Glass: " +
-        playerInv.glass.inventory +
-        " Type: " +
-        playerInv.glass.type
-    );
-  }
+  else if (station.canTake(playerInv)) station.take(playerInv);
 }
 
 export function work(obj, baseTime) {
@@ -29,7 +16,7 @@ export function work(obj, baseTime) {
   // WORK
   if (station.canWork()) {
     station.startWorking(baseTime);
-    console.log(`started working with baseTime: ${baseTime}`);
+    //console.log(`started working with baseTime: ${baseTime}`);
     if (!station.canMoveWhileWorking) return station;
   }
   return null;

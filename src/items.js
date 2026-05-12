@@ -14,7 +14,7 @@ const CRUSH = 2;
 
 const getIndex = (n) => 31 - Math.clz32(n);
 
-const ingredients = {
+const INGREDIENTS = {
   AsphodelPetals: 1 << (0 * VARIATION_COUNT), // 0
   CutAsphodelPetals: 1 << (0 * VARIATION_COUNT + CUT), // 1
   CrushedAsphodelPetals: 1 << (0 * VARIATION_COUNT + CRUSH), // 2
@@ -59,6 +59,73 @@ const ingredients = {
   Overbrewed: 1 << 30,
 };
 
+const RECIPES = [
+  {
+    name: "Manegro Potion",
+    description: "Causes hair on drinker's head to grow rapidly!",
+    recipe:
+      INGREDIENTS["Oleum"] |
+      INGREDIENTS["BrewedCrushedMandrake"] |
+      INGREDIENTS["BrewedCrushedShrivelfig"] |
+      INGREDIENTS["BrewedCutDragonScales"],
+    icon: "greenCubicPotion",
+  },
+
+  {
+    name: "Potion of All Potential",
+    description: "Unlocks all potential within the drinker.",
+    recipe:
+      INGREDIENTS["Oleum"] |
+      INGREDIENTS["BrewedDragonScales"] |
+      INGREDIENTS["BrewedCutMandrake"] |
+      INGREDIENTS["BrewedCutShrivelfig"] |
+      INGREDIENTS["BrewedAsphodelPetals"],
+    icon: "goldRoundPotion",
+  },
+
+  {
+    name: "Love Potion",
+    description: "Creates feelings of affection and attraction.",
+    recipe:
+      INGREDIENTS["Vinum"] |
+      INGREDIENTS["BrewedCrushedAsphodelPetals"] |
+      INGREDIENTS["BrewedCrushedShrivelfig"],
+    icon: "pinkCubicPotion",
+  },
+
+  {
+    name: "Screaming Potion",
+    description: "Causes uncontrollable screaming.",
+    recipe:
+      INGREDIENTS["Aqua"] |
+      INGREDIENTS["BrewedMandrake"] |
+      INGREDIENTS["BrewedCrushedShrivelfig"],
+    icon: "purpleRoundPotion",
+  },
+
+  {
+    name: "Dragon Poison",
+    description: "A deadly poison infused with dragon essence.",
+    recipe:
+      INGREDIENTS["Vinum"] |
+      INGREDIENTS["BrewedCrushedDragonScales"] |
+      INGREDIENTS["BrewedCutDragonScales"] |
+      INGREDIENTS["BrewedCutAsphodelPetals"] |
+      INGREDIENTS["BrewedShrivelfig"],
+    icon: "redCubicPotion",
+  },
+
+  {
+    name: "Weakness Potion",
+    description: "Temporarily weakens the drinker.",
+    recipe:
+      INGREDIENTS["Aqua"] |
+      INGREDIENTS["BrewedAsphodelPetals"] |
+      INGREDIENTS["BrewedCrushedMandrake"] |
+      INGREDIENTS["BrewedCutDragonScales"],
+    icon: "blueRoundPotion",
+  },
+];
 // glass types:
 // NONE, ROUND, SQUARE
 function player_inventory() {
@@ -87,7 +154,8 @@ const getIngredientsFromMask = (mask) => {
 
 export {
   getIndex,
-  ingredients,
+  INGREDIENTS,
+  RECIPES,
   BREW,
   CUT,
   CRUSH,

@@ -39,7 +39,7 @@ import redCubicPotion from "./assets/items/red-cubic-potion.png";
 import overbrewedCubicPotion from "./assets/items/overbrewed-cubic-potion.png";
 import overbrewedRoundPotion from "./assets/items/overbrewed-round-potion.png";
 
-import { ingredients } from "./items.js";
+import { INGREDIENTS } from "./items.js";
 
 const images = {};
 
@@ -52,15 +52,15 @@ mandrakeSprite.src = mandrakeIngImg;
 cutMandrakeSprite.src = cutMandrakeIngImg;
 crushMandrakeSprite.src = crushMandrakeIngImg;
 
-images[ingredients.Mandrake] = {
+images[INGREDIENTS.Mandrake] = {
   name: "Mandrake",
   sprite: mandrakeSprite,
 };
-images[ingredients.CutMandrake] = {
+images[INGREDIENTS.CutMandrake] = {
   name: "Cut Mandrake",
   sprite: cutMandrakeSprite,
 };
-images[ingredients.CrushedMandrake] = {
+images[INGREDIENTS.CrushedMandrake] = {
   name: "Crushed Mandrake",
   sprite: crushMandrakeSprite,
 };
@@ -74,15 +74,15 @@ petalsSprite.src = petalsIngImg;
 cutPetalsSprite.src = cutPetalsIngImg;
 crushPetalsSprite.src = crushPetalsIngImg;
 
-images[ingredients.AsphodelPetals] = {
+images[INGREDIENTS.AsphodelPetals] = {
   name: "Asphodel Petals",
   sprite: petalsSprite,
 };
-images[ingredients.CutAsphodelPetals] = {
+images[INGREDIENTS.CutAsphodelPetals] = {
   name: "Cut Asphodel Petals",
   sprite: cutPetalsSprite,
 };
-images[ingredients.CrushedAsphodelPetals] = {
+images[INGREDIENTS.CrushedAsphodelPetals] = {
   name: "Crushed Asphodel Petals",
   sprite: crushPetalsSprite,
 };
@@ -96,15 +96,15 @@ scalesSprite.src = scalesIngImg;
 cutScalesSprite.src = cutScalesIngImg;
 crushScalesSprite.src = crushScalesIngImg;
 
-images[ingredients.DragonScales] = {
+images[INGREDIENTS.DragonScales] = {
   name: "Dragon Scales",
   sprite: scalesSprite,
 };
-images[ingredients.CutDragonScales] = {
+images[INGREDIENTS.CutDragonScales] = {
   name: "Cut Dragon Scales",
   sprite: cutScalesSprite,
 };
-images[ingredients.CrushedDragonScales] = {
+images[INGREDIENTS.CrushedDragonScales] = {
   name: "Crushed Dragon Scales",
   sprite: crushScalesSprite,
 };
@@ -118,15 +118,15 @@ figSprite.src = figIngImg;
 cutFigSprite.src = cutFigIngImg;
 crushFigSprite.src = crushFigIngImg;
 
-images[ingredients.Shrivelfig] = {
+images[INGREDIENTS.Shrivelfig] = {
   name: "Shrivelfig",
   sprite: figSprite,
 };
-images[ingredients.CutShrivelfig] = {
+images[INGREDIENTS.CutShrivelfig] = {
   name: "Cut Shrivelfig",
   sprite: cutFigSprite,
 };
-images[ingredients.CrushedShrivelfig] = {
+images[INGREDIENTS.CrushedShrivelfig] = {
   name: "Crushed Shrivelfig",
   sprite: crushFigSprite,
 };
@@ -140,17 +140,17 @@ oilBaseSprite.src = oilBase;
 waterBaseSprite.src = waterBase;
 wineBaseSprite.src = wineBase;
 
-images[ingredients.Oleum] = {
+images[INGREDIENTS.Oleum] = {
   name: "Oil Base",
   sprite: oilBaseSprite,
 };
 
-images[ingredients.Aqua] = {
+images[INGREDIENTS.Aqua] = {
   name: "Water Base",
   sprite: waterBaseSprite,
 };
 
-images[ingredients.Vinum] = {
+images[INGREDIENTS.Vinum] = {
   name: "Wine Base",
   sprite: wineBaseSprite,
 };
