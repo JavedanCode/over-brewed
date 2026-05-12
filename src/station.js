@@ -86,17 +86,19 @@ class Glass {
 
 class Cauldron {
   constructor() {
+    this.canMoveWhileWorking = true;
+    this.itemCount = 0;
     this._first_brew = false;
     this.inventory = 0;
-    this.canMoveWhileWorking = true;
     this.duration = 0;
     this.progress = 0;
 
     this.canPlace = (playerInv) => {
       if (
-        !(!this._first_brew && this.duration === 0) ||
+        this.duration !== 0 ||
         playerInv.hasGlass() ||
-        playerInv.ingredient === 0
+        playerInv.ingredient === 0 ||
+        this.itemCount > 4
       )
         return false;
 
@@ -105,14 +107,15 @@ class Cauldron {
       if (this_base === 0) {
         if (new_base !== 0) return true;
         return false;
-      } else if (this_base === new_base || new_base === 0) return true;
-      else return false;
+      } else if (this._in_inventory(playerInv.ingredient)) return false;
+      else return true;
     };
 
     this.place = (playerInv) => {
       this.inventory |= playerInv.ingredient;
       playerInv.ingredient = 0;
       this.progress = 0;
+      this.itemCount++;
     };
 
     this.canTake = (playerInv) =>
@@ -125,6 +128,7 @@ class Cauldron {
       playerInv.glass.inventory = this.inventory;
       this.inventory = 0;
       this.progress = this.duration = 0;
+      this.itemCount = 0;
     };
 
     // to be re-written
@@ -132,14 +136,17 @@ class Cauldron {
       !this._first_brew &&
       this.duration === 0 &&
       this._get_base(this.inventory) !== 0;
+
     this.startWorking = (baseTime) => {
       this.duration = 2 * baseTime;
       this._first_brew = true;
     };
+
     this.doWork = (timeStep) => {
       if (this.duration === 0) return;
       if (this._first_brew) {
         this.progress += timeStep;
+
         if (this.progress >= this.duration) {
           console.log("first brew done.");
           this._brew();
@@ -147,6 +154,7 @@ class Cauldron {
         }
       } else {
         this.progress += timeStep;
+
         if (this.progress >= 1.5 * this.duration) {
           console.log("overbrewed!");
           this._overbrew();
@@ -177,6 +185,11 @@ class Cauldron {
       if (idx >= 27) return idx;
       return 0;
     };
+
+    this._in_inventory = (ing) => {
+      if ((this.inventory & ing) === 0) return false;
+      return true;
+    };
   }
 }
 
@@ -188,14 +201,11 @@ class TrashCan {
 
     this.place = (playerInv) => {
       playerInv.ingredient = 0;
-
       playerInv.glass.inventory = 0;
-
       playerInv.glass.type = "NONE";
     };
 
     this.canTake = () => false;
-
     this.canWork = () => false;
   }
 }
