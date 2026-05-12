@@ -31,14 +31,19 @@ export default (ctx, canvas) => {
   });
 
   // DRAW IN ORDER
+  const active = getActiveInteractable(objects);
   allEntities.forEach((entity) => {
+    if (entity === active) {
+      ctx.filter = "brightness(1.5)";
+    }
     if (entity.draw) {
       entity.draw(ctx);
-      return;
+    } else {
+      ctx.fillStyle = entity.color;
+      ctx.fillRect(entity.x, entity.y, entity.width, entity.height);
     }
 
-    ctx.fillStyle = entity.color;
-    ctx.fillRect(entity.x, entity.y, entity.width, entity.height);
+    ctx.filter = "none";
   });
 
   stations.forEach((station) => {
@@ -50,32 +55,32 @@ export default (ctx, canvas) => {
     }
   });
 
-  objects.forEach((obj) => {
-    const hb = obj.getHitbox();
-    ctx.strokeStyle = "red";
-    ctx.lineWidth = 1;
-    ctx.strokeRect(hb.x, hb.y, hb.width, hb.height);
-  });
+  // objects.forEach((obj) => {
+  //   const hb = obj.getHitbox();
+  //   ctx.strokeStyle = "red";
+  //   ctx.lineWidth = 1;
+  //   ctx.strokeRect(hb.x, hb.y, hb.width, hb.height);
+  // });
 
-  const hb = player.getHitbox();
-  ctx.strokeStyle = "red";
-  ctx.lineWidth = 1;
-  ctx.strokeRect(hb.x, hb.y, hb.width, hb.height);
+  // const hb = player.getHitbox();
+  // ctx.strokeStyle = "red";
+  // ctx.lineWidth = 1;
+  // ctx.strokeRect(hb.x, hb.y, hb.width, hb.height);
 
-  objects.forEach((obj) => {
-    const zone = obj.getInteractZone();
-    if (!zone) return;
+  // objects.forEach((obj) => {
+  //   const zone = obj.getInteractZone();
+  //   if (!zone) return;
 
-    ctx.strokeStyle = "yellow";
-    ctx.strokeRect(zone.x, zone.y, zone.width, zone.height);
-  });
+  //   ctx.strokeStyle = "yellow";
+  //   ctx.strokeRect(zone.x, zone.y, zone.width, zone.height);
+  // });
 
-  const active = getActiveInteractable(objects);
+  // const active = getActiveInteractable(objects);
 
-  if (active) {
-    ctx.strokeStyle = "lime";
-    ctx.lineWidth = 3;
+  // if (active) {
+  //   ctx.strokeStyle = "lime";
+  //   ctx.lineWidth = 3;
 
-    ctx.strokeRect(active.x, active.y, active.width, active.height);
-  }
+  //   ctx.strokeRect(active.x, active.y, active.width, active.height);
+  // }
 };
