@@ -180,4 +180,24 @@ class Cauldron {
   }
 }
 
-export { Cauldron, Station, Ingredient, Glass };
+class TrashCan {
+  constructor() {
+    this.canMoveWhileWorking = false;
+
+    this.canPlace = () => true;
+
+    this.place = (playerInv) => {
+      playerInv.ingredient = 0;
+
+      playerInv.glass.inventory = 0;
+
+      playerInv.glass.type = "NONE";
+    };
+
+    this.canTake = () => false;
+
+    this.canWork = () => false;
+  }
+}
+
+export { Cauldron, Station, Ingredient, Glass, TrashCan };

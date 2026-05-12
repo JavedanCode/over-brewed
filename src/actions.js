@@ -3,25 +3,23 @@ import player from "./player.js";
 export function takePlace(obj) {
   const station = obj.station;
   const playerInv = player.inventory;
+
+  // PLACE
+  if (station.canPlace(playerInv)) {
+    station.place(playerInv);
+    console.log("Placed");
+  }
   // TAKE
-  if (playerInv.ingredient === 0 && playerInv.glass.inventory === 0) {
-    if (station.canTake(playerInv)) {
-      station.take(playerInv);
-      console.log(
-        "Player Invetory: " +
-          playerInv.ingredient +
-          " Glass: " +
-          playerInv.glass.inventory +
-          " Type: " +
-          playerInv.glass.type
-      );
-    }
-  } else {
-    // PLACE
-    if (station.canPlace(playerInv)) {
-      station.place(playerInv);
-      console.log("Placed");
-    }
+  else if (station.canTake(playerInv)) {
+    station.take(playerInv);
+    console.log(
+      "Player Invetory: " +
+        playerInv.ingredient +
+        " Glass: " +
+        playerInv.glass.inventory +
+        " Type: " +
+        playerInv.glass.type
+    );
   }
 }
 

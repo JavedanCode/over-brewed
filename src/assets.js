@@ -16,6 +16,7 @@ import rightTable from "./assets/right-table.png";
 import bell from "./assets/bell.png";
 import cuttingBoard from "./assets/cutting-station.png";
 import crushStation from "./assets/crush-station.png";
+import trashCan from "./assets/trash-can.png";
 
 const background = new Image();
 background.src = floor;
@@ -70,6 +71,9 @@ cuttingImg.src = cuttingBoard;
 
 const crushStationImg = new Image();
 crushStationImg.src = crushStation;
+
+const trashCanImg = new Image();
+trashCanImg.src = trashCan;
 export {
   background,
   cauldronImg,
@@ -89,4 +93,5 @@ export {
   bellImg,
   cuttingImg,
   crushStationImg,
+  trashCanImg,
 };
