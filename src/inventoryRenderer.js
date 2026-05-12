@@ -1,5 +1,5 @@
 import itemAssets from "./itemsAssets.js";
-import { getIngredientsFromMask } from "./items.js";
+import { getIngredientsFromMask, BREW } from "./items.js";
 
 export function drawSingleItem(ctx, obj) {
   const inv = obj.station.inventory;
@@ -14,7 +14,9 @@ export function drawSingleItem(ctx, obj) {
 }
 
 export function drawCauldronItems(ctx, obj) {
-  const inv = obj.station.inventory;
+  const inv =
+    obj.station.inventory |
+    ((obj.station.inventory >> BREW) & ((1 << BREW) - 1));
 
   if (!inv) return;
 
