@@ -51,7 +51,7 @@ export function drawCauldronProgress(ctx, obj) {
   else {
     ratio = (station.progress - station.duration) / (0.5 * station.duration);
 
-    ratio = Math.max(0, Math.min(1, ratio));
+    ratio = Math.min(1, ratio);
 
     ctx.fillStyle = "#c0392b";
   }
