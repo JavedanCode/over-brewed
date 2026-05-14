@@ -104,24 +104,6 @@ const RECIPES = {
     INGREDIENTS.RoundGlass,
 };
 
-class player_inventory {
-  constructor() {
-    this.glass = 0;
-    this.ingredient = 0;
-    this.hasGlass = () => this.glass !== 0;
-    this.empty = () => !this.hasGlass() && this.ingredient === 0;
-    this.hasOnlyGlass = () => {
-      if (!this.hasGlass()) return false;
-      if (
-        (this.glass & ~(INGREDIENTS.RoundGlass | INGREDIENTS.CubicGlass)) !==
-        0
-      )
-        return false;
-      return true;
-    };
-  }
-}
-
 const getIngredientsFromMask = (mask) => {
   const result = [];
 
@@ -146,6 +128,5 @@ export {
   CUT,
   CRUSH,
   VARIATION_COUNT,
-  player_inventory,
   getIngredientsFromMask,
 };
