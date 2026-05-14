@@ -39,7 +39,7 @@ import redCubicPotion from "./assets/items/red-cubic-potion.png";
 import overbrewedCubicPotion from "./assets/items/overbrewed-cubic-potion.png";
 import overbrewedRoundPotion from "./assets/items/overbrewed-round-potion.png";
 
-import { INGREDIENTS } from "./items.js";
+import { INGREDIENTS, RECIPES } from "./items.js";
 
 const images = {};
 
@@ -188,6 +188,35 @@ greenCubicPotionSprite.src = greenCubicPotion;
 pinkCubicPotionSprite.src = pinkCubicPotion;
 redCubicPotionSprite.src = redCubicPotion;
 
+images[RECIPES.ManegroPotion] = {
+  name: "Mangero Potion",
+  sprite: greenCubicPotionSprite,
+};
+
+images[RECIPES.PotionofAllPotential] = {
+  name: "Potion of All Potential",
+  sprite: goldRoundPotionSprite,
+};
+
+images[RECIPES.LovePotion] = {
+  name: "Love Potion",
+  sprite: pinkCubicPotionSprite,
+};
+
+images[RECIPES.ScreamingPotion] = {
+  name: "Screaming Potion",
+  sprite: purpleRoundPotionSprite,
+};
+
+images[RECIPES.DragonPoison] = {
+  name: "Dragon Poison",
+  sprite: redCubicPotionSprite,
+};
+
+images[RECIPES.WeaknessPotion] = {
+  name: "Weakness Potion",
+  sprite: blueRoundPotionSprite,
+};
 //OVERBREWED SPRITES
 const overbrewedCubicPotionSprite = new Image();
 const overbrewedRoundPotionSprite = new Image();
