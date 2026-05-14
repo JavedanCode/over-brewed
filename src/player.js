@@ -1,4 +1,3 @@
-import { player_inventory } from "./items.js";
 import snape from "./assets/snape.png";
 import itemAssets from "./itemsAssets.js";
 const snapeImg = new Image();
@@ -174,6 +173,24 @@ class Player {
     if (heldContainer) {
       ctx.drawImage(heldContainer.sprite, this.x + 40, this.y - 110, 90, 100);
     }
+  }
+}
+
+class player_inventory {
+  constructor() {
+    this.glass = 0;
+    this.ingredient = 0;
+    this.hasGlass = () => this.glass !== 0;
+    this.empty = () => !this.hasGlass() && this.ingredient === 0;
+    this.hasOnlyGlass = () => {
+      if (!this.hasGlass()) return false;
+      if (
+        (this.glass & ~(INGREDIENTS.RoundGlass | INGREDIENTS.CubicGlass)) !==
+        0
+      )
+        return false;
+      return true;
+    };
   }
 }
 
