@@ -107,6 +107,8 @@ class Cauldron {
       if (this_base === 0) {
         if (new_base !== 0) return true;
         return false;
+      } else if (new_base !== 0) {
+        return false;
       } else if (this._in_inventory(playerInv.ingredient)) return false;
       else return true;
     };
