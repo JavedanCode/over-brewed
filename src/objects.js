@@ -445,7 +445,7 @@ const ingredientsAndContainers = [
     type: "container",
 
     sprite: roundContImg,
-    station: new Glass("ROUND"),
+    station: new Glass(INGREDIENTS.RoundGlass),
 
     sortOffset: 500,
 
@@ -464,7 +464,7 @@ const ingredientsAndContainers = [
     },
   }),
 
-  //SQUARE CONTAINERS
+  //CUBIC CONTAINERS
   new GameObject({
     x: 60,
     y: 630,
@@ -476,7 +476,7 @@ const ingredientsAndContainers = [
 
     sprite: cubicContImg,
 
-    station: new Glass("SQUARE"),
+    station: new Glass(INGREDIENTS.CubicGlass),
 
     sortOffset: 1000,
 

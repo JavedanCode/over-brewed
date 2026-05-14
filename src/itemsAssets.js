@@ -162,12 +162,12 @@ const emptyRoundContainerSprite = new Image();
 emptyCubicContainerSprite.src = emptyCubicContainer;
 emptyRoundContainerSprite.src = emptyRoundContainer;
 
-images["ROUND"] = {
+images[INGREDIENTS.RoundGlass] = {
   name: "Empty Round Container",
   sprite: emptyRoundContainerSprite,
 };
 
-images["SQUARE"] = {
+images[INGREDIENTS.CubicGlass] = {
   name: "Empty Cubic Container",
   sprite: emptyCubicContainerSprite,
 };
@@ -223,5 +223,14 @@ const overbrewedRoundPotionSprite = new Image();
 
 overbrewedCubicPotionSprite.src = overbrewedCubicPotion;
 overbrewedRoundPotionSprite.src = overbrewedRoundPotion;
+
+images[INGREDIENTS.OverbrewedRound] = {
+  name: "Overbrewed Round Potion",
+  sprite: overbrewedRoundPotionSprite,
+};
+images[INGREDIENTS.OverbrewedCubic] = {
+  name: "Overbrewed Cubic Potion",
+  sprite: overbrewedCubicPotionSprite,
+};
 
 export default images;

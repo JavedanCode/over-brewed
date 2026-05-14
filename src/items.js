@@ -8,9 +8,10 @@
 // normal / brewed / cut / crush
 
 const VARIATION_COUNT = 3;
-const BREW = 12;
 const CUT = 1;
 const CRUSH = 2;
+const BREW = 12;
+const OVERBREWED = 1;
 
 const getIndex = (n) => 31 - Math.clz32(n);
 
@@ -49,64 +50,76 @@ const INGREDIENTS = {
   BrewedCutShrivelfig: 1 << (3 * VARIATION_COUNT + CUT + BREW), // 22
   BrewedCrushedShrivelfig: 1 << (3 * VARIATION_COUNT + CRUSH + BREW), // 23
 
-  // 24
-  // 25
-  // 26
+  Vinum: 1 << 24,
+  Oleum: 1 << 25,
+  Aqua: 1 << 26,
 
-  Vinum: 1 << 27,
-  Oleum: 1 << 28,
-  Aqua: 1 << 29,
-  Overbrewed: 1 << 30,
+  RoundGlass: 1 << 27,
+  OverbrewedRound: 1 << 28,
+  CubicGlass: 1 << 29,
+  OverbrewedCubic: 1 << 30,
 };
 
 const RECIPES = {
   ManegroPotion:
-    INGREDIENTS["Oleum"] |
-    INGREDIENTS["BrewedCrushedMandrake"] |
-    INGREDIENTS["BrewedCrushedShrivelfig"] |
-    INGREDIENTS["BrewedCutDragonScales"],
+    INGREDIENTS.Oleum |
+    INGREDIENTS.BrewedCrushedMandrake |
+    INGREDIENTS.BrewedCrushedShrivelfig |
+    INGREDIENTS.BrewedCutDragonScales |
+    INGREDIENTS.CubicGlass,
 
   PotionofAllPotential:
-    INGREDIENTS["Oleum"] |
-    INGREDIENTS["BrewedDragonScales"] |
-    INGREDIENTS["BrewedCutMandrake"] |
-    INGREDIENTS["BrewedCutShrivelfig"] |
-    INGREDIENTS["BrewedAsphodelPetals"],
+    INGREDIENTS.Oleum |
+    INGREDIENTS.BrewedDragonScales |
+    INGREDIENTS.BrewedCutMandrake |
+    INGREDIENTS.BrewedCutShrivelfig |
+    INGREDIENTS.BrewedAsphodelPetals |
+    INGREDIENTS.RoundGlass,
 
   LovePotion:
-    INGREDIENTS["Vinum"] |
-    INGREDIENTS["BrewedCrushedAsphodelPetals"] |
-    INGREDIENTS["BrewedCrushedShrivelfig"],
+    INGREDIENTS.Vinum |
+    INGREDIENTS.BrewedCrushedAsphodelPetals |
+    INGREDIENTS.BrewedCrushedShrivelfig |
+    INGREDIENTS.CubicGlass,
 
   ScreamingPotion:
-    INGREDIENTS["Aqua"] |
-    INGREDIENTS["BrewedMandrake"] |
-    INGREDIENTS["BrewedCrushedShrivelfig"],
+    INGREDIENTS.Aqua |
+    INGREDIENTS.BrewedMandrake |
+    INGREDIENTS.BrewedCrushedShrivelfig |
+    INGREDIENTS.RoundGlass,
 
   DragonPoison:
-    INGREDIENTS["Vinum"] |
-    INGREDIENTS["BrewedCrushedDragonScales"] |
-    INGREDIENTS["BrewedCutDragonScales"] |
-    INGREDIENTS["BrewedCutAsphodelPetals"] |
-    INGREDIENTS["BrewedShrivelfig"],
+    INGREDIENTS.Vinum |
+    INGREDIENTS.BrewedCrushedDragonScales |
+    INGREDIENTS.BrewedCutDragonScales |
+    INGREDIENTS.BrewedCutAsphodelPetals |
+    INGREDIENTS.BrewedShrivelfig |
+    INGREDIENTS.CubicGlass,
 
   WeaknessPotion:
-    INGREDIENTS["Aqua"] |
-    INGREDIENTS["BrewedAsphodelPetals"] |
-    INGREDIENTS["BrewedCrushedMandrake"] |
-    INGREDIENTS["BrewedCutDragonScales"],
+    INGREDIENTS.Aqua |
+    INGREDIENTS.BrewedAsphodelPetals |
+    INGREDIENTS.BrewedCrushedMandrake |
+    INGREDIENTS.BrewedCutDragonScales |
+    INGREDIENTS.RoundGlass,
 };
 
-// glass types:
-// NONE, ROUND, SQUARE
-function player_inventory() {
-  this.glass = {
-    type: "NONE",
-    inventory: 0,
-  };
-  this.ingredient = 0;
-  this.hasGlass = () => this.glass.type !== "NONE";
-  this.empty = () => !this.hasGlass() && this.ingredient === 0;
+class player_inventory {
+  constructor() {
+    this.glass = 0;
+    this.ingredient = 0;
+    this.hasGlass = () => this.glass !== 0;
+    this.empty = () => !this.hasGlass() && this.ingredient === 0;
+    this.hasOnlyGlass = () => {
+      if (!this.hasGlass()) return false;
+      if (
+        (this.glass & ~(INGREDIENTS.RoundGlass | INGREDIENTS.CubicGlass)) !==
+        0
+      )
+        return false;
+      return true;
+    };
+  }
 }
 
 const getIngredientsFromMask = (mask) => {
@@ -116,7 +129,8 @@ const getIngredientsFromMask = (mask) => {
     const bit = 1 << i;
 
     if ((mask & bit) !== 0) {
-      result.push(bit);
+      if (i < BREW * 2 && i >= BREW) result.push(1 << (i - BREW));
+      else result.push(bit);
     }
   }
 
@@ -128,6 +142,7 @@ export {
   INGREDIENTS,
   RECIPES,
   BREW,
+  OVERBREWED,
   CUT,
   CRUSH,
   VARIATION_COUNT,
