@@ -1,5 +1,6 @@
 import snape from "./assets/snape.png";
 import itemAssets from "./itemsAssets.js";
+import { INGREDIENTS } from "./items.js";
 const snapeImg = new Image();
 snapeImg.src = snape;
 
