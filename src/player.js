@@ -165,7 +165,7 @@ class Player {
     }
 
     const heldItem = itemAssets[player.inventory.ingredient];
-    const heldContainer = itemAssets[player.inventory.glass.type];
+    const heldContainer = itemAssets[player.inventory.glass];
 
     if (heldItem) {
       ctx.drawImage(heldItem.sprite, this.x + 40, this.y - 110, 90, 90);
