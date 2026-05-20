@@ -70,8 +70,8 @@ class Player {
 
     this.facing = facing || "right";
 
-    this.frameWidth = frameWidth || 16;
-    this.frameHeight = frameHeight || 16;
+    this.frameWidth = frameWidth || 560;
+    this.frameHeight = frameHeight || 920;
   }
 
   getHitbox() {
@@ -99,15 +99,7 @@ class Player {
 
     //IDLE
     else {
-      if (newAnimation === "walkUp") {
-        newAnimation = "idleUp";
-      } else if (newAnimation === "walkDown") {
-        newAnimation = "idleDown";
-      } else if (newAnimation === "walkLeft") {
-        newAnimation = "idleLeft";
-      } else if (newAnimation === "walkRight") {
-        newAnimation = "idleRight";
-      }
+      newAnimation = "idle";
     }
 
     //APPLY NEW ANIMATION
@@ -218,43 +210,28 @@ const player = new Player({
   },
 
   animations: {
-    idleDown: {
+    idle: {
       row: 0,
-      frames: 4,
-    },
-
-    idleUp: {
-      row: 1,
-      frames: 4,
-    },
-
-    idleLeft: {
-      row: 2,
-      frames: 4,
-    },
-
-    idleRight: {
-      row: 3,
-      frames: 4,
+      frames: 8,
     },
 
     walkDown: {
-      row: 4,
-      frames: 4,
+      row: 1,
+      frames: 7,
     },
 
     walkUp: {
-      row: 5,
-      frames: 4,
+      row: 2,
+      frames: 8,
     },
 
     walkLeft: {
-      row: 6,
-      frames: 4,
+      row: 3,
+      frames: 7,
     },
     walkRight: {
-      row: 7,
-      frames: 4,
+      row: 4,
+      frames: 7,
     },
   },
 
