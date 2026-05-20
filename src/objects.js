@@ -96,7 +96,7 @@ const stations = [
   //CAULDRON 1
   new GameObject({
     x: 280,
-    y: 80,
+    y: 100,
     width: 150,
     height: 180,
     color: "#3d3131",
@@ -116,7 +116,7 @@ const stations = [
       offsetX: 0,
       offsetY: 30,
       width: 150,
-      height: 70,
+      height: 10,
     },
 
     inventoryRenderer: drawCauldronItems,
@@ -128,7 +128,7 @@ const stations = [
   //CAULDRON 2
   new GameObject({
     x: 520,
-    y: 80,
+    y: 100,
     width: 150,
     height: 180,
     color: "#3d3131",
@@ -148,7 +148,7 @@ const stations = [
       offsetX: 0,
       offsetY: 30,
       width: 150,
-      height: 70,
+      height: 10,
     },
 
     inventoryRenderer: drawCauldronItems,
@@ -160,7 +160,7 @@ const stations = [
   //CAULDRON 3
   new GameObject({
     x: 760,
-    y: 80,
+    y: 100,
     width: 150,
     height: 180,
     color: "#3d3131",
@@ -180,7 +180,7 @@ const stations = [
       offsetX: 0,
       offsetY: 30,
       width: 150,
-      height: 70,
+      height: 10,
     },
 
     inventoryRenderer: drawCauldronItems,
@@ -226,7 +226,7 @@ const ingredientsAndContainers = [
   //OIL BASE
   new GameObject({
     x: 1000,
-    y: 40,
+    y: 60,
     width: 100,
     height: 220,
     color: "#c45105",
@@ -246,7 +246,7 @@ const ingredientsAndContainers = [
       offsetX: 0,
       offsetY: 30,
       width: 100,
-      height: 70,
+      height: 50,
     },
 
     sprite: oilVaseImg,
@@ -255,7 +255,7 @@ const ingredientsAndContainers = [
   //WATER BASE
   new GameObject({
     x: 1150,
-    y: 40,
+    y: 60,
     width: 100,
     height: 220,
     color: "#c45105",
@@ -275,7 +275,7 @@ const ingredientsAndContainers = [
       offsetX: 0,
       offsetY: 30,
       width: 100,
-      height: 70,
+      height: 50,
     },
 
     sprite: waterVaseImg,
@@ -284,7 +284,7 @@ const ingredientsAndContainers = [
   //WINE BASE
   new GameObject({
     x: 1300,
-    y: 40,
+    y: 60,
     width: 100,
     height: 220,
     color: "#c45105",
@@ -304,7 +304,7 @@ const ingredientsAndContainers = [
       offsetX: 0,
       offsetY: 30,
       width: 100,
-      height: 70,
+      height: 50,
     },
 
     sprite: wineVaseImg,
@@ -313,9 +313,9 @@ const ingredientsAndContainers = [
   //MANDRAKES
   new GameObject({
     x: 600,
-    y: 890,
+    y: 860,
     width: 95,
-    height: 140,
+    height: 170,
     color: "#3a2301",
 
     type: "ingredient",
@@ -344,9 +344,9 @@ const ingredientsAndContainers = [
   //PETALS
   new GameObject({
     x: 800,
-    y: 890,
+    y: 860,
     width: 95,
-    height: 140,
+    height: 170,
     color: "#3a2301",
 
     type: "ingredient",
@@ -406,7 +406,7 @@ const ingredientsAndContainers = [
   //FIGS
   new GameObject({
     x: 1160,
-    y: 840,
+    y: 830,
     width: 130,
     height: 190,
     color: "#3a2301",
