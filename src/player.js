@@ -84,7 +84,7 @@ class Player {
   }
 
   updateAnimation() {
-    let newAnimation = this.currentAnimation;
+    let newAnimation;
 
     //MOVEMENT ANIMATIONS
     if (this.velocityY < 0) {
