@@ -72,15 +72,7 @@ class DeliveryStation {
     this.canMoveWhileWorking = false;
 
     this.canPlace = (playerInv) => {
-      const potion = playerInv.glass;
-
-      return (
-        potion !== 0 &&
-        potion !== INGREDIENTS.RoundGlass &&
-        potion !== INGREDIENTS.CubicGlass &&
-        potion !== INGREDIENTS.OverbrewedRound &&
-        potion !== INGREDIENTS.OverbrewedCubic
-      );
+      return Object.values(RECIPES).includes(playerInv.glass);
     };
 
     this.place = (playerInv) => {};
