@@ -37,6 +37,7 @@ export function drawHowToPlay(ctx, canvas, mouseX, mouseY) {
     "WASD  - Move",
     "E     - Pick up / Place item",
     "F     - Use station",
+    "R     - View Recipes",
     "",
     "Goal:",
     "Brew potions correctly and deliver them before time runs out.",

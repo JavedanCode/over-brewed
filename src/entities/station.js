@@ -5,6 +5,8 @@ import {
   RECIPES,
   OVERBREWED,
 } from "../data/items.js";
+import { activeOrders } from "../data/orders.js";
+import gameData from "../data/gameData.js";
 
 // Is this a valid ingredient for the task
 const canAction = (ing) => {
@@ -64,7 +66,38 @@ class Station {
     };
   }
 }
+class DeliveryStation {
+  constructor() {
+    this.canMoveWhileWorking = false;
 
+    this.canPlace = (playerInv) => {
+      return Object.values(RECIPES).includes(playerInv.glass);
+    };
+
+    this.canTake = () => false;
+
+    this.canWork = () => false;
+
+    this.place = (playerInv) => {
+      const deliveredPotion = playerInv.glass;
+
+      const orderIndex = activeOrders.findIndex(
+        (order) => order.recipe === deliveredPotion
+      );
+
+      if (orderIndex !== -1) {
+        activeOrders.splice(orderIndex, 1);
+        gameData.essence += 25;
+      } else {
+        gameData.essence++;
+      }
+
+      playerInv.glass = 0;
+    };
+
+    this.doWork = () => {};
+  }
+}
 class Ingredient {
   constructor(ing) {
     this.inventory = ing;
@@ -126,6 +159,7 @@ class Cauldron {
 
     this.canTake = (playerInv) =>
       !this._first_brew &&
+      this.inventory !== 0 &&
       playerInv.ingredient === 0 &&
       playerInv.hasOnlyGlass();
 
@@ -207,4 +241,4 @@ class TrashCan {
   }
 }
 
-export { Cauldron, Station, Ingredient, Glass, TrashCan };
+export { Cauldron, Station, Ingredient, Glass, TrashCan, DeliveryStation };

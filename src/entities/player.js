@@ -27,6 +27,7 @@ class Player {
     facing,
     frameWidth,
     frameHeight,
+    lives,
   }) {
     //START POSITION AND DIMENSIONS
     this.x = x;
@@ -72,6 +73,9 @@ class Player {
 
     this.frameWidth = frameWidth || 560;
     this.frameHeight = frameHeight || 920;
+
+    //LIVES
+    this.lives = lives || 3;
   }
 
   getHitbox() {
@@ -193,10 +197,10 @@ const player = new Player({
   width: 160,
   height: 260,
   color: "blue",
-  maxSpeed: 3,
+  maxSpeed: 4.5,
 
   //CHANGE THESE TO CHANGE THE CURVES
-  acceleration: 0.3 / 17, // divided by 17 due to expecting ~17ms per frame
+  acceleration: 0.4 / 17, // divided by 17 due to expecting ~17ms per frame
   deceleration: 0.2 / 17,
 
   velocityX: 0,
@@ -238,6 +242,8 @@ const player = new Player({
   sprite: snapeImg,
 
   inventory: new player_inventory(),
+
+  lives: 3,
 });
 
 export default player;

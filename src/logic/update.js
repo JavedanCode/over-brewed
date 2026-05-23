@@ -10,6 +10,7 @@ import { getActiveInteractable } from "./interaction.js";
 import { justPressed } from "./input.js";
 import { takePlace, work } from "./actions.js";
 import { GAME_STATES, setGameState } from "../core/gameState.js";
+import { updateOrders } from "./ordersLogic.js";
 
 const WORLD_WIDTH = 1920;
 const WORLD_HEIGHT = 1080;
@@ -116,10 +117,16 @@ export default function update(timeStep) {
     setGameState(GAME_STATES.PAUSED);
     return;
   }
-  // update Stations
+  if (justPressed["r"]) {
+    setGameState(GAME_STATES.RECIPES);
+  }
+  // UPDATE STATIONS
   for (let st of stations) {
     st.station.doWork(timeStep);
   }
+
+  // UPDATE ORDERS
+  updateOrders(timeStep);
 
   if (!currentInteraction) {
     calculateVelocity(timeStep);
