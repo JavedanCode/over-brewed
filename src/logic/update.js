@@ -1,6 +1,10 @@
 import keys from "./input.js";
-import { stations, ingredientsAndContainers, tables } from "./objects.js";
-import player from "./player.js";
+import {
+  stations,
+  ingredientsAndContainers,
+  tables,
+} from "../entities/objects.js";
+import player from "../entities/player.js";
 import { checkCollision } from "./collision.js";
 import { getActiveInteractable } from "./interaction.js";
 import { justPressed } from "./input.js";

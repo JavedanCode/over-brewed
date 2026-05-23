@@ -1,8 +1,8 @@
-import "./styles.css";
+import "../styles/styles.css";
 import Canvas from "./canvas.js";
-import draw from "./draw.js";
-import update from "./update.js";
-import { clearJustPressed } from "./input.js";
+import draw from "../rendering/draw.js";
+import update from "../logic/update.js";
+import { clearJustPressed } from "../logic/input.js";
 
 const { canvas, ctx } = Canvas();
 

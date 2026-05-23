@@ -17,14 +17,20 @@ import {
   crushStationImg,
   cuttingImg,
   trashCanImg,
-} from "./assets.js";
+} from "../data/assets.js";
 import GameObject from "./gameObject.js";
 
 import { Cauldron, Station, Ingredient, Glass, TrashCan } from "./station.js";
-import { CRUSH, CUT, INGREDIENTS } from "./items.js";
+import { CRUSH, CUT, INGREDIENTS } from "../data/items.js";
 
-import { drawSingleItem, drawCauldronItems } from "./inventoryRenderer.js";
-import { drawCauldronProgress, drawProgressBar } from "./progressRenderer.js";
+import {
+  drawSingleItem,
+  drawCauldronItems,
+} from "../rendering/inventoryRenderer.js";
+import {
+  drawCauldronProgress,
+  drawProgressBar,
+} from "../rendering/progressRenderer.js";
 
 const stations = [
   //CUTTING BOARD
