@@ -42,13 +42,13 @@ import {
 const stations = [
   //CUTTING BOARD
   new GameObject({
-    x: 730,
+    x: 670,
     y: 500,
-    width: 120,
-    height: 70,
+    width: 190,
+    height: 100,
     color: "#6805c4",
 
-    sortOffset: 245,
+    sortOffset: 310,
 
     type: "cutting",
 
@@ -69,20 +69,20 @@ const stations = [
     interactZone: {
       offsetX: 0,
       offsetY: -90,
-      width: 120,
+      width: 190,
       height: 230,
     },
   }),
 
   //CRUSHING STATION
   new GameObject({
-    x: 1000,
+    x: 1050,
     y: 470,
-    width: 100,
-    height: 100,
+    width: 120,
+    height: 120,
     color: "#05c46b",
 
-    sortOffset: 245,
+    sortOffset: 310,
 
     sprite: crushStationImg,
 
@@ -99,7 +99,7 @@ const stations = [
     progressRenderer: drawProgressBar,
 
     interactZone: {
-      offsetX: -10,
+      offsetX: 0,
       offsetY: -70,
       width: 120,
       height: 230,
@@ -110,8 +110,8 @@ const stations = [
   new GameObject({
     x: 280,
     y: 100,
-    width: 150,
-    height: 180,
+    width: 200,
+    height: 240,
     color: "#3d3131",
 
     type: "cauldron",
@@ -120,7 +120,7 @@ const stations = [
 
     interactZone: {
       offsetX: 0,
-      offsetY: 180,
+      offsetY: 30,
       width: 150,
       height: 60,
     },
@@ -142,8 +142,8 @@ const stations = [
   new GameObject({
     x: 520,
     y: 100,
-    width: 150,
-    height: 180,
+    width: 200,
+    height: 240,
     color: "#3d3131",
 
     type: "cauldron",
@@ -152,7 +152,7 @@ const stations = [
 
     interactZone: {
       offsetX: 0,
-      offsetY: 180,
+      offsetY: 30,
       width: 150,
       height: 60,
     },
@@ -174,8 +174,8 @@ const stations = [
   new GameObject({
     x: 760,
     y: 100,
-    width: 150,
-    height: 180,
+    width: 200,
+    height: 240,
     color: "#3d3131",
 
     type: "cauldron",
@@ -184,7 +184,7 @@ const stations = [
 
     interactZone: {
       offsetX: 0,
-      offsetY: 180,
+      offsetY: 30,
       width: 150,
       height: 60,
     },
@@ -206,8 +206,8 @@ const stations = [
   new GameObject({
     x: 1750,
     y: 500,
-    width: 90,
-    height: 100,
+    width: 110,
+    height: 120,
     color: "#ffd13b",
 
     sortOffset: 1000,
@@ -238,10 +238,10 @@ const stations = [
 const ingredientsAndContainers = [
   //OIL BASE
   new GameObject({
-    x: 1000,
+    x: 1050,
     y: 60,
-    width: 100,
-    height: 220,
+    width: 140,
+    height: 270,
     color: "#c45105",
 
     type: "oil-base",
@@ -251,14 +251,14 @@ const ingredientsAndContainers = [
     interactZone: {
       offsetX: 0,
       offsetY: 220,
-      width: 100,
+      width: 140,
       height: 70,
     },
 
     hitbox: {
       offsetX: 0,
       offsetY: 30,
-      width: 100,
+      width: 140,
       height: 50,
     },
 
@@ -267,10 +267,10 @@ const ingredientsAndContainers = [
 
   //WATER BASE
   new GameObject({
-    x: 1150,
+    x: 1250,
     y: 60,
-    width: 100,
-    height: 220,
+    width: 140,
+    height: 270,
     color: "#c45105",
 
     type: "oil-base",
@@ -280,14 +280,14 @@ const ingredientsAndContainers = [
     interactZone: {
       offsetX: 0,
       offsetY: 220,
-      width: 100,
+      width: 140,
       height: 70,
     },
 
     hitbox: {
       offsetX: 0,
       offsetY: 30,
-      width: 100,
+      width: 140,
       height: 50,
     },
 
@@ -296,10 +296,10 @@ const ingredientsAndContainers = [
 
   //WINE BASE
   new GameObject({
-    x: 1300,
+    x: 1450,
     y: 60,
-    width: 100,
-    height: 220,
+    width: 140,
+    height: 270,
     color: "#c45105",
 
     type: "oil-base",
@@ -309,14 +309,14 @@ const ingredientsAndContainers = [
     interactZone: {
       offsetX: 0,
       offsetY: 220,
-      width: 100,
+      width: 140,
       height: 70,
     },
 
     hitbox: {
       offsetX: 0,
       offsetY: 30,
-      width: 100,
+      width: 140,
       height: 50,
     },
 
@@ -327,8 +327,8 @@ const ingredientsAndContainers = [
   new GameObject({
     x: 600,
     y: 860,
-    width: 95,
-    height: 170,
+    width: 130,
+    height: 240,
     color: "#3a2301",
 
     type: "ingredient",
@@ -339,9 +339,9 @@ const ingredientsAndContainers = [
 
     interactZone: {
       offsetX: 0,
-      offsetY: -20,
-      width: 95,
-      height: 80,
+      offsetY: 10,
+      width: 130,
+      height: 100,
     },
 
     hitbox: {
@@ -358,8 +358,8 @@ const ingredientsAndContainers = [
   new GameObject({
     x: 800,
     y: 860,
-    width: 95,
-    height: 170,
+    width: 140,
+    height: 240,
     color: "#3a2301",
 
     type: "ingredient",
@@ -370,9 +370,9 @@ const ingredientsAndContainers = [
 
     interactZone: {
       offsetX: 0,
-      offsetY: -20,
-      width: 95,
-      height: 80,
+      offsetY: 10,
+      width: 140,
+      height: 100,
     },
 
     hitbox: {
@@ -388,9 +388,9 @@ const ingredientsAndContainers = [
   //SCALES
   new GameObject({
     x: 1000,
-    y: 890,
-    width: 95,
-    height: 140,
+    y: 920,
+    width: 130,
+    height: 200,
     color: "#3a2301",
 
     type: "ingredient",
@@ -401,9 +401,9 @@ const ingredientsAndContainers = [
 
     interactZone: {
       offsetX: 0,
-      offsetY: -20,
-      width: 95,
-      height: 80,
+      offsetY: -50,
+      width: 130,
+      height: 100,
     },
 
     hitbox: {
@@ -419,9 +419,9 @@ const ingredientsAndContainers = [
   //FIGS
   new GameObject({
     x: 1160,
-    y: 830,
-    width: 130,
-    height: 190,
+    y: 880,
+    width: 170,
+    height: 240,
     color: "#3a2301",
 
     type: "ingredient",
@@ -449,10 +449,10 @@ const ingredientsAndContainers = [
 
   //ROUND CONTAINERS
   new GameObject({
-    x: 70,
+    x: 10,
     y: 390,
-    width: 120,
-    height: 120,
+    width: 170,
+    height: 170,
     color: "#058ec4",
 
     type: "container",
@@ -465,8 +465,8 @@ const ingredientsAndContainers = [
     interactZone: {
       offsetX: 120,
       offsetY: 0,
-      width: 150,
-      height: 120,
+      width: 190,
+      height: 170,
     },
 
     hitbox: {
@@ -479,10 +479,10 @@ const ingredientsAndContainers = [
 
   //CUBIC CONTAINERS
   new GameObject({
-    x: 60,
-    y: 630,
-    width: 120,
-    height: 120,
+    x: 0,
+    y: 570,
+    width: 170,
+    height: 170,
     color: "#05a7c4",
 
     type: "container",
@@ -494,10 +494,10 @@ const ingredientsAndContainers = [
     sortOffset: 1000,
 
     interactZone: {
-      offsetX: 120,
+      offsetX: 130,
       offsetY: 0,
-      width: 150,
-      height: 120,
+      width: 190,
+      height: 170,
     },
 
     hitbox: {
@@ -510,10 +510,10 @@ const ingredientsAndContainers = [
 
   //TRASHCAN
   new GameObject({
-    x: 300,
+    x: 270,
     y: 900,
-    width: 160,
-    height: 260,
+    width: 190,
+    height: 290,
 
     color: "gray",
 
@@ -526,14 +526,14 @@ const ingredientsAndContainers = [
     interactZone: {
       offsetX: 0,
       offsetY: -20,
-      width: 160,
+      width: 190,
       height: 100,
     },
 
     hitbox: {
       offsetX: 0,
       offsetY: 80,
-      width: 160,
+      width: 190,
       height: 120,
     },
   }),
@@ -542,9 +542,9 @@ const ingredientsAndContainers = [
 const tables = [
   //LEFT TABLE
   new GameObject({
-    x: 0,
+    x: -70,
     y: 340,
-    width: 250,
+    width: 320,
     height: 640,
     color: "#a09797",
 
@@ -553,16 +553,16 @@ const tables = [
     hitbox: {
       offsetX: -10,
       offsetY: 80,
-      width: 250,
+      width: 320,
       height: 350,
     },
   }),
 
   //RIGHT TABLE
   new GameObject({
-    x: 1670,
+    x: 1640,
     y: 340,
-    width: 250,
+    width: 320,
     height: 640,
     color: "#a09797",
 
@@ -578,16 +578,16 @@ const tables = [
 
   //BOTTOM TABLE
   new GameObject({
-    x: 540,
+    x: 520,
     y: 940,
-    width: 800,
-    height: 300,
+    width: 860,
+    height: 350,
     color: "#a09797",
 
     hitbox: {
       offsetX: 15,
-      offsetY: 30,
-      width: 770,
+      offsetY: 40,
+      width: 820,
       height: 100,
     },
 
@@ -596,17 +596,17 @@ const tables = [
 
   //CENTER TABLE
   new GameObject({
-    x: 610,
+    x: 545,
     y: 470,
-    width: 650,
-    height: 330,
+    width: 800,
+    height: 400,
     color: "#a09797",
 
     hitbox: {
       offsetX: 3,
       offsetY: 50,
-      width: 640,
-      height: 40,
+      width: 789,
+      height: 60,
     },
 
     sprite: centerTableImg,

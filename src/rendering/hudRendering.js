@@ -6,11 +6,6 @@ import gameData from "../data/gameData.js";
 export function drawHUD(ctx, canvas) {
   ctx.setTransform(1, 0, 0, 1, 0, 0);
 
-  // TOP BAR
-
-  ctx.fillStyle = "rgba(0, 0, 0, 0.4)";
-  ctx.fillRect(0, 0, canvas.width, 90);
-
   // ESSENCE TEXT
 
   ctx.fillStyle = "white";
