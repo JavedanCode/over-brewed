@@ -27,6 +27,18 @@ export function getSettingsButton(canvas) {
   };
 }
 
+export function getHowToPlayButton(canvas) {
+  const width = 200;
+  const height = 60;
+
+  return {
+    x: canvas.width / 2 - width / 2,
+    y: canvas.height / 2 + 210,
+    width,
+    height,
+  };
+}
+
 export function drawMenu(ctx, canvas, mouseX, mouseY) {
   ctx.setTransform(1, 0, 0, 1, 0, 0);
 
@@ -59,7 +71,7 @@ export function drawMenu(ctx, canvas, mouseX, mouseY) {
 
   ctx.fillRect(button.x, button.y, button.width, button.height);
 
-  //SETTINGS BUTTON
+  // SETTINGS BUTTON
 
   const settingsButton = getSettingsButton(canvas);
 
@@ -84,6 +96,33 @@ export function drawMenu(ctx, canvas, mouseX, mouseY) {
     "Settings",
     settingsButton.x + settingsButton.width / 2,
     settingsButton.y + settingsButton.height / 2
+  );
+
+  // HOW TO PLAY BUTTON
+
+  const howToPlayButton = getHowToPlayButton(canvas);
+
+  const hoveredHowTo =
+    mouseX >= howToPlayButton.x &&
+    mouseX <= howToPlayButton.x + howToPlayButton.width &&
+    mouseY >= howToPlayButton.y &&
+    mouseY <= howToPlayButton.y + howToPlayButton.height;
+
+  ctx.fillStyle = hoveredHowTo ? "#7a52b3" : "#5b3c88";
+
+  ctx.fillRect(
+    howToPlayButton.x,
+    howToPlayButton.y,
+    howToPlayButton.width,
+    howToPlayButton.height
+  );
+
+  ctx.fillStyle = "white";
+
+  ctx.fillText(
+    "How To Play",
+    howToPlayButton.x + howToPlayButton.width / 2,
+    howToPlayButton.y + howToPlayButton.height / 2
   );
 
   // TEXT

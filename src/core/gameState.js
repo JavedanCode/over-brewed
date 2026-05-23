@@ -10,14 +10,9 @@ let currentGameState = GAME_STATES.MENU;
 
 let settingsReturnState = GAME_STATES.MENU;
 
-export function getGameState() {
-  return currentGameState;
-}
+let howToPlayReturnState = GAME_STATES.MENU;
 
-export function setGameState(newState) {
-  currentGameState = newState;
-}
-
+// SETTINGS
 export function openSettings(returnState) {
   settingsReturnState = returnState;
   currentGameState = GAME_STATES.SETTINGS;
@@ -25,4 +20,23 @@ export function openSettings(returnState) {
 
 export function getSettingsReturnState() {
   return settingsReturnState;
+}
+// HOW TO PLAY
+export function openHowToPlay(returnState) {
+  howToPlayReturnState = returnState;
+  currentGameState = GAME_STATES.HOW_TO_PLAY;
+}
+
+export function getHowToPlayReturnState() {
+  return howToPlayReturnState;
+}
+
+// GET/SET
+
+export function getGameState() {
+  return currentGameState;
+}
+
+export function setGameState(newState) {
+  currentGameState = newState;
 }

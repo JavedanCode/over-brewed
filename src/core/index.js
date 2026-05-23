@@ -7,7 +7,9 @@ import { clearJustPressed } from "../logic/input.js";
 import {
   GAME_STATES,
   getGameState,
+  getHowToPlayReturnState,
   getSettingsReturnState,
+  openHowToPlay,
   openSettings,
   setGameState,
 } from "./gameState.js";
@@ -15,6 +17,7 @@ import {
   drawMenu,
   getStartButton,
   getSettingsButton,
+  getHowToPlayButton,
 } from "../rendering/menuRenderer.js";
 import {
   drawSettings,
@@ -22,6 +25,10 @@ import {
   getMusicSlider,
   getSfxSlider,
 } from "../rendering/settingsRenderer.js";
+import {
+  drawHowToPlay,
+  getHowToPlayBackButton,
+} from "../rendering/howToPlayRenderer.js";
 
 const { canvas, ctx } = Canvas();
 
@@ -60,6 +67,12 @@ function handleMenuClick(mouseX, mouseY) {
   if (pointInRect(mouseX, mouseY, settingsButton)) {
     openSettings(GAME_STATES.MENU);
   }
+
+  const howToPlayButton = getHowToPlayButton(canvas);
+
+  if (pointInRect(mouseX, mouseY, howToPlayButton)) {
+    openHowToPlay(GAME_STATES.MENU);
+  }
 }
 // SETTINGS HANDLER
 function handleSettingsClick(mouseX, mouseY) {
@@ -85,6 +98,15 @@ function handleSettingsClick(mouseX, mouseY) {
   }
 }
 
+// HOW TO PLAY HANDLER
+function handleHowToPlayClick(mouseX, mouseY) {
+  const backButton = getHowToPlayBackButton(canvas);
+
+  if (pointInRect(mouseX, mouseY, backButton)) {
+    setGameState(getHowToPlayReturnState());
+  }
+}
+
 canvas.addEventListener("click", (e) => {
   const rect = canvas.getBoundingClientRect();
 
@@ -100,6 +122,10 @@ canvas.addEventListener("click", (e) => {
 
     case GAME_STATES.SETTINGS:
       handleSettingsClick(mouseX, mouseY);
+      break;
+
+    case GAME_STATES.HOW_TO_PLAY:
+      handleHowToPlayClick(mouseX, mouseY);
       break;
   }
 });
@@ -124,6 +150,10 @@ function loop() {
 
     case GAME_STATES.SETTINGS:
       drawSettings(ctx, canvas, mouseX, mouseY);
+      break;
+
+    case GAME_STATES.HOW_TO_PLAY:
+      drawHowToPlay(ctx, canvas, mouseX, mouseY);
       break;
   }
 
