@@ -58,4 +58,24 @@ export default (ctx, canvas) => {
       station.progressRenderer(ctx, station);
     }
   });
+
+  // objects.forEach((obj) => {
+  //   const hb = obj.getHitbox();
+  //   ctx.strokeStyle = "red";
+  //   ctx.lineWidth = 1;
+  //   ctx.strokeRect(hb.x, hb.y, hb.width, hb.height);
+  // });
+
+  // const hb = player.getHitbox();
+  // ctx.strokeStyle = "red";
+  // ctx.lineWidth = 1;
+  // ctx.strokeRect(hb.x, hb.y, hb.width, hb.height);
+
+  // objects.forEach((obj) => {
+  //   const zone = obj.getInteractZone();
+  //   if (!zone) return;
+
+  //   ctx.strokeStyle = "yellow";
+  //   ctx.strokeRect(zone.x, zone.y, zone.width, zone.height);
+  // });
 };

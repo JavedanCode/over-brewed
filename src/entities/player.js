@@ -194,8 +194,8 @@ class player_inventory {
 const player = new Player({
   x: 1400,
   y: 600,
-  width: 160,
-  height: 260,
+  width: 210,
+  height: 330,
   color: "blue",
   maxSpeed: 4.5,
 
@@ -209,14 +209,14 @@ const player = new Player({
   hitbox: {
     offsetX: 0,
     offsetY: 0,
-    width: 160,
-    height: 260,
+    width: 210,
+    height: 330,
   },
 
   animations: {
     idle: {
       row: 0,
-      frames: 8,
+      frames: 14,
     },
 
     walkDown: {
