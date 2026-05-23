@@ -3,7 +3,7 @@ import Canvas from "./canvas.js";
 import drawGame from "../rendering/drawGame.js";
 import update from "../logic/update.js";
 import settings from "../data/settings.js";
-import { clearJustPressed } from "../logic/input.js";
+import { clearJustPressed, justPressed } from "../logic/input.js";
 import {
   GAME_STATES,
   getGameState,
@@ -29,6 +29,13 @@ import {
   drawHowToPlay,
   getHowToPlayBackButton,
 } from "../rendering/howToPlayRenderer.js";
+import {
+  drawPauseMenu,
+  getResumeButton,
+  getPauseSettingsButton,
+  getPauseHowToButton,
+  getQuitButton,
+} from "../rendering/pauseRenderer.js";
 
 const { canvas, ctx } = Canvas();
 
@@ -107,6 +114,36 @@ function handleHowToPlayClick(mouseX, mouseY) {
   }
 }
 
+// PAUSE HANDLER
+function handlePauseClick(mouseX, mouseY) {
+  const resumeButton = getResumeButton(canvas);
+
+  if (pointInRect(mouseX, mouseY, resumeButton)) {
+    setGameState(GAME_STATES.PLAYING);
+    return;
+  }
+
+  const settingsButton = getPauseSettingsButton(canvas);
+
+  if (pointInRect(mouseX, mouseY, settingsButton)) {
+    openSettings(GAME_STATES.PAUSED);
+    return;
+  }
+
+  const howToButton = getPauseHowToButton(canvas);
+
+  if (pointInRect(mouseX, mouseY, howToButton)) {
+    openHowToPlay(GAME_STATES.PAUSED);
+    return;
+  }
+
+  const quitButton = getQuitButton(canvas);
+
+  if (pointInRect(mouseX, mouseY, quitButton)) {
+    setGameState(GAME_STATES.MENU);
+  }
+}
+
 canvas.addEventListener("click", (e) => {
   const rect = canvas.getBoundingClientRect();
 
@@ -126,6 +163,10 @@ canvas.addEventListener("click", (e) => {
 
     case GAME_STATES.HOW_TO_PLAY:
       handleHowToPlayClick(mouseX, mouseY);
+      break;
+
+    case GAME_STATES.PAUSED:
+      handlePauseClick(mouseX, mouseY);
       break;
   }
 });
@@ -154,6 +195,15 @@ function loop() {
 
     case GAME_STATES.HOW_TO_PLAY:
       drawHowToPlay(ctx, canvas, mouseX, mouseY);
+      break;
+
+    case GAME_STATES.PAUSED:
+      if (justPressed["escape"]) {
+        setGameState(GAME_STATES.PLAYING);
+      }
+
+      drawGame(ctx, canvas);
+      drawPauseMenu(ctx, canvas, mouseX, mouseY);
       break;
   }
 
