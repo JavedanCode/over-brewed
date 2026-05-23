@@ -19,15 +19,15 @@ export function drawRecipesMenu(ctx, canvas) {
   // recipes
 
   const spacing = 40;
-  const width = 350;
-  const height = 500;
+  const width = 420;
+  const height = 490;
 
   const recipes = Object.values(recipeImages);
 
   const totalWidth = recipes.length * width + (recipes.length - 1) * spacing;
 
   let x = canvas.width / 2 - totalWidth / 2;
-  const y = 180;
+  const y = 150;
 
   recipes.forEach((recipe) => {
     ctx.drawImage(recipe, x, y, width, height);

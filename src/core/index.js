@@ -215,7 +215,7 @@ function loop() {
       break;
 
     case GAME_STATES.RECIPES:
-      if (justPressed["r"]) {
+      if (justPressed["r"] || justPressed["escape"]) {
         setGameState(GAME_STATES.PLAYING);
       }
       drawGame(ctx, canvas);
