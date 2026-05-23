@@ -5,6 +5,8 @@ import {
   RECIPES,
   OVERBREWED,
 } from "../data/items.js";
+import { activeOrders } from "../data/orders.js";
+import { INGREDIENTS } from "../data/items.js";
 
 // Is this a valid ingredient for the task
 const canAction = (ing) => {
@@ -61,6 +63,56 @@ class Station {
       this.inventory = 0;
       this.duration = 0;
       this.progress = 0;
+    };
+  }
+}
+
+class DeliveryStation {
+  constructor() {
+    this.canMoveWhileWorking = false;
+
+    this.canPlace = (playerInv) => {
+      const potion = playerInv.glass;
+
+      return (
+        potion !== 0 &&
+        potion !== INGREDIENTS.RoundGlass &&
+        potion !== INGREDIENTS.CubicGlass &&
+        potion !== INGREDIENTS.OverbrewedRound &&
+        potion !== INGREDIENTS.OverbrewedCubic
+      );
+    };
+
+    this.place = (playerInv) => {};
+
+    this.canTake = () => false;
+
+    this.canWork = () => false;
+
+    this.place = (playerInv) => {
+      const deliveredPotion = playerInv.glass;
+
+      const orderIndex = activeOrders.indexOf(deliveredPotion);
+
+      if (orderIndex !== -1) {
+        console.log("Correct potion delivered!");
+
+        activeOrders.splice(orderIndex, 1);
+
+        // later:
+        // add score
+        // add essence
+        // add sound
+        // particles
+      } else {
+        console.log("Wrong potion!");
+      }
+
+      playerInv.glass = 0;
+    };
+
+    this.doWork = (timeStep) => {
+      return;
     };
   }
 }
@@ -207,4 +259,4 @@ class TrashCan {
   }
 }
 
-export { Cauldron, Station, Ingredient, Glass, TrashCan };
+export { Cauldron, Station, Ingredient, Glass, TrashCan, DeliveryStation };

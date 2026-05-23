@@ -193,10 +193,10 @@ const player = new Player({
   width: 160,
   height: 260,
   color: "blue",
-  maxSpeed: 3,
+  maxSpeed: 4.5,
 
   //CHANGE THESE TO CHANGE THE CURVES
-  acceleration: 0.3 / 17, // divided by 17 due to expecting ~17ms per frame
+  acceleration: 0.4 / 17, // divided by 17 due to expecting ~17ms per frame
   deceleration: 0.2 / 17,
 
   velocityX: 0,

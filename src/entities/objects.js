@@ -20,7 +20,14 @@ import {
 } from "../data/assets.js";
 import GameObject from "./gameObject.js";
 
-import { Cauldron, Station, Ingredient, Glass, TrashCan } from "./station.js";
+import {
+  Cauldron,
+  Station,
+  Ingredient,
+  Glass,
+  TrashCan,
+  DeliveryStation,
+} from "./station.js";
 import { CRUSH, CUT, INGREDIENTS } from "../data/items.js";
 
 import {
@@ -195,7 +202,7 @@ const stations = [
     sprite: cauldronImg,
   }),
 
-  //BELL 1
+  //BELL
   new GameObject({
     x: 1750,
     y: 500,
@@ -208,7 +215,7 @@ const stations = [
     type: "bell",
 
     //NEED TO CHANGE THIS TO DELIVERY STATION LATER
-    station: new Cauldron(),
+    station: new DeliveryStation(),
 
     sprite: bellImg,
 
