@@ -6,7 +6,6 @@ import {
   OVERBREWED,
 } from "../data/items.js";
 import { activeOrders } from "../data/orders.js";
-import { INGREDIENTS } from "../data/items.js";
 import gameData from "../data/gameData.js";
 
 // Is this a valid ingredient for the task

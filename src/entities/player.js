@@ -75,7 +75,7 @@ class Player {
     this.frameHeight = frameHeight || 920;
 
     //LIVES
-    this.lives = 3;
+    this.lives = lives || 3;
   }
 
   getHitbox() {
@@ -242,6 +242,8 @@ const player = new Player({
   sprite: snapeImg,
 
   inventory: new player_inventory(),
+
+  lives: 3,
 });
 
 export default player;
