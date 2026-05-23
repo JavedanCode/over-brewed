@@ -116,6 +116,9 @@ export default function update(timeStep) {
     setGameState(GAME_STATES.PAUSED);
     return;
   }
+  if (justPressed["r"]) {
+    setGameState(GAME_STATES.RECIPES);
+  }
   // update Stations
   for (let st of stations) {
     st.station.doWork(timeStep);

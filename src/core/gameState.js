@@ -4,6 +4,7 @@ export const GAME_STATES = {
   PAUSED: "paused",
   HOW_TO_PLAY: "how_to_play",
   SETTINGS: "settings",
+  RECIPES: "recipes",
 };
 
 let currentGameState = GAME_STATES.MENU;

@@ -36,7 +36,9 @@ import {
   getPauseHowToButton,
   getQuitButton,
 } from "../rendering/pauseRenderer.js";
+
 import { drawHUD } from "../rendering/hudRendering.js";
+import { drawRecipesMenu } from "../rendering/recipesRenderer.js";
 
 const { canvas, ctx } = Canvas();
 
@@ -210,6 +212,15 @@ function loop() {
       drawHUD(ctx, canvas);
       drawPauseMenu(ctx, canvas, mouseX, mouseY);
 
+      break;
+
+    case GAME_STATES.RECIPES:
+      if (justPressed["r"]) {
+        setGameState(GAME_STATES.PLAYING);
+      }
+      drawGame(ctx, canvas);
+      drawHUD(ctx, canvas);
+      drawRecipesMenu(ctx, canvas);
       break;
   }
 
