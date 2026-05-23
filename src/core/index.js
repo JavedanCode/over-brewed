@@ -36,6 +36,7 @@ import {
   getPauseHowToButton,
   getQuitButton,
 } from "../rendering/pauseRenderer.js";
+import { drawHUD } from "../rendering/hudRendering.js";
 
 const { canvas, ctx } = Canvas();
 
@@ -186,7 +187,10 @@ function loop() {
 
     case GAME_STATES.PLAYING:
       update(timeStep);
+
       drawGame(ctx, canvas);
+      drawHUD(ctx, canvas);
+
       break;
 
     case GAME_STATES.SETTINGS:
@@ -203,7 +207,9 @@ function loop() {
       }
 
       drawGame(ctx, canvas);
+      drawHUD(ctx, canvas);
       drawPauseMenu(ctx, canvas, mouseX, mouseY);
+
       break;
   }
 
