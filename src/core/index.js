@@ -36,7 +36,7 @@ import {
   getPauseHowToButton,
   getQuitButton,
 } from "../rendering/pauseRenderer.js";
-
+import { drawGameOver } from "../rendering/gameOverRenderer.js";
 import { drawHUD } from "../rendering/hudRendering.js";
 import { drawRecipesMenu } from "../rendering/recipesRenderer.js";
 
@@ -221,6 +221,17 @@ function loop() {
       drawGame(ctx, canvas);
       drawHUD(ctx, canvas);
       drawRecipesMenu(ctx, canvas);
+      break;
+
+    case GAME_STATES.GAME_OVER:
+      drawGame(ctx, canvas);
+      drawHUD(ctx, canvas);
+      drawGameOver(ctx, canvas);
+
+      if (justPressed["enter"]) {
+        setGameState(GAME_STATES.MENU);
+      }
+
       break;
   }
 

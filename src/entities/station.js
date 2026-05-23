@@ -7,6 +7,7 @@ import {
 } from "../data/items.js";
 import { activeOrders } from "../data/orders.js";
 import { INGREDIENTS } from "../data/items.js";
+import gameData from "../data/gameData.js";
 
 // Is this a valid ingredient for the task
 const canAction = (ing) => {
@@ -66,7 +67,6 @@ class Station {
     };
   }
 }
-
 class DeliveryStation {
   constructor() {
     this.canMoveWhileWorking = false;
@@ -75,8 +75,6 @@ class DeliveryStation {
       return Object.values(RECIPES).includes(playerInv.glass);
     };
 
-    this.place = (playerInv) => {};
-
     this.canTake = () => false;
 
     this.canWork = () => false;
@@ -84,18 +82,16 @@ class DeliveryStation {
     this.place = (playerInv) => {
       const deliveredPotion = playerInv.glass;
 
-      const orderIndex = activeOrders.indexOf(deliveredPotion);
+      const orderIndex = activeOrders.findIndex(
+        (order) => order.recipe === deliveredPotion
+      );
 
       if (orderIndex !== -1) {
         console.log("Correct potion delivered!");
 
         activeOrders.splice(orderIndex, 1);
 
-        // later:
-        // add score
-        // add essence
-        // add sound
-        // particles
+        gameData.essence += 25;
       } else {
         console.log("Wrong potion!");
       }
@@ -103,12 +99,9 @@ class DeliveryStation {
       playerInv.glass = 0;
     };
 
-    this.doWork = (timeStep) => {
-      return;
-    };
+    this.doWork = () => {};
   }
 }
-
 class Ingredient {
   constructor(ing) {
     this.inventory = ing;
@@ -170,6 +163,7 @@ class Cauldron {
 
     this.canTake = (playerInv) =>
       !this._first_brew &&
+      this.inventory !== 0 &&
       playerInv.ingredient === 0 &&
       playerInv.hasOnlyGlass();
 

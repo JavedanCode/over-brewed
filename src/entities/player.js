@@ -27,6 +27,7 @@ class Player {
     facing,
     frameWidth,
     frameHeight,
+    lives,
   }) {
     //START POSITION AND DIMENSIONS
     this.x = x;
@@ -72,6 +73,9 @@ class Player {
 
     this.frameWidth = frameWidth || 560;
     this.frameHeight = frameHeight || 920;
+
+    //LIVES
+    this.lives = 3;
   }
 
   getHitbox() {
