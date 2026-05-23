@@ -207,9 +207,9 @@ const player = new Player({
   velocityY: 0,
 
   hitbox: {
-    offsetX: 25,
+    offsetX: 0,
     offsetY: 0,
-    width: 110,
+    width: 160,
     height: 260,
   },
 
