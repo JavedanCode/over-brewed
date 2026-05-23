@@ -1,4 +1,4 @@
-import player from "./player.js";
+import player from "../entities/player.js";
 import { checkCollision } from "./collision.js";
 
 export function getActiveInteractable(intractables) {

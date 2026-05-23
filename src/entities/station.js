@@ -4,7 +4,7 @@ import {
   BREW,
   RECIPES,
   OVERBREWED,
-} from "./items.js";
+} from "../data/items.js";
 
 // Is this a valid ingredient for the task
 const canAction = (ing) => {

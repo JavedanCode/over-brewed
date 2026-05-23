@@ -1,16 +1,16 @@
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default {
-  entry: './src/index.js',
+  entry: "./src/core/index.js",
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/template.html',
+      template: "./src/template.html",
     }),
   ],
 
@@ -18,25 +18,25 @@ export default {
     rules: [
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
         generator: {
-          filename: 'images/[name][hash][ext]',
+          filename: "images/[name][hash][ext]",
         },
       },
       {
         test: /\.html$/i,
-        use: ['html-loader'],
+        use: ["html-loader"],
       },
     ],
   },
 
   output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: "main.js",
+    path: path.resolve(__dirname, "dist"),
     clean: true,
   },
 };

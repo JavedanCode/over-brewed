@@ -1,10 +1,15 @@
 import keys from "./input.js";
-import { stations, ingredientsAndContainers, tables } from "./objects.js";
-import player from "./player.js";
+import {
+  stations,
+  ingredientsAndContainers,
+  tables,
+} from "../entities/objects.js";
+import player from "../entities/player.js";
 import { checkCollision } from "./collision.js";
 import { getActiveInteractable } from "./interaction.js";
 import { justPressed } from "./input.js";
 import { takePlace, work } from "./actions.js";
+import { GAME_STATES, setGameState } from "../core/gameState.js";
 
 const WORLD_WIDTH = 1920;
 const WORLD_HEIGHT = 1080;
@@ -107,6 +112,10 @@ function calculatePosition() {
 }
 
 export default function update(timeStep) {
+  if (justPressed["escape"]) {
+    setGameState(GAME_STATES.PAUSED);
+    return;
+  }
   // update Stations
   for (let st of stations) {
     st.station.doWork(timeStep);

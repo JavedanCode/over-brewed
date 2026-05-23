@@ -1,7 +1,11 @@
-import { ingredientsAndContainers, tables, stations } from "./objects.js";
-import player from "./player.js";
-import { getActiveInteractable } from "./interaction.js";
-import { background } from "./assets.js";
+import {
+  ingredientsAndContainers,
+  tables,
+  stations,
+} from "../entities/objects.js";
+import player from "../entities/player.js";
+import { getActiveInteractable } from "../logic/interaction.js";
+import { background } from "../data/assets.js";
 
 const CANVAS_WIDTH = 1920;
 const CANVAS_HEIGHT = 1080;

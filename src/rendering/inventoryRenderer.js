@@ -1,5 +1,5 @@
-import itemAssets from "./itemsAssets.js";
-import { getIngredientsFromMask } from "./items.js";
+import itemAssets from "../data/itemsAssets.js";
+import { getIngredientsFromMask } from "../data/items.js";
 
 export function drawSingleItem(ctx, obj) {
   const inv = obj.station.inventory;
