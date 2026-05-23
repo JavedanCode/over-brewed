@@ -4,12 +4,24 @@ const gameTitle = new Image();
 gameTitle.src = gameTitleImg;
 
 export function getStartButton(canvas) {
-  const width = 400;
-  const height = 120;
+  const width = 200;
+  const height = 60;
 
   return {
     x: canvas.width / 2 - width / 2,
     y: canvas.height / 2 + 50,
+    width,
+    height,
+  };
+}
+
+export function getSettingsButton(canvas) {
+  const width = 200;
+  const height = 60;
+
+  return {
+    x: canvas.width / 2 - width / 2,
+    y: canvas.height / 2 + 130,
     width,
     height,
   };
@@ -33,7 +45,7 @@ export function drawMenu(ctx, canvas, mouseX, mouseY) {
 
   ctx.drawImage(gameTitle, titleX, titleY, titleWidth, titleHeight);
 
-  // BUTTON
+  // START BUTTON
 
   const button = getStartButton(canvas);
 
@@ -47,11 +59,38 @@ export function drawMenu(ctx, canvas, mouseX, mouseY) {
 
   ctx.fillRect(button.x, button.y, button.width, button.height);
 
+  //SETTINGS BUTTON
+
+  const settingsButton = getSettingsButton(canvas);
+
+  const settingsHovered =
+    mouseX >= settingsButton.x &&
+    mouseX <= settingsButton.x + settingsButton.width &&
+    mouseY >= settingsButton.y &&
+    mouseY <= settingsButton.y + settingsButton.height;
+
+  ctx.fillStyle = settingsHovered ? "#7a52b3" : "#5b3c88";
+
+  ctx.fillRect(
+    settingsButton.x,
+    settingsButton.y,
+    settingsButton.width,
+    settingsButton.height
+  );
+
+  ctx.fillStyle = "white";
+
+  ctx.fillText(
+    "Settings",
+    settingsButton.x + settingsButton.width / 2,
+    settingsButton.y + settingsButton.height / 2
+  );
+
   // TEXT
 
   ctx.fillStyle = "white";
 
-  ctx.font = "50px serif";
+  ctx.font = "26px serif";
 
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";

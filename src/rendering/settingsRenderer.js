@@ -1,0 +1,115 @@
+import settings from "../data/settings.js";
+
+export function getMusicSlider(canvas) {
+  return {
+    x: canvas.width / 2 - 250,
+    y: 320,
+    width: 500,
+    height: 20,
+  };
+}
+
+export function getSfxSlider(canvas) {
+  return {
+    x: canvas.width / 2 - 250,
+    y: 470,
+    width: 500,
+    height: 20,
+  };
+}
+
+function drawSlider(ctx, x, y, width, value, label) {
+  // Label
+  ctx.fillStyle = "white";
+  ctx.font = "40px serif";
+  ctx.textAlign = "left";
+
+  ctx.fillText(label, x, y - 20);
+
+  // Background bar
+  ctx.fillStyle = "#2c2138";
+  ctx.fillRect(x, y, width, 20);
+
+  // Filled section
+  ctx.fillStyle = "#8d63cc";
+  ctx.fillRect(x, y, width * value, 20);
+
+  // Knob
+  ctx.fillStyle = "white";
+
+  ctx.beginPath();
+  ctx.arc(x + width * value, y + 10, 14, 0, Math.PI * 2);
+  ctx.fill();
+}
+
+export function getBackButton(canvas) {
+  return {
+    x: canvas.width / 2 - 50,
+    y: canvas.height / 2 + 200,
+    width: 100,
+    height: 50,
+  };
+}
+
+export function drawSettings(ctx, canvas, mouseX, mouseY) {
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "#120d18";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Title
+  ctx.fillStyle = "white";
+  ctx.font = "70px serif";
+  ctx.textAlign = "center";
+
+  ctx.fillText("Settings", canvas.width / 2, 140);
+
+  // Sliders
+  const musicSlider = getMusicSlider(canvas);
+
+  drawSlider(
+    ctx,
+    musicSlider.x,
+    musicSlider.y,
+    musicSlider.width,
+    settings.musicVolume,
+    "Music Volume"
+  );
+
+  const sfxSlider = getSfxSlider(canvas);
+
+  drawSlider(
+    ctx,
+    sfxSlider.x,
+    sfxSlider.y,
+    sfxSlider.width,
+    settings.sfxVolume,
+    "SFX Volume"
+  );
+
+  // Back Button
+  const backButton = getBackButton(canvas);
+
+  const hovered =
+    mouseX >= backButton.x &&
+    mouseX <= backButton.x + backButton.width &&
+    mouseY >= backButton.y &&
+    mouseY <= backButton.y + backButton.height;
+
+  ctx.fillStyle = hovered ? "#7a52b3" : "#5b3c88";
+
+  ctx.fillRect(backButton.x, backButton.y, backButton.width, backButton.height);
+
+  ctx.fillStyle = "white";
+  ctx.font = "28px serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  ctx.fillText(
+    "Back",
+    backButton.x + backButton.width / 2,
+    backButton.y + backButton.height / 2
+  );
+}
