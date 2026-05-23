@@ -4,18 +4,7 @@ export const activeOrders = [
   {
     recipe: RECIPES.LovePotion,
     timeRemaining: 35000,
-    maxTime: 35000,
-  },
-
-  {
-    recipe: RECIPES.LovePotion,
-    timeRemaining: 35000,
-    maxTime: 35000,
-  },
-  {
-    recipe: RECIPES.LovePotion,
-    timeRemaining: 35000,
-    maxTime: 35000,
+    maxTime: 45000,
   },
 ];
 

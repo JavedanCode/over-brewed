@@ -86,13 +86,10 @@ class DeliveryStation {
       );
 
       if (orderIndex !== -1) {
-        console.log("Correct potion delivered!");
-
         activeOrders.splice(orderIndex, 1);
-
         gameData.essence += 25;
       } else {
-        console.log("Wrong potion!");
+        gameData.essence++;
       }
 
       playerInv.glass = 0;
