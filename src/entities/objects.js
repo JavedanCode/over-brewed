@@ -120,7 +120,7 @@ const stations = [
 
     interactZone: {
       offsetX: 0,
-      offsetY: 180,
+      offsetY: 30,
       width: 150,
       height: 60,
     },
@@ -152,7 +152,7 @@ const stations = [
 
     interactZone: {
       offsetX: 0,
-      offsetY: 180,
+      offsetY: 30,
       width: 150,
       height: 60,
     },
@@ -184,7 +184,7 @@ const stations = [
 
     interactZone: {
       offsetX: 0,
-      offsetY: 180,
+      offsetY: 30,
       width: 150,
       height: 60,
     },
@@ -586,7 +586,7 @@ const tables = [
 
     hitbox: {
       offsetX: 15,
-      offsetY: 30,
+      offsetY: 40,
       width: 820,
       height: 100,
     },

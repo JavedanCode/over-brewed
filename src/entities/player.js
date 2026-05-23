@@ -210,7 +210,7 @@ const player = new Player({
     offsetX: 0,
     offsetY: 0,
     width: 210,
-    height: 330,
+    height: 310,
   },
 
   animations: {
