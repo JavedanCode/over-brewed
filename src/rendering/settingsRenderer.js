@@ -1,4 +1,5 @@
 import settings from "../data/settings.js";
+import { drawButton } from "../utils/uiHelper.js";
 
 export function getMusicSlider(canvas) {
   return {
@@ -90,26 +91,5 @@ export function drawSettings(ctx, canvas, mouseX, mouseY) {
   );
 
   // Back Button
-  const backButton = getBackButton(canvas);
-
-  const hovered =
-    mouseX >= backButton.x &&
-    mouseX <= backButton.x + backButton.width &&
-    mouseY >= backButton.y &&
-    mouseY <= backButton.y + backButton.height;
-
-  ctx.fillStyle = hovered ? "#7a52b3" : "#5b3c88";
-
-  ctx.fillRect(backButton.x, backButton.y, backButton.width, backButton.height);
-
-  ctx.fillStyle = "white";
-  ctx.font = "28px serif";
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-
-  ctx.fillText(
-    "Back",
-    backButton.x + backButton.width / 2,
-    backButton.y + backButton.height / 2
-  );
+  drawButton(ctx, mouseX, mouseY, getBackButton(canvas), "Back");
 }

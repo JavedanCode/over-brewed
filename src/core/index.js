@@ -1,6 +1,6 @@
 import "../styles/styles.css";
 import Canvas from "./canvas.js";
-import draw from "../rendering/drawGame.js";
+import drawGame from "../rendering/drawGame.js";
 import update from "../logic/update.js";
 import settings from "../data/settings.js";
 import { clearJustPressed } from "../logic/input.js";
@@ -145,7 +145,7 @@ function loop() {
 
     case GAME_STATES.PLAYING:
       update(timeStep);
-      draw(ctx, canvas);
+      drawGame(ctx, canvas);
       break;
 
     case GAME_STATES.SETTINGS:

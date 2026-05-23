@@ -1,4 +1,5 @@
 import gameTitleImg from "../assets/logo.svg";
+import { drawButton } from "../utils/uiHelper.js";
 
 const gameTitle = new Image();
 gameTitle.src = gameTitleImg;
@@ -59,84 +60,13 @@ export function drawMenu(ctx, canvas, mouseX, mouseY) {
 
   // START BUTTON
 
-  const button = getStartButton(canvas);
-
-  const hovered =
-    mouseX >= button.x &&
-    mouseX <= button.x + button.width &&
-    mouseY >= button.y &&
-    mouseY <= button.y + button.height;
-
-  ctx.fillStyle = hovered ? "#3f174e" : "#5b3c88";
-
-  ctx.fillRect(button.x, button.y, button.width, button.height);
+  drawButton(ctx, mouseX, mouseY, getStartButton(canvas), "Start Game");
 
   // SETTINGS BUTTON
 
-  const settingsButton = getSettingsButton(canvas);
-
-  const settingsHovered =
-    mouseX >= settingsButton.x &&
-    mouseX <= settingsButton.x + settingsButton.width &&
-    mouseY >= settingsButton.y &&
-    mouseY <= settingsButton.y + settingsButton.height;
-
-  ctx.fillStyle = settingsHovered ? "#7a52b3" : "#5b3c88";
-
-  ctx.fillRect(
-    settingsButton.x,
-    settingsButton.y,
-    settingsButton.width,
-    settingsButton.height
-  );
-
-  ctx.fillStyle = "white";
-
-  ctx.fillText(
-    "Settings",
-    settingsButton.x + settingsButton.width / 2,
-    settingsButton.y + settingsButton.height / 2
-  );
+  drawButton(ctx, mouseX, mouseY, getSettingsButton(canvas), "Settings");
 
   // HOW TO PLAY BUTTON
 
-  const howToPlayButton = getHowToPlayButton(canvas);
-
-  const hoveredHowTo =
-    mouseX >= howToPlayButton.x &&
-    mouseX <= howToPlayButton.x + howToPlayButton.width &&
-    mouseY >= howToPlayButton.y &&
-    mouseY <= howToPlayButton.y + howToPlayButton.height;
-
-  ctx.fillStyle = hoveredHowTo ? "#7a52b3" : "#5b3c88";
-
-  ctx.fillRect(
-    howToPlayButton.x,
-    howToPlayButton.y,
-    howToPlayButton.width,
-    howToPlayButton.height
-  );
-
-  ctx.fillStyle = "white";
-
-  ctx.fillText(
-    "How To Play",
-    howToPlayButton.x + howToPlayButton.width / 2,
-    howToPlayButton.y + howToPlayButton.height / 2
-  );
-
-  // TEXT
-
-  ctx.fillStyle = "white";
-
-  ctx.font = "26px serif";
-
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-
-  ctx.fillText(
-    "Start Game",
-    button.x + button.width / 2,
-    button.y + button.height / 2
-  );
+  drawButton(ctx, mouseX, mouseY, getHowToPlayButton(canvas), "How To Play");
 }

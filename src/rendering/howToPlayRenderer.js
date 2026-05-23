@@ -1,3 +1,5 @@
+import { drawButton } from "../utils/uiHelper.js";
+
 export function getHowToPlayBackButton(canvas) {
   return {
     x: canvas.width / 2 - 50,
@@ -29,7 +31,7 @@ export function drawHowToPlay(ctx, canvas, mouseX, mouseY) {
   ctx.textAlign = "left";
 
   const startX = canvas.width / 2 - 350;
-  let y = 220;
+  let y = 190;
 
   const lines = [
     "WASD  - Move",
@@ -54,26 +56,5 @@ export function drawHowToPlay(ctx, canvas, mouseX, mouseY) {
 
   // BACK BUTTON
 
-  const button = getHowToPlayBackButton(canvas);
-
-  const hovered =
-    mouseX >= button.x &&
-    mouseX <= button.x + button.width &&
-    mouseY >= button.y &&
-    mouseY <= button.y + button.height;
-
-  ctx.fillStyle = hovered ? "#7a52b3" : "#5b3c88";
-
-  ctx.fillRect(button.x, button.y, button.width, button.height);
-
-  ctx.fillStyle = "white";
-  ctx.font = "28px serif";
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-
-  ctx.fillText(
-    "Back",
-    button.x + button.width / 2,
-    button.y + button.height / 2
-  );
+  drawButton(ctx, mouseX, mouseY, getHowToPlayBackButton(canvas), "Back");
 }
