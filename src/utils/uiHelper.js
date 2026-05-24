@@ -15,7 +15,7 @@ export function drawButton(ctx, mouseX, mouseY, button, text) {
   ctx.fillRect(button.x, button.y, button.width, button.height);
 
   ctx.fillStyle = "white";
-  ctx.font = "26px serif";
+  ctx.font = "40px HarryPotter";
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
 

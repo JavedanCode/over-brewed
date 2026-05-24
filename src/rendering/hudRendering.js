@@ -2,6 +2,10 @@ import { activeOrders } from "../data/orders.js";
 import itemAssets from "../data/itemsAssets.js";
 import player from "../entities/player.js";
 import gameData from "../data/gameData.js";
+import heart from "../assets/items/heart.png";
+
+const heartImg = new Image();
+heartImg.src = heart;
 
 export function drawHUD(ctx, canvas) {
   ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -9,7 +13,7 @@ export function drawHUD(ctx, canvas) {
   // ESSENCE TEXT
 
   ctx.fillStyle = "white";
-  ctx.font = "36px serif";
+  ctx.font = "36px HarryPotter";
   ctx.textAlign = "right";
   ctx.textBaseline = "middle";
 
@@ -28,7 +32,6 @@ export function drawHUD(ctx, canvas) {
   ctx.fillRect(canvas.width - 260, canvas.height - 320, 240, 280);
 
   ctx.fillStyle = "white";
-  ctx.font = "32px serif";
   ctx.textAlign = "center";
 
   ctx.fillText("Orders", canvas.width - 140, canvas.height - 280);

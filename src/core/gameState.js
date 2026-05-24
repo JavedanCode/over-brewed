@@ -8,7 +8,7 @@ export const GAME_STATES = {
   GAME_OVER: "game_over",
 };
 
-let currentGameState = GAME_STATES.MENU;
+let currentGameState = GAME_STATES.PLAYING;
 
 let settingsReturnState = GAME_STATES.MENU;
 
