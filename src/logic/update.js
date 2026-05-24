@@ -63,8 +63,8 @@ function calculateVelocity(timeStep) {
   }
 }
 
-function calculatePosition() {
-  player.x += player.velocityX;
+function calculatePosition(timeStep) {
+  player.x += player.velocityX * timeStep;
   let playerHitbox = player.getHitbox();
   objects.forEach((obj) => {
     if (checkCollision(playerHitbox, obj.getHitbox())) {
@@ -80,7 +80,7 @@ function calculatePosition() {
     }
   });
 
-  player.y += player.velocityY;
+  player.y += player.velocityY * timeStep;
   playerHitbox = player.getHitbox();
   objects.forEach((obj) => {
     if (checkCollision(playerHitbox, obj.getHitbox())) {
@@ -129,8 +129,8 @@ export default function update(timeStep) {
   updateOrders(timeStep);
 
   if (!currentInteraction) {
-    calculateVelocity(timeStep);
-    calculatePosition();
+    calculateVelocity(timeStep / 16);
+    calculatePosition(timeStep / 16);
 
     if (justPressed["e"]) {
       const active = getActiveInteractable([
