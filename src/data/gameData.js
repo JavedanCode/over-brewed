@@ -8,12 +8,10 @@ function makeDelivery() {
   gameData.essence += 25;
 
   currentState.ordersFullfilled++;
-  if (
-    currentState.ordersFullfilled >=
-    gameData.heat * defaultState.ordersPerHeat
-  ) {
+  if (currentState.ordersFullfilled >= currentState.nextHeat) {
     // increase heat
     gameData.heat++;
+    currentState.nextHeat += gameData.heat + 1;
     currentState.baseTime = defaultState.baseTime / (1 + gameData.heat);
     currentState.timeToNextOrder =
       defaultState.orderAdditionRatio * currentState.baseTime;
@@ -34,7 +32,6 @@ const defaultState = Object.freeze({
   baseTime: 8000, // in ms
   orderAdditionRatio: 8,
   orderDurationRatio: 12,
-  ordersPerHeat: 3,
 });
 
 const currentState = {
@@ -42,6 +39,7 @@ const currentState = {
   timeToNextOrder:
     (defaultState.orderAdditionRatio * defaultState.baseTime) / 2,
   ordersFullfilled: 0,
+  nextHeat: gameData.heat + 1,
 };
 
 function resetState() {
