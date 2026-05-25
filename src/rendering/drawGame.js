@@ -59,6 +59,7 @@ export default (ctx, canvas) => {
     }
   });
 
+  //DEBUG CODE FOR HITBOXES AND INTERACT ZONES
   // objects.forEach((obj) => {
   //   const hb = obj.getHitbox();
   //   ctx.strokeStyle = "red";

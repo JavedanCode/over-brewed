@@ -40,9 +40,9 @@ import {
 } from "../rendering/progressRenderer.js";
 
 const stations = [
-  //CUTTING BOARD
+  //CUTTING BOARD 1
   new GameObject({
-    x: 670,
+    x: 600,
     y: 500,
     width: 190,
     height: 100,
@@ -74,9 +74,75 @@ const stations = [
     },
   }),
 
-  //CRUSHING STATION
+  //CUTTING BOARD 2
   new GameObject({
-    x: 1050,
+    x: 800,
+    y: 500,
+    width: 190,
+    height: 100,
+    color: "#6805c4",
+
+    sortOffset: 310,
+
+    type: "cutting",
+
+    hitbox: {
+      offsetX: 20000,
+      offsetY: 0,
+      width: 0,
+      height: 0,
+    },
+
+    station: new Station(CUT),
+
+    inventoryRenderer: drawSingleItem,
+    progressRenderer: drawProgressBar,
+
+    sprite: cuttingImg,
+
+    interactZone: {
+      offsetX: 0,
+      offsetY: -90,
+      width: 190,
+      height: 230,
+    },
+  }),
+
+  //CRUSHING STATION 1
+  new GameObject({
+    x: 1000,
+    y: 470,
+    width: 120,
+    height: 120,
+    color: "#05c46b",
+
+    sortOffset: 310,
+
+    sprite: crushStationImg,
+
+    hitbox: {
+      offsetX: 20000,
+      offsetY: 0,
+      width: 0,
+      height: 0,
+    },
+
+    station: new Station(CRUSH),
+
+    inventoryRenderer: drawSingleItem,
+    progressRenderer: drawProgressBar,
+
+    interactZone: {
+      offsetX: 0,
+      offsetY: -70,
+      width: 120,
+      height: 230,
+    },
+  }),
+
+  //CRUSHING STATION 2
+  new GameObject({
+    x: 1140,
     y: 470,
     width: 120,
     height: 120,
@@ -108,7 +174,7 @@ const stations = [
 
   //CAULDRON 1
   new GameObject({
-    x: 280,
+    x: 400,
     y: 100,
     width: 200,
     height: 240,
@@ -126,9 +192,9 @@ const stations = [
     },
 
     hitbox: {
-      offsetX: 0,
+      offsetX: -200,
       offsetY: 30,
-      width: 150,
+      width: 500,
       height: 10,
     },
 
@@ -140,39 +206,7 @@ const stations = [
 
   //CAULDRON 2
   new GameObject({
-    x: 520,
-    y: 100,
-    width: 200,
-    height: 240,
-    color: "#3d3131",
-
-    type: "cauldron",
-
-    station: new Cauldron(),
-
-    interactZone: {
-      offsetX: 0,
-      offsetY: 30,
-      width: 150,
-      height: 60,
-    },
-
-    hitbox: {
-      offsetX: 0,
-      offsetY: 30,
-      width: 150,
-      height: 10,
-    },
-
-    inventoryRenderer: drawCauldronItems,
-    progressRenderer: drawCauldronProgress,
-
-    sprite: cauldronImg,
-  }),
-
-  //CAULDRON 3
-  new GameObject({
-    x: 760,
+    x: 700,
     y: 100,
     width: 200,
     height: 240,
@@ -603,9 +637,9 @@ const tables = [
     color: "#a09797",
 
     hitbox: {
-      offsetX: 3,
+      offsetX: 10,
       offsetY: 50,
-      width: 789,
+      width: 780,
       height: 60,
     },
 
