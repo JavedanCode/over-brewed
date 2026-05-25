@@ -68,7 +68,7 @@ const RECIPES = {
       INGREDIENTS.BrewedCrushedShrivelfig |
       INGREDIENTS.BrewedCutDragonScales |
       INGREDIENTS.CubicGlass,
-    count: 3,
+    count: 5,
   },
 
   PotionofAllPotential: {
@@ -79,7 +79,7 @@ const RECIPES = {
       INGREDIENTS.BrewedCutShrivelfig |
       INGREDIENTS.BrewedAsphodelPetals |
       INGREDIENTS.RoundGlass,
-    count: 4,
+    count: 6,
   },
   LovePotion: {
     recipe:
@@ -87,7 +87,7 @@ const RECIPES = {
       INGREDIENTS.BrewedCrushedAsphodelPetals |
       INGREDIENTS.BrewedCrushedShrivelfig |
       INGREDIENTS.CubicGlass,
-    count: 2,
+    count: 3,
   },
   ScreamingPotion: {
     recipe:
@@ -105,7 +105,7 @@ const RECIPES = {
       INGREDIENTS.BrewedCutAsphodelPetals |
       INGREDIENTS.BrewedShrivelfig |
       INGREDIENTS.CubicGlass,
-    count: 4,
+    count: 5,
   },
   WeaknessPotion: {
     recipe:
@@ -114,7 +114,7 @@ const RECIPES = {
       INGREDIENTS.BrewedCrushedMandrake |
       INGREDIENTS.BrewedCutDragonScales |
       INGREDIENTS.RoundGlass,
-    count: 3,
+    count: 4,
   },
 };
 

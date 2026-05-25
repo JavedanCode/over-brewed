@@ -15,6 +15,8 @@ function makeDelivery() {
     // increase heat
     gameData.heat++;
     currentState.baseTime = defaultState.baseTime / (1 + gameData.heat);
+    currentState.timeToNextOrder =
+      defaultState.orderAdditionRatio * currentState.baseTime;
   }
 }
 function addOrder(recipe) {
@@ -29,15 +31,16 @@ function addOrder(recipe) {
 }
 
 const defaultState = Object.freeze({
-  baseTime: 15000, // in ms
-  orderAdditionRatio: 7,
-  orderDurationRatio: 10,
+  baseTime: 10000, // in ms
+  orderAdditionRatio: 8,
+  orderDurationRatio: 12,
   ordersPerHeat: 3,
 });
 
 const currentState = {
   baseTime: defaultState.baseTime / (1 + gameData.heat),
-  timeToNextOrder: defaultState.orderAdditionRatio * defaultState.baseTime,
+  timeToNextOrder:
+    (defaultState.orderAdditionRatio * defaultState.baseTime) / 2,
   ordersFullfilled: 0,
 };
 

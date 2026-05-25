@@ -39,7 +39,7 @@ class Station {
     this.canWork = () => canAction(this.inventory) && !this._work_lock;
     this.startWorking = (baseTime) => {
       this._work_lock = true;
-      this.duration = baseTime;
+      this.duration = baseTime / 2;
     };
     this.doWork = (timeStep) => {
       if (this._work_lock) {
@@ -197,7 +197,7 @@ class Cauldron {
       this.duration === 0 && this._get_base(this.inventory) !== 0;
 
     this.startWorking = (baseTime) => {
-      this.duration = 2 * baseTime;
+      this.duration = 3 * baseTime;
       this._first_brew = true;
     };
 
