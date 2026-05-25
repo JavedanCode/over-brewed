@@ -1,7 +1,7 @@
 import "../styles/styles.css";
 import Canvas from "./canvas.js";
 import drawGame from "../rendering/drawGame.js";
-import update from "../logic/update.js";
+import { update, resetGame } from "../logic/update.js";
 import settings from "../data/settings.js";
 import { clearJustPressed, justPressed } from "../logic/input.js";
 import {
@@ -66,20 +66,18 @@ function pointInRect(x, y, rect) {
 // MENU HANDLER
 function handleMenuClick(mouseX, mouseY) {
   const startButton = getStartButton(canvas);
-
   if (pointInRect(mouseX, mouseY, startButton)) {
+    resetGame();
     setGameState(GAME_STATES.PLAYING);
     return;
   }
 
   const settingsButton = getSettingsButton(canvas);
-
   if (pointInRect(mouseX, mouseY, settingsButton)) {
     openSettings(GAME_STATES.MENU);
   }
 
   const howToPlayButton = getHowToPlayButton(canvas);
-
   if (pointInRect(mouseX, mouseY, howToPlayButton)) {
     openHowToPlay(GAME_STATES.MENU);
   }
@@ -87,23 +85,18 @@ function handleMenuClick(mouseX, mouseY) {
 // SETTINGS HANDLER
 function handleSettingsClick(mouseX, mouseY) {
   const backButton = getBackButton(canvas);
-
   if (pointInRect(mouseX, mouseY, backButton)) {
     setGameState(getSettingsReturnState());
   }
 
   const musicSlider = getMusicSlider(canvas);
-
   if (pointInRect(mouseX, mouseY, musicSlider)) {
     settings.musicVolume = (mouseX - musicSlider.x) / musicSlider.width;
-
     settings.musicVolume = Math.max(0, Math.min(1, settings.musicVolume));
   }
   const sfxSlider = getSfxSlider(canvas);
-
   if (pointInRect(mouseX, mouseY, sfxSlider)) {
     settings.sfxVolume = (mouseX - sfxSlider.x) / sfxSlider.width;
-
     settings.sfxVolume = Math.max(0, Math.min(1, settings.sfxVolume));
   }
 }
@@ -111,7 +104,6 @@ function handleSettingsClick(mouseX, mouseY) {
 // HOW TO PLAY HANDLER
 function handleHowToPlayClick(mouseX, mouseY) {
   const backButton = getHowToPlayBackButton(canvas);
-
   if (pointInRect(mouseX, mouseY, backButton)) {
     setGameState(getHowToPlayReturnState());
   }
@@ -120,28 +112,24 @@ function handleHowToPlayClick(mouseX, mouseY) {
 // PAUSE HANDLER
 function handlePauseClick(mouseX, mouseY) {
   const resumeButton = getResumeButton(canvas);
-
   if (pointInRect(mouseX, mouseY, resumeButton)) {
     setGameState(GAME_STATES.PLAYING);
     return;
   }
 
   const settingsButton = getPauseSettingsButton(canvas);
-
   if (pointInRect(mouseX, mouseY, settingsButton)) {
     openSettings(GAME_STATES.PAUSED);
     return;
   }
 
   const howToButton = getPauseHowToButton(canvas);
-
   if (pointInRect(mouseX, mouseY, howToButton)) {
     openHowToPlay(GAME_STATES.PAUSED);
     return;
   }
 
   const quitButton = getQuitButton(canvas);
-
   if (pointInRect(mouseX, mouseY, quitButton)) {
     setGameState(GAME_STATES.MENU);
   }
@@ -154,7 +142,6 @@ canvas.addEventListener("click", (e) => {
   const mouseY = e.clientY - rect.top;
 
   const state = getGameState();
-
   switch (state) {
     case GAME_STATES.MENU:
       handleMenuClick(mouseX, mouseY);
@@ -174,14 +161,13 @@ canvas.addEventListener("click", (e) => {
   }
 });
 
-let previousFrame = Date.now();
+let previousFrame = performance.now();
 function loop() {
-  const now = Date.now();
+  const now = performance.now();
   const timeStep = now - previousFrame; // Time in milliseconds since last frame
   previousFrame = now;
 
   const state = getGameState();
-
   switch (state) {
     case GAME_STATES.MENU:
       drawMenu(ctx, canvas, mouseX, mouseY);
@@ -189,10 +175,8 @@ function loop() {
 
     case GAME_STATES.PLAYING:
       update(timeStep);
-
       drawGame(ctx, canvas);
       drawHUD(ctx, canvas);
-
       break;
 
     case GAME_STATES.SETTINGS:
@@ -207,11 +191,9 @@ function loop() {
       if (justPressed["escape"]) {
         setGameState(GAME_STATES.PLAYING);
       }
-
       drawGame(ctx, canvas);
       drawHUD(ctx, canvas);
       drawPauseMenu(ctx, canvas, mouseX, mouseY);
-
       break;
 
     case GAME_STATES.RECIPES:
@@ -227,16 +209,13 @@ function loop() {
       drawGame(ctx, canvas);
       drawHUD(ctx, canvas);
       drawGameOver(ctx, canvas);
-
       if (justPressed["enter"]) {
         setGameState(GAME_STATES.MENU);
       }
-
       break;
   }
 
   clearJustPressed();
-
   requestAnimationFrame(loop);
 }
 

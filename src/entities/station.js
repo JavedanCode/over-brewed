@@ -5,8 +5,7 @@ import {
   RECIPES,
   OVERBREWED,
 } from "../data/items.js";
-import { activeOrders } from "../data/orders.js";
-import gameData from "../data/gameData.js";
+import { gameData, activeOrders } from "../data/gameData.js";
 
 // Is this a valid ingredient for the task
 const canAction = (ing) => {
@@ -23,6 +22,13 @@ class Station {
     this._work_lock = false;
     this.duration = 0;
     this.progress = 0;
+
+    this.reset = () => {
+      this.inventory = 0;
+      this._work_lock = false;
+      this.duration = 0;
+      this.progress = 0;
+    };
 
     this.canWork = () => canAction(this.inventory) && !this._work_lock;
     this.startWorking = (baseTime) => {
@@ -66,21 +72,18 @@ class Station {
     };
   }
 }
+
 class DeliveryStation {
   constructor() {
     this.canMoveWhileWorking = false;
+    this.canTake = () => false;
+    this.canWork = () => false;
 
     this.canPlace = (playerInv) => {
       return Object.values(RECIPES).includes(playerInv.glass);
     };
-
-    this.canTake = () => false;
-
-    this.canWork = () => false;
-
     this.place = (playerInv) => {
       const deliveredPotion = playerInv.glass;
-
       const orderIndex = activeOrders.findIndex(
         (order) => order.recipe === deliveredPotion
       );
@@ -130,6 +133,14 @@ class Cauldron {
     this.inventory = 0;
     this.duration = 0;
     this.progress = 0;
+
+    this.reset = () => {
+      this.itemCount = 0;
+      this._first_brew = false;
+      this.inventory = 0;
+      this.duration = 0;
+      this.progress = 0;
+    };
 
     this.canPlace = (playerInv) => {
       if (

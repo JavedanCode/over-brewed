@@ -191,59 +191,62 @@ class player_inventory {
   }
 }
 
-const player = new Player({
-  x: 1400,
-  y: 600,
-  width: 210,
-  height: 330,
-  color: "blue",
-  maxSpeed: 4.5,
+let player;
 
-  //CHANGE THESE TO CHANGE THE CURVES
-  acceleration: 0.4 / 17, // divided by 17 due to expecting ~17ms per frame
-  deceleration: 0.2 / 17,
-
-  velocityX: 0,
-  velocityY: 0,
-
-  hitbox: {
-    offsetX: 0,
-    offsetY: 0,
+function resetPlayer() {
+  player = new Player({
+    x: 1400,
+    y: 600,
     width: 210,
-    height: 310,
-  },
+    height: 330,
+    color: "blue",
+    maxSpeed: 6,
 
-  animations: {
-    idle: {
-      row: 0,
-      frames: 14,
+    acceleration: 0.4,
+    deceleration: 0.2,
+
+    velocityX: 0,
+    velocityY: 0,
+
+    hitbox: {
+      offsetX: 0,
+      offsetY: 0,
+      width: 210,
+      height: 310,
     },
 
-    walkDown: {
-      row: 1,
-      frames: 7,
+    animations: {
+      idle: {
+        row: 0,
+        frames: 14,
+      },
+
+      walkDown: {
+        row: 1,
+        frames: 7,
+      },
+
+      walkUp: {
+        row: 2,
+        frames: 8,
+      },
+
+      walkLeft: {
+        row: 3,
+        frames: 7,
+      },
+      walkRight: {
+        row: 4,
+        frames: 7,
+      },
     },
 
-    walkUp: {
-      row: 2,
-      frames: 8,
-    },
+    sprite: snapeImg,
 
-    walkLeft: {
-      row: 3,
-      frames: 7,
-    },
-    walkRight: {
-      row: 4,
-      frames: 7,
-    },
-  },
+    inventory: new player_inventory(),
 
-  sprite: snapeImg,
+    lives: 3,
+  });
+}
 
-  inventory: new player_inventory(),
-
-  lives: 3,
-});
-
-export default player;
+export { player, resetPlayer };

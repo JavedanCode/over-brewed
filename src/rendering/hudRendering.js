@@ -1,7 +1,6 @@
-import { activeOrders } from "../data/orders.js";
 import itemAssets from "../data/itemsAssets.js";
-import player from "../entities/player.js";
-import gameData from "../data/gameData.js";
+import { player } from "../entities/player.js";
+import { gameData, activeOrders } from "../data/gameData.js";
 import heart from "../assets/items/heart.png";
 import essence from "../assets/items/essence.png";
 
