@@ -3,7 +3,7 @@ import {
   tables,
   stations,
 } from "../entities/objects.js";
-import player from "../entities/player.js";
+import { player } from "../entities/player.js";
 import { getActiveInteractable } from "../logic/interaction.js";
 import { background } from "../data/assets.js";
 

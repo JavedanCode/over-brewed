@@ -1,7 +1,7 @@
 import "../styles/styles.css";
 import Canvas from "./canvas.js";
 import drawGame from "../rendering/drawGame.js";
-import update from "../logic/update.js";
+import { update, resetGame } from "../logic/update.js";
 import settings from "../data/settings.js";
 import { clearJustPressed, justPressed } from "../logic/input.js";
 import {
@@ -67,6 +67,7 @@ function pointInRect(x, y, rect) {
 function handleMenuClick(mouseX, mouseY) {
   const startButton = getStartButton(canvas);
   if (pointInRect(mouseX, mouseY, startButton)) {
+    resetGame();
     setGameState(GAME_STATES.PLAYING);
     return;
   }

@@ -191,58 +191,62 @@ class player_inventory {
   }
 }
 
-const player = new Player({
-  x: 1400,
-  y: 600,
-  width: 210,
-  height: 330,
-  color: "blue",
-  maxSpeed: 6,
+let player;
 
-  acceleration: 0.4,
-  deceleration: 0.2,
-
-  velocityX: 0,
-  velocityY: 0,
-
-  hitbox: {
-    offsetX: 0,
-    offsetY: 0,
+function resetPlayer() {
+  player = new Player({
+    x: 1400,
+    y: 600,
     width: 210,
-    height: 310,
-  },
+    height: 330,
+    color: "blue",
+    maxSpeed: 6,
 
-  animations: {
-    idle: {
-      row: 0,
-      frames: 14,
+    acceleration: 0.4,
+    deceleration: 0.2,
+
+    velocityX: 0,
+    velocityY: 0,
+
+    hitbox: {
+      offsetX: 0,
+      offsetY: 0,
+      width: 210,
+      height: 310,
     },
 
-    walkDown: {
-      row: 1,
-      frames: 7,
+    animations: {
+      idle: {
+        row: 0,
+        frames: 14,
+      },
+
+      walkDown: {
+        row: 1,
+        frames: 7,
+      },
+
+      walkUp: {
+        row: 2,
+        frames: 8,
+      },
+
+      walkLeft: {
+        row: 3,
+        frames: 7,
+      },
+      walkRight: {
+        row: 4,
+        frames: 7,
+      },
     },
 
-    walkUp: {
-      row: 2,
-      frames: 8,
-    },
+    sprite: snapeImg,
 
-    walkLeft: {
-      row: 3,
-      frames: 7,
-    },
-    walkRight: {
-      row: 4,
-      frames: 7,
-    },
-  },
+    inventory: new player_inventory(),
 
-  sprite: snapeImg,
+    lives: 3,
+  });
+}
 
-  inventory: new player_inventory(),
-
-  lives: 3,
-});
-
-export default player;
+export { player, resetPlayer };

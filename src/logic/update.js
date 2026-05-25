@@ -1,21 +1,28 @@
 import keys from "./input.js";
+import { RECIPES } from "../data/items.js";
 import {
   stations,
   ingredientsAndContainers,
   tables,
+  resetStations,
 } from "../entities/objects.js";
-import player from "../entities/player.js";
+import { player, resetPlayer } from "../entities/player.js";
 import { checkCollision } from "./collision.js";
 import { getActiveInteractable } from "./interaction.js";
 import { justPressed } from "./input.js";
 import { takePlace, work } from "./actions.js";
 import { GAME_STATES, setGameState } from "../core/gameState.js";
-import { updateOrders } from "./ordersLogic.js";
+import {
+  activeOrders,
+  defaultState,
+  currentState,
+  resetState,
+} from "../data/gameData.js";
 
 const WORLD_WIDTH = 1920;
 const WORLD_HEIGHT = 1080;
 const objects = [...stations, ...tables, ...ingredientsAndContainers];
-let baseTime = 3000; // in ms
+
 let currentInteraction = null;
 
 function calculateVelocity(timeStep) {
@@ -112,7 +119,30 @@ function calculatePosition(timeStep) {
   }
 }
 
-export default function update(timeStep) {
+function progressOrders(timeStep) {
+  for (let i = activeOrders.length - 1; i >= 0; i--) {
+    const order = activeOrders[i];
+
+    order.timeRemaining -= timeStep;
+    if (order.timeRemaining <= 0) {
+      activeOrders.splice(i, 1);
+
+      player.lives--;
+      if (player.lives <= 0) {
+        setGameState(GAME_STATES.GAME_OVER);
+      }
+    }
+  }
+}
+function addOrder() {
+  activeOrders.push({
+    recipe: RECIPES.DragonPoison,
+    timeRemaining: currentState.baseTime * defaultState.orderDurationRatio,
+    maxTime: currentState.baseTime * defaultState.orderDurationRatio,
+  });
+}
+
+function update(timeStep) {
   if (justPressed["escape"]) {
     setGameState(GAME_STATES.PAUSED);
     return;
@@ -126,7 +156,14 @@ export default function update(timeStep) {
   }
 
   // UPDATE ORDERS
-  updateOrders(timeStep);
+  progressOrders(timeStep);
+
+  currentState.timeToNextOrder -= timeStep;
+  if (currentState.timeToNextOrder < 0) {
+    currentState.timeToNextOrder =
+      currentState.baseTime * defaultState.orderAdditionRatio;
+    addOrder();
+  }
 
   if (!currentInteraction) {
     calculateVelocity(timeStep / 16);
@@ -141,7 +178,7 @@ export default function update(timeStep) {
     }
     if (justPressed["f"]) {
       const active = getActiveInteractable(stations);
-      if (active) currentInteraction = work(active, baseTime);
+      if (active) currentInteraction = work(active, currentState.baseTime);
     }
   } else {
     if (!currentInteraction._work_lock) currentInteraction = null;
@@ -149,3 +186,14 @@ export default function update(timeStep) {
 
   player.updateAnimation();
 }
+
+function resetGame() {
+  currentInteraction = null;
+  resetState();
+  resetStations();
+  resetPlayer();
+  activeOrders.length = 0;
+  addOrder();
+}
+
+export { update, resetGame };

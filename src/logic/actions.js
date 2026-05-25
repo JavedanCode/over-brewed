@@ -1,4 +1,4 @@
-import player from "../entities/player.js";
+import { player } from "../entities/player.js";
 
 export function takePlace(obj) {
   const station = obj.station;

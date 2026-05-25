@@ -613,4 +613,8 @@ const tables = [
   }),
 ];
 
-export { ingredientsAndContainers, tables, stations };
+function resetStations() {
+  for (const st of stations) st.station.reset?.();
+}
+
+export { ingredientsAndContainers, tables, stations, resetStations };
