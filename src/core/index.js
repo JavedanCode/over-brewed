@@ -205,7 +205,7 @@ function loop() {
       if (justPressed["r"] || justPressed["escape"]) {
         setGameState(GAME_STATES.PLAYING);
       }
-      update(timeStep);
+      update(timeStep * 0.6);
       drawGame(ctx, canvas);
       drawHUD(ctx, canvas);
       drawRecipesMenu(ctx, canvas);

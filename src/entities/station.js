@@ -37,10 +37,12 @@ class Station {
     };
 
     this.canWork = () => canAction(this.inventory) && !this._work_lock;
+
     this.startWorking = (baseTime) => {
       this._work_lock = true;
-      this.duration = baseTime / 2;
+      this.duration = (baseTime * 2) / 3;
     };
+
     this.doWork = (timeStep) => {
       if (this._work_lock) {
         this.progress += timeStep;
@@ -56,8 +58,7 @@ class Station {
       playerInv.ingredient !== 0 &&
       getIndex(playerInv.ingredient) < BREW &&
       !playerInv.hasGlass() &&
-      this.inventory === 0 &&
-      canAction(playerInv.ingredient);
+      this.inventory === 0;
 
     this.place = (playerInv) => {
       this.inventory = playerInv.ingredient;
@@ -158,19 +159,17 @@ class Cauldron {
         this.duration !== 0 ||
         playerInv.hasGlass() ||
         playerInv.ingredient === 0 ||
-        this.itemCount > 4
+        this.itemCount > 4 ||
+        this._in_inventory(playerInv.ingredient)
       )
         return false;
 
       const this_base = this._get_base(this.inventory);
+      if (this_base === 0) return true;
+
       const new_base = this._get_base(playerInv.ingredient);
-      if (this_base === 0) {
-        if (new_base !== 0) return true;
-        return false;
-      } else if (new_base !== 0) {
-        return false;
-      } else if (this._in_inventory(playerInv.ingredient)) return false;
-      else return true;
+      if (new_base !== 0 && this_base !== new_base) return false;
+      return true;
     };
 
     this.place = (playerInv) => {
@@ -197,7 +196,7 @@ class Cauldron {
       this.duration === 0 && this._get_base(this.inventory) !== 0;
 
     this.startWorking = (baseTime) => {
-      this.duration = 3 * baseTime;
+      this.duration = 4 * baseTime;
       this._first_brew = true;
     };
 

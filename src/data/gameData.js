@@ -31,7 +31,7 @@ function addOrder(recipe) {
 }
 
 const defaultState = Object.freeze({
-  baseTime: 10000, // in ms
+  baseTime: 8000, // in ms
   orderAdditionRatio: 8,
   orderDurationRatio: 12,
   ordersPerHeat: 3,
