@@ -3,6 +3,10 @@ import itemAssets from "../data/itemsAssets.js";
 import player from "../entities/player.js";
 import gameData from "../data/gameData.js";
 import heart from "../assets/items/heart.png";
+import essence from "../assets/items/essence.png";
+
+const essenceImg = new Image();
+essenceImg.src = essence;
 
 const heartImg = new Image();
 heartImg.src = heart;
@@ -13,46 +17,48 @@ export function drawHUD(ctx, canvas) {
   // ESSENCE TEXT
 
   ctx.fillStyle = "white";
-  ctx.font = "36px HarryPotter";
+  ctx.font = "50px HarryPotter";
   ctx.textAlign = "right";
   ctx.textBaseline = "middle";
 
-  ctx.fillText(`Essence: ${gameData.essence}`, canvas.width - 40, 45);
+  ctx.drawImage(essenceImg, canvas.width - 220, 20, 100, 70);
+  ctx.fillText(`: ${gameData.essence}`, canvas.width - 40, 60);
 
   // LIVES
 
   ctx.textAlign = "left";
+  ctx.drawImage(heartImg, 30, 20, 100, 70);
 
-  ctx.fillText(`Lives: ${player.lives}`, 40, 45);
+  ctx.fillText(`: ${player.lives}`, 160, 60);
 
   // ORDERS PANEL
 
-  ctx.fillStyle = "rgba(0, 0, 0, 0.4)";
+  ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
 
-  ctx.fillRect(canvas.width - 260, canvas.height - 320, 240, 280);
+  ctx.fillRect(canvas.width - 400, canvas.height - 180, 370, 180);
 
   ctx.fillStyle = "white";
   ctx.textAlign = "center";
 
-  ctx.fillText("Orders", canvas.width - 140, canvas.height - 280);
+  ctx.fillText("Orders", canvas.width - 215, canvas.height - 200);
 
-  const startX = canvas.width - 210;
-  const startY = canvas.height - 240;
+  const startX = canvas.width - 380;
+  const startY = canvas.height - 100;
 
   activeOrders.forEach((order, index) => {
     const asset = itemAssets[order.recipe];
 
     if (!asset || !asset.sprite.complete) return;
 
-    const x = startX;
-    const y = startY + index * 70;
+    const x = startX + index * 115;
+    const y = startY;
 
-    ctx.drawImage(asset.sprite, x, y, 60, 60);
+    ctx.drawImage(asset.sprite, x, y, 100, 100);
 
     const ratio = order.timeRemaining / order.maxTime;
 
-    const centerX = x + 120;
-    const centerY = y + 30;
+    const centerX = x + 50;
+    const centerY = y - 35;
 
     const radius = 15;
 
