@@ -62,7 +62,7 @@ export function drawSettings(ctx, canvas, mouseX, mouseY) {
 
   // Title
   ctx.fillStyle = "white";
-  ctx.font = "70px serif";
+  ctx.font = "70px HarryPotter";
   ctx.textAlign = "center";
 
   ctx.fillText("Settings", canvas.width / 2, 140);

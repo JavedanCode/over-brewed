@@ -6,13 +6,13 @@ export function drawGameOver(ctx, canvas) {
 
   ctx.fillStyle = "white";
 
-  ctx.font = "90px serif";
+  ctx.font = "90px HarryPotter";
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
 
   ctx.fillText("Game Over", canvas.width / 2, canvas.height / 2 - 40);
 
-  ctx.font = "32px serif";
+  ctx.font = "32px HarryPotter";
 
   ctx.fillText(
     "Press Enter to return to menu",

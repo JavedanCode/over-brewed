@@ -239,9 +239,9 @@ const ingredientsAndContainers = [
   //OIL BASE
   new GameObject({
     x: 1050,
-    y: 60,
+    y: 40,
     width: 140,
-    height: 270,
+    height: 300,
     color: "#c45105",
 
     type: "oil-base",
@@ -257,7 +257,7 @@ const ingredientsAndContainers = [
 
     hitbox: {
       offsetX: 0,
-      offsetY: 30,
+      offsetY: 50,
       width: 140,
       height: 50,
     },
@@ -268,9 +268,9 @@ const ingredientsAndContainers = [
   //WATER BASE
   new GameObject({
     x: 1250,
-    y: 60,
+    y: 30,
     width: 140,
-    height: 270,
+    height: 300,
     color: "#c45105",
 
     type: "oil-base",
@@ -279,14 +279,14 @@ const ingredientsAndContainers = [
 
     interactZone: {
       offsetX: 0,
-      offsetY: 220,
+      offsetY: 230,
       width: 140,
       height: 70,
     },
 
     hitbox: {
       offsetX: 0,
-      offsetY: 30,
+      offsetY: 60,
       width: 140,
       height: 50,
     },
@@ -297,9 +297,9 @@ const ingredientsAndContainers = [
   //WINE BASE
   new GameObject({
     x: 1450,
-    y: 60,
+    y: 30,
     width: 140,
-    height: 270,
+    height: 310,
     color: "#c45105",
 
     type: "oil-base",
@@ -308,14 +308,14 @@ const ingredientsAndContainers = [
 
     interactZone: {
       offsetX: 0,
-      offsetY: 220,
+      offsetY: 230,
       width: 140,
       height: 70,
     },
 
     hitbox: {
       offsetX: 0,
-      offsetY: 30,
+      offsetY: 60,
       width: 140,
       height: 50,
     },
@@ -325,7 +325,7 @@ const ingredientsAndContainers = [
 
   //MANDRAKES
   new GameObject({
-    x: 600,
+    x: 580,
     y: 860,
     width: 130,
     height: 240,
@@ -341,7 +341,7 @@ const ingredientsAndContainers = [
       offsetX: 0,
       offsetY: 10,
       width: 130,
-      height: 100,
+      height: 110,
     },
 
     hitbox: {
@@ -356,9 +356,9 @@ const ingredientsAndContainers = [
 
   //PETALS
   new GameObject({
-    x: 800,
+    x: 780,
     y: 860,
-    width: 140,
+    width: 105,
     height: 240,
     color: "#3a2301",
 
@@ -372,7 +372,7 @@ const ingredientsAndContainers = [
       offsetX: 0,
       offsetY: 10,
       width: 140,
-      height: 100,
+      height: 110,
     },
 
     hitbox: {
@@ -387,9 +387,9 @@ const ingredientsAndContainers = [
 
   //SCALES
   new GameObject({
-    x: 1000,
+    x: 950,
     y: 920,
-    width: 130,
+    width: 150,
     height: 200,
     color: "#3a2301",
 
@@ -403,7 +403,7 @@ const ingredientsAndContainers = [
       offsetX: 0,
       offsetY: -50,
       width: 130,
-      height: 100,
+      height: 110,
     },
 
     hitbox: {
@@ -418,8 +418,8 @@ const ingredientsAndContainers = [
 
   //FIGS
   new GameObject({
-    x: 1160,
-    y: 880,
+    x: 1140,
+    y: 860,
     width: 170,
     height: 240,
     color: "#3a2301",
@@ -432,9 +432,9 @@ const ingredientsAndContainers = [
 
     interactZone: {
       offsetX: 20,
-      offsetY: 30,
-      width: 95,
-      height: 80,
+      offsetY: 10,
+      width: 130,
+      height: 110,
     },
 
     hitbox: {

@@ -2,8 +2,8 @@ import { drawButton } from "../utils/uiHelper.js";
 
 export function getHowToPlayBackButton(canvas) {
   return {
-    x: canvas.width / 2 - 50,
-    y: canvas.height - 110,
+    x: canvas.width / 2 + 200,
+    y: canvas.height - 90,
     width: 100,
     height: 50,
   };
@@ -20,14 +20,14 @@ export function drawHowToPlay(ctx, canvas, mouseX, mouseY) {
   // TITLE
 
   ctx.fillStyle = "white";
-  ctx.font = "70px serif";
+  ctx.font = "70px HarryPotter";
   ctx.textAlign = "center";
 
   ctx.fillText("How To Play", canvas.width / 2, 100);
 
   // CONTROLS
 
-  ctx.font = "28px serif";
+  ctx.font = "35px HarryPotter";
   ctx.textAlign = "left";
 
   const startX = canvas.width / 2 - 350;
@@ -52,7 +52,7 @@ export function drawHowToPlay(ctx, canvas, mouseX, mouseY) {
 
   lines.forEach((line) => {
     ctx.fillText(line, startX, y);
-    y += 28;
+    y += 35;
   });
 
   // BACK BUTTON
