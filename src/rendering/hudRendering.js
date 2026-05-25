@@ -10,6 +10,10 @@ essenceImg.src = essence;
 const heartImg = new Image();
 heartImg.src = heart;
 
+function calculateEssenceOffset() {
+  return gameData.essence.toString().length * 25;
+}
+
 export function drawHUD(ctx, canvas) {
   ctx.setTransform(1, 0, 0, 1, 0, 0);
 
@@ -20,7 +24,13 @@ export function drawHUD(ctx, canvas) {
   ctx.textAlign = "right";
   ctx.textBaseline = "middle";
 
-  ctx.drawImage(essenceImg, canvas.width - 220, 20, 100, 70);
+  ctx.drawImage(
+    essenceImg,
+    canvas.width - 180 - calculateEssenceOffset(),
+    20,
+    100,
+    70
+  );
   ctx.fillText(`: ${gameData.essence}`, canvas.width - 40, 60);
 
   // LIVES
