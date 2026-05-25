@@ -188,32 +188,32 @@ greenCubicPotionSprite.src = greenCubicPotion;
 pinkCubicPotionSprite.src = pinkCubicPotion;
 redCubicPotionSprite.src = redCubicPotion;
 
-images[RECIPES.ManegroPotion] = {
+images[RECIPES.ManegroPotion.recipe] = {
   name: "Mangero Potion",
   sprite: greenCubicPotionSprite,
 };
 
-images[RECIPES.PotionofAllPotential] = {
+images[RECIPES.PotionofAllPotential.recipe] = {
   name: "Potion of All Potential",
   sprite: goldRoundPotionSprite,
 };
 
-images[RECIPES.LovePotion] = {
+images[RECIPES.LovePotion.recipe] = {
   name: "Love Potion",
   sprite: pinkCubicPotionSprite,
 };
 
-images[RECIPES.ScreamingPotion] = {
+images[RECIPES.ScreamingPotion.recipe] = {
   name: "Screaming Potion",
   sprite: purpleRoundPotionSprite,
 };
 
-images[RECIPES.DragonPoison] = {
+images[RECIPES.DragonPoison.recipe] = {
   name: "Dragon Poison",
   sprite: redCubicPotionSprite,
 };
 
-images[RECIPES.WeaknessPotion] = {
+images[RECIPES.WeaknessPotion.recipe] = {
   name: "Weakness Potion",
   sprite: blueRoundPotionSprite,
 };

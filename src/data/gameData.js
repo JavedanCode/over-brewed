@@ -4,12 +4,35 @@ const gameData = {
 };
 
 const activeOrders = [];
+function makeDelivery() {
+  gameData.essence += 25;
+
+  currentState.ordersFullfilled++;
+  if (
+    currentState.ordersFullfilled >=
+    gameData.heat * defaultState.ordersPerHeat
+  ) {
+    // increase heat
+    gameData.heat++;
+    currentState.baseTime = defaultState.baseTime / (1 + gameData.heat);
+  }
+}
+function addOrder(recipe) {
+  if (activeOrders.length > 2) return;
+  activeOrders.push({
+    recipe: recipe.recipe,
+    timeRemaining:
+      currentState.baseTime * defaultState.orderDurationRatio * recipe.count,
+    maxTime:
+      currentState.baseTime * defaultState.orderDurationRatio * recipe.count,
+  });
+}
 
 const defaultState = Object.freeze({
-  baseTime: 4000, // in ms
+  baseTime: 15000, // in ms
   orderAdditionRatio: 7,
-  orderDurationRatio: 12,
-  ordersPerHea: 3,
+  orderDurationRatio: 10,
+  ordersPerHeat: 3,
 });
 
 const currentState = {
@@ -28,6 +51,14 @@ function resetState() {
   currentState.ordersFullfilled = 0;
 }
 
-export { gameData, activeOrders, defaultState, currentState, resetState };
+export {
+  gameData,
+  activeOrders,
+  addOrder,
+  makeDelivery,
+  defaultState,
+  currentState,
+  resetState,
+};
 
 // WE PROBABLY WILL ADD MORE STUFF HERE LATER

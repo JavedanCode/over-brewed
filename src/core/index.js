@@ -174,6 +174,11 @@ function loop() {
       break;
 
     case GAME_STATES.PLAYING:
+      if (justPressed["escape"]) {
+        setGameState(GAME_STATES.PAUSED);
+        break;
+      }
+      if (justPressed["r"]) setGameState(GAME_STATES.RECIPES);
       update(timeStep);
       drawGame(ctx, canvas);
       drawHUD(ctx, canvas);
@@ -200,6 +205,7 @@ function loop() {
       if (justPressed["r"] || justPressed["escape"]) {
         setGameState(GAME_STATES.PLAYING);
       }
+      update(timeStep);
       drawGame(ctx, canvas);
       drawHUD(ctx, canvas);
       drawRecipesMenu(ctx, canvas);

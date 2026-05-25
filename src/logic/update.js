@@ -1,5 +1,5 @@
 import keys from "./input.js";
-import { RECIPES } from "../data/items.js";
+import { getRandomRecipe } from "../data/items.js";
 import {
   stations,
   ingredientsAndContainers,
@@ -17,6 +17,7 @@ import {
   defaultState,
   currentState,
   resetState,
+  addOrder,
 } from "../data/gameData.js";
 
 const WORLD_WIDTH = 1920;
@@ -134,22 +135,8 @@ function progressOrders(timeStep) {
     }
   }
 }
-function addOrder() {
-  activeOrders.push({
-    recipe: RECIPES.DragonPoison,
-    timeRemaining: currentState.baseTime * defaultState.orderDurationRatio,
-    maxTime: currentState.baseTime * defaultState.orderDurationRatio,
-  });
-}
 
 function update(timeStep) {
-  if (justPressed["escape"]) {
-    setGameState(GAME_STATES.PAUSED);
-    return;
-  }
-  if (justPressed["r"]) {
-    setGameState(GAME_STATES.RECIPES);
-  }
   // UPDATE STATIONS
   for (let st of stations) {
     st.station.doWork(timeStep);
@@ -162,7 +149,7 @@ function update(timeStep) {
   if (currentState.timeToNextOrder < 0) {
     currentState.timeToNextOrder =
       currentState.baseTime * defaultState.orderAdditionRatio;
-    addOrder();
+    addOrder(getRandomRecipe());
   }
 
   if (!currentInteraction) {
@@ -193,7 +180,7 @@ function resetGame() {
   resetStations();
   resetPlayer();
   activeOrders.length = 0;
-  addOrder();
+  addOrder(getRandomRecipe());
 }
 
 export { update, resetGame };

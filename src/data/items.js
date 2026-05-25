@@ -61,48 +61,78 @@ const INGREDIENTS = {
 };
 
 const RECIPES = {
-  ManegroPotion:
-    INGREDIENTS.Oleum |
-    INGREDIENTS.BrewedCrushedMandrake |
-    INGREDIENTS.BrewedCrushedShrivelfig |
-    INGREDIENTS.BrewedCutDragonScales |
-    INGREDIENTS.CubicGlass,
+  ManegroPotion: {
+    recipe:
+      INGREDIENTS.Oleum |
+      INGREDIENTS.BrewedCrushedMandrake |
+      INGREDIENTS.BrewedCrushedShrivelfig |
+      INGREDIENTS.BrewedCutDragonScales |
+      INGREDIENTS.CubicGlass,
+    count: 3,
+  },
 
-  PotionofAllPotential:
-    INGREDIENTS.Oleum |
-    INGREDIENTS.BrewedDragonScales |
-    INGREDIENTS.BrewedCutMandrake |
-    INGREDIENTS.BrewedCutShrivelfig |
-    INGREDIENTS.BrewedAsphodelPetals |
-    INGREDIENTS.RoundGlass,
-
-  LovePotion:
-    INGREDIENTS.Vinum |
-    INGREDIENTS.BrewedCrushedAsphodelPetals |
-    INGREDIENTS.BrewedCrushedShrivelfig |
-    INGREDIENTS.CubicGlass,
-
-  ScreamingPotion:
-    INGREDIENTS.Aqua |
-    INGREDIENTS.BrewedMandrake |
-    INGREDIENTS.BrewedCrushedShrivelfig |
-    INGREDIENTS.RoundGlass,
-
-  DragonPoison:
-    INGREDIENTS.Vinum |
-    INGREDIENTS.BrewedCrushedDragonScales |
-    INGREDIENTS.BrewedCutDragonScales |
-    INGREDIENTS.BrewedCutAsphodelPetals |
-    INGREDIENTS.BrewedShrivelfig |
-    INGREDIENTS.CubicGlass,
-
-  WeaknessPotion:
-    INGREDIENTS.Aqua |
-    INGREDIENTS.BrewedAsphodelPetals |
-    INGREDIENTS.BrewedCrushedMandrake |
-    INGREDIENTS.BrewedCutDragonScales |
-    INGREDIENTS.RoundGlass,
+  PotionofAllPotential: {
+    recipe:
+      INGREDIENTS.Oleum |
+      INGREDIENTS.BrewedDragonScales |
+      INGREDIENTS.BrewedCutMandrake |
+      INGREDIENTS.BrewedCutShrivelfig |
+      INGREDIENTS.BrewedAsphodelPetals |
+      INGREDIENTS.RoundGlass,
+    count: 4,
+  },
+  LovePotion: {
+    recipe:
+      INGREDIENTS.Vinum |
+      INGREDIENTS.BrewedCrushedAsphodelPetals |
+      INGREDIENTS.BrewedCrushedShrivelfig |
+      INGREDIENTS.CubicGlass,
+    count: 2,
+  },
+  ScreamingPotion: {
+    recipe:
+      INGREDIENTS.Aqua |
+      INGREDIENTS.BrewedMandrake |
+      INGREDIENTS.BrewedCrushedShrivelfig |
+      INGREDIENTS.RoundGlass,
+    count: 2,
+  },
+  DragonPoison: {
+    recipe:
+      INGREDIENTS.Vinum |
+      INGREDIENTS.BrewedCrushedDragonScales |
+      INGREDIENTS.BrewedCutDragonScales |
+      INGREDIENTS.BrewedCutAsphodelPetals |
+      INGREDIENTS.BrewedShrivelfig |
+      INGREDIENTS.CubicGlass,
+    count: 4,
+  },
+  WeaknessPotion: {
+    recipe:
+      INGREDIENTS.Aqua |
+      INGREDIENTS.BrewedAsphodelPetals |
+      INGREDIENTS.BrewedCrushedMandrake |
+      INGREDIENTS.BrewedCutDragonScales |
+      INGREDIENTS.RoundGlass,
+    count: 3,
+  },
 };
+
+function hasRecipe(recipe) {
+  for (const r of Object.values(RECIPES)) {
+    if (r.recipe === recipe) return true;
+  }
+  return false;
+}
+function getRandomRecipe() {
+  const rand = Math.floor(Math.random() * 6);
+  if (rand < 1) return RECIPES.ManegroPotion;
+  else if (rand < 2) return RECIPES.PotionofAllPotential;
+  else if (rand < 3) return RECIPES.LovePotion;
+  else if (rand < 4) return RECIPES.ScreamingPotion;
+  else if (rand < 5) return RECIPES.DragonPoison;
+  else return RECIPES.WeaknessPotion;
+}
 
 const getIngredientsFromMask = (mask) => {
   const result = [];
@@ -129,4 +159,6 @@ export {
   CRUSH,
   VARIATION_COUNT,
   getIngredientsFromMask,
+  getRandomRecipe,
+  hasRecipe,
 };
