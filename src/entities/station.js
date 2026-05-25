@@ -6,7 +6,12 @@ import {
   getRandomRecipe,
   hasRecipe,
 } from "../data/items.js";
-import { gameData, activeOrders, addOrder } from "../data/gameData.js";
+import {
+  gameData,
+  activeOrders,
+  addOrder,
+  makeDelivery,
+} from "../data/gameData.js";
 
 // Is this a valid ingredient for the task
 const canAction = (ing) => {
@@ -91,7 +96,7 @@ class DeliveryStation {
 
       if (orderIndex !== -1) {
         activeOrders.splice(orderIndex, 1);
-        gameData.essence += 25;
+        makeDelivery();
       } else {
         gameData.essence++;
       }
