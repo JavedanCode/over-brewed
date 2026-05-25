@@ -47,7 +47,10 @@ export function drawHUD(ctx, canvas) {
   activeOrders.forEach((order, index) => {
     const asset = itemAssets[order.recipe];
 
-    if (!asset || !asset.sprite.complete) return;
+    if (!asset || !asset.sprite.complete) {
+      console.log("No asset");
+      return;
+    }
 
     const x = startX + index * 115;
     const y = startY;

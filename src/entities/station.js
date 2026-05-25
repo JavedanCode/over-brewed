@@ -4,8 +4,10 @@ import {
   BREW,
   RECIPES,
   OVERBREWED,
+  getRandomRecipe,
+  hasRecipe,
 } from "../data/items.js";
-import { gameData, activeOrders } from "../data/gameData.js";
+import { gameData, activeOrders, addOrder } from "../data/gameData.js";
 
 // Is this a valid ingredient for the task
 const canAction = (ing) => {
@@ -80,7 +82,7 @@ class DeliveryStation {
     this.canWork = () => false;
 
     this.canPlace = (playerInv) => {
-      return Object.values(RECIPES).includes(playerInv.glass);
+      return hasRecipe(playerInv.glass);
     };
     this.place = (playerInv) => {
       const deliveredPotion = playerInv.glass;
@@ -94,6 +96,9 @@ class DeliveryStation {
       } else {
         gameData.essence++;
       }
+      if (activeOrders.length === 0) {
+        addOrder(getRandomRecipe());
+      }
 
       playerInv.glass = 0;
     };
@@ -104,7 +109,8 @@ class DeliveryStation {
 class Ingredient {
   constructor(ing) {
     this.inventory = ing;
-    this.canPlace = () => false;
+    this.canPlace = (playerInv) => playerInv.ingredient === this.inventory;
+    this.place = (playerInv) => (playerInv.ingredient = 0);
 
     this.canTake = (playerInv) => playerInv.empty();
     this.take = (playerInv) => {
@@ -116,7 +122,8 @@ class Ingredient {
 class Glass {
   constructor(glassType) {
     this.inventory = glassType;
-    this.canPlace = () => false;
+    this.canPlace = (playerInv) => playerInv.ingredient === this.inventory;
+    this.place = (playerInv) => (playerInv.ingredient = 0);
 
     this.canTake = (playerInv) => playerInv.empty();
     this.take = (playerInv) => {
@@ -215,10 +222,7 @@ class Cauldron {
 
     this._get_result = (potion) => {
       const glass = getIndex(potion);
-      if (
-        this.progress >= 1.6 * this.duration ||
-        !Object.values(RECIPES).includes(potion)
-      )
+      if (this.progress >= 1.6 * this.duration || !hasRecipe(potion))
         return 1 << (glass + OVERBREWED);
       else return potion;
     };
