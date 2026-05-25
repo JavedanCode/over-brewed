@@ -11,7 +11,7 @@ export function drawRecipesMenu(ctx, canvas) {
   // title
 
   ctx.fillStyle = "white";
-  ctx.font = "60px serif";
+  ctx.font = "60px HarryPotter";
   ctx.textAlign = "center";
 
   ctx.fillText("Recipes", canvas.width / 2, 100);

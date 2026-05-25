@@ -51,7 +51,7 @@ export function drawPauseMenu(ctx, canvas, mouseX, mouseY) {
   // Title
 
   ctx.fillStyle = "white";
-  ctx.font = "64px serif";
+  ctx.font = "64px HarryPotter";
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
 
