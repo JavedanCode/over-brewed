@@ -1,4 +1,4 @@
-import gameTitleImg from "../assets/logo.svg";
+import gameTitleImg from "../assets/logo.png";
 import { drawButton } from "../utils/uiHelper.js";
 
 const gameTitle = new Image();

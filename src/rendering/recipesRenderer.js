@@ -14,20 +14,21 @@ export function drawRecipesMenu(ctx, canvas) {
   ctx.font = "60px HarryPotter";
   ctx.textAlign = "center";
 
-  ctx.fillText("Recipes", canvas.width / 2, 100);
+  ctx.fillText("Recipes", canvas.width / 2, 50);
 
   // recipes
 
   const spacing = 40;
   const width = 420;
-  const height = 490;
+  const height = 520;
 
   const recipes = Object.values(recipeImages);
 
   const totalWidth = recipes.length * width + (recipes.length - 1) * spacing;
 
   let x = canvas.width / 2 - totalWidth / 2;
-  const y = 150;
+  const y = 100;
+  ctx.filter = "brightness(0.8)";
 
   recipes.forEach((recipe) => {
     ctx.drawImage(recipe, x, y, width, height);

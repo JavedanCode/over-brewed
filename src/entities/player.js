@@ -168,7 +168,7 @@ class Player {
     }
 
     if (heldContainer) {
-      ctx.drawImage(heldContainer.sprite, this.x + 40, this.y - 110, 90, 100);
+      ctx.drawImage(heldContainer.sprite, this.x + 55, this.y - 110, 90, 110);
     }
   }
 }
