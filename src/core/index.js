@@ -28,6 +28,11 @@ import {
 import {
   drawHowToPlay,
   getHowToPlayBackButton,
+  getLeftArrowButton,
+  getRightArrowButton,
+  nextSlide,
+  previousSlide,
+  resetSlide,
 } from "../rendering/howToPlayRenderer.js";
 import {
   drawPauseMenu,
@@ -79,6 +84,7 @@ function handleMenuClick(mouseX, mouseY) {
 
   const howToPlayButton = getHowToPlayButton(canvas);
   if (pointInRect(mouseX, mouseY, howToPlayButton)) {
+    resetSlide();
     openHowToPlay(GAME_STATES.MENU);
   }
 }
@@ -104,6 +110,14 @@ function handleSettingsClick(mouseX, mouseY) {
 // HOW TO PLAY HANDLER
 function handleHowToPlayClick(mouseX, mouseY) {
   const backButton = getHowToPlayBackButton(canvas);
+  const leftArrow = getLeftArrowButton(canvas);
+  if (pointInRect(mouseX, mouseY, leftArrow)) {
+    previousSlide();
+  }
+  const rightArrow = getRightArrowButton(canvas);
+  if (pointInRect(mouseX, mouseY, rightArrow)) {
+    nextSlide();
+  }
   if (pointInRect(mouseX, mouseY, backButton)) {
     setGameState(getHowToPlayReturnState());
   }
@@ -125,6 +139,7 @@ function handlePauseClick(mouseX, mouseY) {
 
   const howToButton = getPauseHowToButton(canvas);
   if (pointInRect(mouseX, mouseY, howToButton)) {
+    resetSlide();
     openHowToPlay(GAME_STATES.PAUSED);
     return;
   }
@@ -190,6 +205,12 @@ function loop() {
 
     case GAME_STATES.HOW_TO_PLAY:
       drawHowToPlay(ctx, canvas, mouseX, mouseY);
+      if (justPressed["arrowright"]) {
+        nextSlide();
+      }
+      if (justPressed["arrowleft"]) {
+        previousSlide();
+      }
       break;
 
     case GAME_STATES.PAUSED:
