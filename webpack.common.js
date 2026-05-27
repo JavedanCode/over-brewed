@@ -21,7 +21,7 @@ export default {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|svg|jpg|jpeg|gif|wav|mp3)$/i,
         type: "asset/resource",
         generator: {
           filename: "images/[name][hash][ext]",

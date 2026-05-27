@@ -44,6 +44,7 @@ import {
 import { drawGameOver } from "../rendering/gameOverRenderer.js";
 import { drawHUD } from "../rendering/hudRendering.js";
 import { drawRecipesMenu } from "../rendering/recipesRenderer.js";
+import { playMusic, updateMusicVolume } from "../audio/audioManager.js";
 
 const { canvas, ctx } = Canvas();
 
@@ -99,11 +100,15 @@ function handleSettingsClick(mouseX, mouseY) {
   if (pointInRect(mouseX, mouseY, musicSlider)) {
     settings.musicVolume = (mouseX - musicSlider.x) / musicSlider.width;
     settings.musicVolume = Math.max(0, Math.min(1, settings.musicVolume));
+    if (settings.musicVolume < 0.02) settings.musicVolume = 0;
+
+    updateMusicVolume();
   }
   const sfxSlider = getSfxSlider(canvas);
   if (pointInRect(mouseX, mouseY, sfxSlider)) {
     settings.sfxVolume = (mouseX - sfxSlider.x) / sfxSlider.width;
     settings.sfxVolume = Math.max(0, Math.min(1, settings.sfxVolume));
+    if (settings.sfxVolume < 0.02) settings.sfxVolume = 0;
   }
 }
 
@@ -177,12 +182,25 @@ canvas.addEventListener("click", (e) => {
 });
 
 let previousFrame = performance.now();
+let previousState = null;
 function loop() {
   const now = performance.now();
   const timeStep = now - previousFrame; // Time in milliseconds since last frame
   previousFrame = now;
 
   const state = getGameState();
+  if (state !== previousState) {
+    previousState = state;
+
+    switch (state) {
+      case GAME_STATES.MENU:
+        playMusic("menu");
+        break;
+      case GAME_STATES.PLAYING:
+        playMusic("game");
+        break;
+    }
+  }
   switch (state) {
     case GAME_STATES.MENU:
       drawMenu(ctx, canvas, mouseX, mouseY);
