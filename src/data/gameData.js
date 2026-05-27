@@ -23,6 +23,7 @@ function callHeatListeners() {
 }
 
 function increaseHeat() {
+  if (gameData.heat >= defaultState.maxHeat) return;
   gameData.heat++;
   callHeatListeners();
 }
@@ -50,7 +51,8 @@ function addOrder(recipe) {
 
 const defaultState = Object.freeze({
   baseTime: 15000, // in ms
-  orderAdditionRatio: 9,
+  maxHeat: 6,
+  orderAdditionRatio: 14,
   orderDurationRatio: 7,
   cookRatio: 3,
   stationRatio: 2 / 3,
