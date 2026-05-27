@@ -46,7 +46,7 @@ function drawSlider(ctx, x, y, width, value, label) {
 export function getBackButton(canvas) {
   return {
     x: canvas.width / 2 - 50,
-    y: canvas.height / 2 + 200,
+    y: canvas.height / 2 + 260,
     width: 100,
     height: 50,
   };
@@ -60,10 +60,30 @@ export function drawSettings(ctx, canvas, mouseX, mouseY) {
   ctx.fillStyle = "#120d18";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+  const panelX = canvas.width / 2 - 350;
+  const panelY = 80;
+  const panelWidth = 700;
+  const panelHeight = 610;
+
+  ctx.shadowColor = "rgba(0,0,0,0.5)";
+  ctx.shadowBlur = 30;
+  ctx.shadowOffsetY = 10;
+
+  ctx.fillStyle = "rgba(31, 23, 41, 0.9)";
+
+  ctx.beginPath();
+  ctx.roundRect(panelX, panelY, panelWidth, panelHeight, 28);
+  ctx.fill();
+
+  ctx.shadowBlur = 0;
+
   // Title
-  ctx.fillStyle = "white";
-  ctx.font = "70px HarryPotter";
-  ctx.textAlign = "center";
+  ctx.fillStyle = "#f3e6ff";
+
+  ctx.shadowColor = "#a56eff";
+  ctx.shadowBlur = 20;
+
+  ctx.font = "76px HarryPotter";
 
   ctx.fillText("Settings", canvas.width / 2, 140);
 
