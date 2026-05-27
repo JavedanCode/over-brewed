@@ -1,5 +1,6 @@
 import floor from "../assets/objects/floor.png";
 import cauldron from "../assets/objects/cauldron.png";
+import cauldronBrewing from "../assets/objects/cauldron-brewing.png";
 import oilVase from "../assets/objects/oil.png";
 import waterVase from "../assets/objects/water.png";
 import wineVase from "../assets/objects/wine.png";
@@ -23,6 +24,9 @@ background.src = floor;
 
 const cauldronImg = new Image();
 cauldronImg.src = cauldron;
+
+const cauldronBrewingImg = new Image();
+cauldronBrewingImg.src = cauldronBrewing;
 
 const oilVaseImg = new Image();
 oilVaseImg.src = oilVase;
@@ -94,4 +98,5 @@ export {
   cuttingImg,
   crushStationImg,
   trashCanImg,
+  cauldronBrewingImg,
 };

@@ -1,3 +1,4 @@
+import { cauldronImg, cauldronBrewingImg } from "../data/assets.js";
 export function drawProgressBar(ctx, obj) {
   const station = obj.station;
 
@@ -27,7 +28,10 @@ export function drawProgressBar(ctx, obj) {
 export function drawCauldronProgress(ctx, obj) {
   const station = obj.station;
 
-  if (station.duration <= 0) return;
+  if (station.duration <= 0) {
+    obj.sprite = cauldronImg;
+    return;
+  }
 
   const width = 100;
   const height = 12;
@@ -42,6 +46,8 @@ export function drawCauldronProgress(ctx, obj) {
 
   // FIRST BREW
   if (station._first_brew) {
+    obj.sprite = cauldronBrewingImg;
+
     ratio = station.progress / station.duration;
 
     ctx.fillStyle = "#3fa34d";

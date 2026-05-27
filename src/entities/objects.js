@@ -176,8 +176,8 @@ const stations = [
   new GameObject({
     x: 400,
     y: 100,
-    width: 200,
-    height: 240,
+    width: 220,
+    height: 260,
     color: "#3d3131",
 
     type: "cauldron",
@@ -187,7 +187,7 @@ const stations = [
     interactZone: {
       offsetX: 0,
       offsetY: 30,
-      width: 150,
+      width: 220,
       height: 60,
     },
 
@@ -208,8 +208,8 @@ const stations = [
   new GameObject({
     x: 700,
     y: 100,
-    width: 200,
-    height: 240,
+    width: 220,
+    height: 260,
     color: "#3d3131",
 
     type: "cauldron",
@@ -219,14 +219,14 @@ const stations = [
     interactZone: {
       offsetX: 0,
       offsetY: 30,
-      width: 150,
+      width: 220,
       height: 60,
     },
 
     hitbox: {
-      offsetX: 0,
+      offsetX: -200,
       offsetY: 30,
-      width: 150,
+      width: 500,
       height: 10,
     },
 
