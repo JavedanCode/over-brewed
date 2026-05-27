@@ -8,6 +8,7 @@ import {
 } from "../data/items.js";
 import {
   gameData,
+  defaultState,
   activeOrders,
   addOrder,
   makeDelivery,
@@ -40,7 +41,7 @@ class Station {
 
     this.startWorking = (baseTime) => {
       this._work_lock = true;
-      this.duration = (baseTime * 2) / 3;
+      this.duration = Math.ceil(baseTime * defaultState.stationRatio);
     };
 
     this.doWork = (timeStep) => {
@@ -127,8 +128,8 @@ class Ingredient {
 class Glass {
   constructor(glassType) {
     this.inventory = glassType;
-    this.canPlace = (playerInv) => playerInv.ingredient === this.inventory;
-    this.place = (playerInv) => (playerInv.ingredient = 0);
+    this.canPlace = (playerInv) => playerInv.glass === this.inventory;
+    this.place = (playerInv) => (playerInv.glass = 0);
 
     this.canTake = (playerInv) => playerInv.empty();
     this.take = (playerInv) => {
@@ -191,12 +192,11 @@ class Cauldron {
       this.itemCount = 0;
     };
 
-    // to be re-written
     this.canWork = () =>
       this.duration === 0 && this._get_base(this.inventory) !== 0;
 
     this.startWorking = (baseTime) => {
-      this.duration = 4 * baseTime;
+      this.duration = baseTime * defaultState.cookRatio;
       this._first_brew = true;
     };
 
@@ -237,8 +237,7 @@ class Cauldron {
     };
 
     this._in_inventory = (ing) => {
-      if ((this.inventory & ing) === 0) return false;
-      return true;
+      return (this.inventory & ing) !== 0;
     };
   }
 }

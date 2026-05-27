@@ -49,17 +49,19 @@ function addOrder(recipe) {
 }
 
 const defaultState = Object.freeze({
-  baseTime: 8000, // in ms
-  orderAdditionRatio: 8,
-  orderDurationRatio: 12,
+  baseTime: 15000, // in ms
+  orderAdditionRatio: 9,
+  orderDurationRatio: 7,
+  cookRatio: 3,
+  stationRatio: 2 / 3,
 });
 
+// check reset State for starting values
 const currentState = {
-  baseTime: defaultState.baseTime / (1 + gameData.heat),
-  timeToNextOrder:
-    (defaultState.orderAdditionRatio * defaultState.baseTime) / 2,
+  baseTime: 0,
+  timeToNextOrder: 0,
   ordersFullfilled: 0,
-  nextHeat: gameData.heat + 1,
+  nextHeat: 0,
 };
 
 function resetState() {
@@ -70,7 +72,7 @@ function resetState() {
   heatListeners.length = 0;
   attachHeatListener((heatLevel) => {
     currentState.nextHeat += heatLevel + 1;
-    currentState.baseTime = defaultState.baseTime / (1 + heatLevel);
+    currentState.baseTime = defaultState.baseTime / (2 + heatLevel);
     currentState.timeToNextOrder =
       defaultState.orderAdditionRatio * currentState.baseTime;
   });
