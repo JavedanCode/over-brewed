@@ -45,18 +45,30 @@ export function drawMenu(ctx, canvas, mouseX, mouseY) {
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  ctx.fillStyle = "#120d18";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
 
+  gradient.addColorStop(0, "#241235");
+  gradient.addColorStop(1, "#0d0814");
+
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
   // TITLE
+  ctx.shadowColor = "#b46cff";
+  ctx.shadowBlur = 40;
+  ctx.shadowOffsetY = 10;
 
   const titleWidth = 600;
   const titleHeight = 200;
 
   const titleX = canvas.width / 2 - titleWidth / 2;
-  const titleY = 120;
+  const titleY = 150;
 
-  ctx.drawImage(gameTitle, titleX, titleY, titleWidth, titleHeight);
+  const floatY = Math.sin(Date.now() * 0.002) * 10;
+
+  ctx.drawImage(gameTitle, titleX, titleY + floatY, titleWidth, titleHeight);
+
+  ctx.shadowBlur = 0;
+  ctx.shadowOffsetY = 0;
 
   // START BUTTON
 
