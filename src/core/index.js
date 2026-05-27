@@ -44,11 +44,7 @@ import {
 import { drawGameOver } from "../rendering/gameOverRenderer.js";
 import { drawHUD } from "../rendering/hudRendering.js";
 import { drawRecipesMenu } from "../rendering/recipesRenderer.js";
-import {
-  playMusic,
-  stopMusic,
-  updateMusicVolume,
-} from "../audio/audioManager.js";
+import { playMusic, updateMusicVolume } from "../audio/audioManager.js";
 
 const { canvas, ctx } = Canvas();
 
@@ -104,6 +100,7 @@ function handleSettingsClick(mouseX, mouseY) {
   if (pointInRect(mouseX, mouseY, musicSlider)) {
     settings.musicVolume = (mouseX - musicSlider.x) / musicSlider.width;
     settings.musicVolume = Math.max(0, Math.min(1, settings.musicVolume));
+    if (settings.musicVolume < 0.02) settings.musicVolume = 0;
 
     updateMusicVolume();
   }
@@ -111,6 +108,7 @@ function handleSettingsClick(mouseX, mouseY) {
   if (pointInRect(mouseX, mouseY, sfxSlider)) {
     settings.sfxVolume = (mouseX - sfxSlider.x) / sfxSlider.width;
     settings.sfxVolume = Math.max(0, Math.min(1, settings.sfxVolume));
+    if (settings.sfxVolume < 0.02) settings.sfxVolume = 0;
   }
 }
 
