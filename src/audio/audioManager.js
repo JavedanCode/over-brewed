@@ -55,7 +55,7 @@ export function stopMusic() {
 let currentPhase = "low";
 
 on("heatUp", (heat) => {
-  if (heat >= 2 && currentPhase === "low") {
+  if (heat >= 4 && currentPhase === "low") {
     currentPhase = "high";
 
     playMusic("high");
