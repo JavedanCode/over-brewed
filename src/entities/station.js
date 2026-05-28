@@ -3,16 +3,9 @@ import {
   VARIATION_COUNT,
   BREW,
   OVERBREWED,
-  getRandomRecipe,
   hasRecipe,
 } from "../data/items.js";
-import {
-  gameData,
-  defaultState,
-  activeOrders,
-  addOrder,
-  makeDelivery,
-} from "../data/gameData.js";
+import { gameData, defaultState, activeOrders } from "../data/gameData.js";
 import { emit } from "../core/gameEvents.js";
 import { CUT } from "../data/items.js";
 
@@ -103,16 +96,10 @@ class DeliveryStation {
       );
 
       if (orderIndex !== -1) {
-        emit("delivered");
-        activeOrders.splice(orderIndex, 1);
-        makeDelivery();
+        emit("delivered", orderIndex);
       } else {
         gameData.essence++;
       }
-      if (activeOrders.length === 0) {
-        addOrder(getRandomRecipe());
-      }
-
       playerInv.glass = 0;
     };
 

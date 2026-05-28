@@ -37,8 +37,6 @@ export function playMusic(name) {
   activeMusic.loop = true;
 
   activeMusic.play().catch(() => {});
-
-  console.log("Music Playing!");
 }
 
 export function stopMusic() {

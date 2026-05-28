@@ -2,48 +2,53 @@ import {
   resetGameplayMusic,
   updateGameplayMusic,
 } from "../audio/audioManager.js";
-import { emit } from "../core/gameEvents.js";
+import { on, emit } from "../core/gameEvents.js";
 
 const gameData = {
   essence: 0,
   heat: 1,
 };
 
-let heatListeners = [];
-function attachHeatListener(observer) {
-  if (heatListeners.includes(observer)) return false;
-
-  heatListeners.push(observer);
-  return true;
-}
-function detachHeatListener(observer) {
-  const index = heatListeners.indexOf(observer);
-  if (index === -1) return false;
-
-  heatListeners.splice(index, 1);
-  return true;
-}
-
-function callHeatListeners() {
-  heatListeners.forEach((observer) => observer(gameData.heat));
-}
+const difficulty = [
+  {
+    requiredEssence: 0,
+  },
+  {
+    requiredEssence: 100,
+  },
+  {
+    requiredEssence: 300,
+  },
+  {
+    requiredEssence: 600,
+  },
+  {
+    requiredEssence: 900,
+  },
+  {
+    requiredEssence: 1200,
+  },
+];
 
 function increaseHeat() {
-  if (gameData.heat >= defaultState.maxHeat) return;
+  if (gameData.heat >= difficulty.length) return;
   gameData.heat++;
   updateGameplayMusic(gameData.heat);
-  callHeatListeners();
+  emit("heatUp", gameData.heat);
 }
 
 const activeOrders = [];
-function makeDelivery() {
-  gameData.essence += 25;
 
+on("delivered", (orderIndex) => {
   currentState.ordersFullfilled++;
-  if (currentState.ordersFullfilled >= currentState.nextHeat) {
-    increaseHeat();
-  }
-}
+
+  const order = activeOrders[orderIndex];
+  gameData.essence +=
+    15 + Math.ceil(100 * (order.timeRemaining / order.maxTime));
+
+  if (gameData.essence >= currentState.nextHeat) increaseHeat();
+  activeOrders.splice(orderIndex, 1);
+});
 
 function addOrder(recipe) {
   if (activeOrders.length > 2) return;
@@ -60,9 +65,8 @@ function addOrder(recipe) {
 
 const defaultState = Object.freeze({
   baseTime: 15000, // in ms
-  maxHeat: 6,
-  orderAdditionRatio: 12,
-  orderDurationRatio: 6,
+  orderAdditionRatio: 10,
+  orderDurationRatio: 8,
   cookRatio: 3,
   stationRatio: 2 / 3,
 });
@@ -80,26 +84,22 @@ function resetState() {
   gameData.heat = 1;
   currentState.ordersFullfilled = 0;
   resetGameplayMusic();
-
-  heatListeners.length = 0;
-  attachHeatListener((heatLevel) => {
-    currentState.nextHeat += heatLevel + 1;
-    currentState.baseTime = defaultState.baseTime / (2 + heatLevel);
-    currentState.timeToNextOrder =
-      defaultState.orderAdditionRatio * currentState.baseTime;
-  });
-  callHeatListeners();
+  emit("heatUp", 1);
 }
+
+on("heatUp", (heatLevel) => {
+  currentState.nextHeat = difficulty[heatLevel].requiredEssence;
+  currentState.baseTime = defaultState.baseTime / (2 + heatLevel);
+  currentState.timeToNextOrder =
+    defaultState.orderAdditionRatio * currentState.baseTime;
+});
 
 export {
   gameData,
   activeOrders,
   addOrder,
-  makeDelivery,
   defaultState,
   currentState,
   resetState,
-  attachHeatListener,
-  detachHeatListener,
   increaseHeat,
 };
