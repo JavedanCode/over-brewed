@@ -151,6 +151,10 @@ function update(timeStep) {
     if (justPressed["f"]) {
       const active = getActiveInteractable(stations);
       if (active) currentInteraction = work(active, currentState.baseTime);
+      if (currentInteraction) {
+        player.velocityX = 0;
+        player.velocityY = 0;
+      }
     }
   } else {
     if (!currentInteraction._work_lock) currentInteraction = null;
