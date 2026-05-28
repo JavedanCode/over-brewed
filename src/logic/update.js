@@ -15,7 +15,6 @@ import { GAME_STATES, setGameState } from "../core/gameState.js";
 import {
   activeOrders,
   progressOrders,
-  defaultState,
   currentState,
   resetState,
   addOrder,
@@ -135,8 +134,6 @@ function update(timeStep) {
 
   currentState.timeToNextOrder -= timeStep;
   if (currentState.timeToNextOrder < 0) {
-    currentState.timeToNextOrder =
-      currentState.baseTime * defaultState.orderAdditionRatio;
     addOrder(getRandomRecipe());
   }
 
