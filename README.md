@@ -19,6 +19,36 @@ The gameplay loop includes:
 
 Incorrect brews, overbrewed potions, and failed deliveries cost the player valuable lives.
 
+## Controls
+
+| Key     | Action           |
+| ------- | ---------------- |
+| W A S D | Move             |
+| E       | Pick Up / Place  |
+| F       | Use Station      |
+| R       | Open Recipe Menu |
+| ESC     | Pause            |
+
+## Running the Project
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Start development server
+
+```bash
+npm start
+```
+
+### Build production version
+
+```bash
+npm run build
+```
+
 ## Features
 
 ### Core Gameplay Systems
@@ -64,36 +94,6 @@ on("new_order", () => {
 ```
 
 This architecture keeps gameplay logic modular and scalable.
-
-## Controls
-
-| Key     | Action           |
-| ------- | ---------------- |
-| W A S D | Move             |
-| E       | Pick Up / Place  |
-| F       | Use Station      |
-| R       | Open Recipe Menu |
-| ESC     | Pause            |
-
-## Running the Project
-
-### Install dependencies
-
-```bash
-npm install
-```
-
-### Start development server
-
-```bash
-npm start
-```
-
-### Build production version
-
-```bash
-npm run build
-```
 
 ## Future Plans
 
