@@ -154,7 +154,7 @@ function progressOrders(timeStep) {
 }
 
 const defaultState = Object.freeze({
-  baseTime: 10000, // in ms
+  baseTime: 9000, // in ms
   orderAdditionRatio: 10,
   orderDurationRatio: 8,
   cookRatio: 3,
