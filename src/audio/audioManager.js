@@ -16,13 +16,13 @@ export function playSound(name) {
   sound.play().catch(() => {});
 }
 
+let activeMusicName = null;
+
 export function playMusic(name) {
+  if (activeMusicName === name) return;
   const newMusic = music[name];
 
   if (!newMusic) return;
-
-  // already playing
-  if (activeMusic === newMusic) return;
 
   // stop previous
   if (activeMusic) {
@@ -31,6 +31,7 @@ export function playMusic(name) {
   }
 
   activeMusic = newMusic;
+  activeMusicName = name;
 
   activeMusic.volume = settings.musicVolume;
   activeMusic.loop = true;
@@ -45,6 +46,27 @@ export function stopMusic() {
   activeMusic.currentTime = 0;
 
   activeMusic = null;
+  activeMusicName = null;
+
+  currentPhase = "low";
+}
+
+let currentPhase = "low";
+
+export function updateGameplayMusic(heat) {
+  if (heat >= 2 && currentPhase === "low") {
+    currentPhase = "high";
+
+    playMusic("high");
+  }
+}
+
+export function isGameplayMusicPlaying() {
+  return activeMusicName === "low" || activeMusicName === "high";
+}
+
+export function resetGameplayMusic() {
+  currentPhase = "low";
 }
 
 export function updateMusicVolume() {

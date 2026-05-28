@@ -44,7 +44,13 @@ import {
 import { drawGameOver } from "../rendering/gameOverRenderer.js";
 import { drawHUD } from "../rendering/hudRendering.js";
 import { drawRecipesMenu } from "../rendering/recipesRenderer.js";
-import { playMusic, updateMusicVolume } from "../audio/audioManager.js";
+import {
+  isGameplayMusicPlaying,
+  playMusic,
+  updateMusicVolume,
+  stopMusic,
+} from "../audio/audioManager.js";
+import "../audio/audioListener.js";
 
 const { canvas, ctx } = Canvas();
 
@@ -196,8 +202,15 @@ function loop() {
       case GAME_STATES.MENU:
         playMusic("menu");
         break;
+
       case GAME_STATES.PLAYING:
-        playMusic("game");
+        if (!isGameplayMusicPlaying()) {
+          playMusic("low");
+        }
+        break;
+
+      case GAME_STATES.GAME_OVER:
+        stopMusic();
         break;
     }
   }
