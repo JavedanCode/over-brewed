@@ -13,6 +13,8 @@ import {
   addOrder,
   makeDelivery,
 } from "../data/gameData.js";
+import { emit } from "../core/gameEvents.js";
+import { CUT } from "../data/items.js";
 
 // Is this a valid ingredient for the task
 const canAction = (ing) => {
@@ -42,6 +44,8 @@ class Station {
     this.startWorking = (baseTime) => {
       this._work_lock = true;
       this.duration = Math.ceil(baseTime * defaultState.stationRatio);
+      //Event
+      emit(action === CUT ? "cut_complete" : "crush_complete");
     };
 
     this.doWork = (timeStep) => {
@@ -62,6 +66,7 @@ class Station {
       this.inventory === 0;
 
     this.place = (playerInv) => {
+      emit("place");
       this.inventory = playerInv.ingredient;
       playerInv.ingredient = 0;
     };
@@ -73,6 +78,7 @@ class Station {
       !playerInv.hasGlass();
 
     this.take = (playerInv) => {
+      emit("ingredient_pickup", playerInv.ingredient);
       playerInv.ingredient = this.inventory;
       this.inventory = 0;
       this.duration = 0;
@@ -97,6 +103,7 @@ class DeliveryStation {
       );
 
       if (orderIndex !== -1) {
+        emit("delivered");
         activeOrders.splice(orderIndex, 1);
         makeDelivery();
       } else {
@@ -116,11 +123,16 @@ class Ingredient {
   constructor(ing) {
     this.inventory = ing;
     this.canPlace = (playerInv) => playerInv.ingredient === this.inventory;
-    this.place = (playerInv) => (playerInv.ingredient = 0);
+    this.place = (playerInv) => {
+      playerInv.ingredient = 0;
+      emit("place");
+    };
 
     this.canTake = (playerInv) => playerInv.empty();
     this.take = (playerInv) => {
       playerInv.ingredient = this.inventory;
+
+      emit("ingredient_pickup", playerInv.ingredient);
     };
   }
 }
@@ -133,6 +145,7 @@ class Glass {
 
     this.canTake = (playerInv) => playerInv.empty();
     this.take = (playerInv) => {
+      emit("glass_pickup");
       playerInv.glass = this.inventory;
     };
   }
@@ -177,6 +190,8 @@ class Cauldron {
       this.inventory |= playerInv.ingredient;
       playerInv.ingredient = 0;
       this.itemCount++;
+
+      emit("place");
     };
 
     this.canTake = (playerInv) =>
@@ -190,12 +205,15 @@ class Cauldron {
       this.inventory = 0;
       this.progress = this.duration = 0;
       this.itemCount = 0;
+      emit("cauldron_done");
+      emit("bottle_potion", playerInv.glass);
     };
 
     this.canWork = () =>
       this.duration === 0 && this._get_base(this.inventory) !== 0;
 
     this.startWorking = (baseTime) => {
+      emit("cauldron_start");
       this.duration = baseTime * defaultState.cookRatio;
       this._first_brew = true;
     };
@@ -249,6 +267,7 @@ class TrashCan {
     this.canPlace = () => true;
 
     this.place = (playerInv) => {
+      emit("trash");
       playerInv.ingredient = 0;
       playerInv.glass = 0;
     };

@@ -1,3 +1,9 @@
+import {
+  resetGameplayMusic,
+  updateGameplayMusic,
+} from "../audio/audioManager.js";
+import { emit } from "../core/gameEvents.js";
+
 const gameData = {
   essence: 0,
   heat: 1,
@@ -25,6 +31,7 @@ function callHeatListeners() {
 function increaseHeat() {
   if (gameData.heat >= defaultState.maxHeat) return;
   gameData.heat++;
+  updateGameplayMusic(gameData.heat);
   callHeatListeners();
 }
 
@@ -40,6 +47,7 @@ function makeDelivery() {
 
 function addOrder(recipe) {
   if (activeOrders.length > 2) return;
+
   activeOrders.push({
     recipe: recipe.recipe,
     timeRemaining:
@@ -47,6 +55,7 @@ function addOrder(recipe) {
     maxTime:
       currentState.baseTime * defaultState.orderDurationRatio * recipe.count,
   });
+  emit("new_order");
 }
 
 const defaultState = Object.freeze({
@@ -70,6 +79,7 @@ function resetState() {
   gameData.essence = 0;
   gameData.heat = 1;
   currentState.ordersFullfilled = 0;
+  resetGameplayMusic();
 
   heatListeners.length = 0;
   attachHeatListener((heatLevel) => {
