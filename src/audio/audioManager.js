@@ -1,6 +1,7 @@
 import sounds from "./sound.js";
 import music from "./music.js";
 import settings from "../data/settings.js";
+import { on } from "../core/gameEvents.js";
 
 let activeMusic = null;
 
@@ -53,13 +54,13 @@ export function stopMusic() {
 
 let currentPhase = "low";
 
-export function updateGameplayMusic(heat) {
+on("heatUp", (heat) => {
   if (heat >= 2 && currentPhase === "low") {
     currentPhase = "high";
 
     playMusic("high");
   }
-}
+});
 
 export function isGameplayMusicPlaying() {
   return activeMusicName === "low" || activeMusicName === "high";
