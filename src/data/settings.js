@@ -1,5 +1,5 @@
 const settings = {
-  musicVolume: 0.4,
+  musicVolume: 0.2,
   sfxVolume: 0.5,
 };
 
