@@ -19,7 +19,7 @@ export function playSound(name) {
 let activeMusicName = null;
 
 export function playMusic(name) {
-  if (activeMusicName === name) return;
+  if (activeMusicName === name && activeMusicName !== "menu") return;
   const newMusic = music[name];
 
   if (!newMusic) return;
@@ -37,6 +37,8 @@ export function playMusic(name) {
   activeMusic.loop = true;
 
   activeMusic.play().catch(() => {});
+
+  console.log("Music Playing!");
 }
 
 export function stopMusic() {
