@@ -42,12 +42,25 @@ const activeOrders = [];
 on("delivered", (orderIndex) => {
   currentState.ordersFullfilled++;
 
-  const order = activeOrders[orderIndex];
-  gameData.essence +=
-    15 + Math.ceil(100 * (order.timeRemaining / order.maxTime));
+  const ratio =
+    activeOrders[orderIndex].timeRemaining / activeOrders[orderIndex].maxTime;
+  if (ratio >= 0.23) {
+    gameData.essence += 15 + Math.ceil(100 * ratio);
+  } else {
+    gameData.essence += 25;
+  }
 
   if (gameData.essence >= currentState.nextHeat) increaseHeat();
   activeOrders.splice(orderIndex, 1);
+
+  if (ratio >= 0.5) {
+    for (const order of activeOrders) {
+      Math.min(
+        order.maxTime,
+        order.timeRemaining + (ratio / 2) * order.maxTime
+      );
+    }
+  }
 });
 
 function addOrder(recipe) {
@@ -61,6 +74,21 @@ function addOrder(recipe) {
       currentState.baseTime * defaultState.orderDurationRatio * recipe.count,
   });
   emit("new_order");
+}
+
+function progressOrders(timeStep) {
+  let timedOutPots = 0;
+  for (let i = activeOrders.length - 1; i >= 0; i--) {
+    const order = activeOrders[i];
+
+    order.timeRemaining -= timeStep;
+    if (order.timeRemaining <= 0) {
+      timedOutPots++;
+      activeOrders.splice(i, 1);
+    }
+  }
+
+  return timedOutPots;
 }
 
 const defaultState = Object.freeze({
@@ -98,6 +126,7 @@ export {
   gameData,
   activeOrders,
   addOrder,
+  progressOrders,
   defaultState,
   currentState,
   resetState,

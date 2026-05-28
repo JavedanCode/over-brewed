@@ -14,6 +14,7 @@ import { takePlace, work } from "./actions.js";
 import { GAME_STATES, setGameState } from "../core/gameState.js";
 import {
   activeOrders,
+  progressOrders,
   defaultState,
   currentState,
   resetState,
@@ -120,22 +121,6 @@ function calculatePosition(timeStep) {
   }
 }
 
-function progressOrders(timeStep) {
-  for (let i = activeOrders.length - 1; i >= 0; i--) {
-    const order = activeOrders[i];
-
-    order.timeRemaining -= timeStep;
-    if (order.timeRemaining <= 0) {
-      activeOrders.splice(i, 1);
-
-      player.lives--;
-      if (player.lives <= 0) {
-        setGameState(GAME_STATES.GAME_OVER);
-      }
-    }
-  }
-}
-
 function update(timeStep) {
   // UPDATE STATIONS
   for (let st of stations) {
@@ -143,7 +128,10 @@ function update(timeStep) {
   }
 
   // UPDATE ORDERS
-  progressOrders(timeStep);
+  player.lives -= progressOrders(timeStep);
+  if (player.lives <= 0) {
+    setGameState(GAME_STATES.GAME_OVER);
+  }
 
   currentState.timeToNextOrder -= timeStep;
   if (currentState.timeToNextOrder < 0) {
