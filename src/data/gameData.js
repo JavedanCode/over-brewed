@@ -37,7 +37,6 @@ let lastDelivery = performance.now();
 function adjustDynamicDifficulty(orderIndex, ratio) {
   if (currentState.ordersFullfilled === 1) {
     lastDelivery = performance.now();
-    activeOrders.splice(orderIndex, 1);
     return;
   }
   const now = performance.now();
@@ -62,8 +61,8 @@ function adjustDynamicDifficulty(orderIndex, ratio) {
   else if (ratio > 0.1) performanceDelta -= 6;
   else performanceDelta -= 12;
 
-  if (activeOrders.length <= 2) performanceDelta *= 1.1;
-  else if (activeOrders.length <= 1) performanceDelta *= 1.2;
+  if (activeOrders.length <= 1) performanceDelta *= 1.2;
+  else if (activeOrders.length <= 2) performanceDelta *= 1.1;
 
   dynamicDifficulty.performance *= 0.9;
   dynamicDifficulty.performance += performanceDelta;
@@ -99,8 +98,9 @@ on("delivered", (orderIndex) => {
 
   if (gameData.essence >= currentState.nextHeat) increaseHeat();
 
-  adjustDynamicDifficulty(orderIndex, ratio);
   activeOrders.splice(orderIndex, 1);
+
+  adjustDynamicDifficulty(orderIndex, ratio);
   for (const order of activeOrders) {
     order.timeRemaining = Math.min(
       order.maxTime,
