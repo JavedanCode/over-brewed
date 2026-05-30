@@ -177,15 +177,15 @@ const currentState = {
 function resetState() {
   lastDelivery = performance.now();
 
-  gameData.essence = 900;
-  gameData.heat = 4;
+  gameData.essence = 0;
+  gameData.heat = 1;
 
   currentState.ordersFullfilled = 0;
   dynamicDifficulty.scale = 1;
   dynamicDifficulty.performance = 0;
 
   resetGameplayMusic();
-  emit("heatUp", 4);
+  emit("heatUp", 1);
 }
 
 on("heatUp", (heatLevel) => {
