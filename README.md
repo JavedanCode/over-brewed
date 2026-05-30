@@ -29,6 +29,19 @@ Incorrect brews, overbrewed potions, and failed deliveries cost the player valua
 | R       | Open Recipe Menu |
 | ESC     | Pause            |
 
+## Screenshots
+
+<img width="1919" height="914" alt="image" src="https://github.com/user-attachments/assets/e08dd6ee-cc1a-4ee6-88d4-761e8748c7db" />
+
+---
+
+<img width="1918" height="916" alt="image" src="https://github.com/user-attachments/assets/b1235d65-86d1-4035-90cd-327ddf1bd121" />
+
+---
+
+<img width="1919" height="916" alt="image" src="https://github.com/user-attachments/assets/eb9189fc-f2cf-4d8d-9af2-e5f5cecf6005" />
+
+
 ## Running the Project
 
 ### Install dependencies
