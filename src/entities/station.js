@@ -230,7 +230,7 @@ class Cauldron {
 
     this._get_result = (potion) => {
       const glass = getIndex(potion);
-      if (this.progress >= 1.6 * this.duration || !hasRecipe(potion))
+      if (this.progress >= 1.4 * this.duration || !hasRecipe(potion))
         return 1 << (glass + OVERBREWED);
       else return potion;
     };

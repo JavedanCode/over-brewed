@@ -200,10 +200,10 @@ function resetPlayer() {
     width: 210,
     height: 330,
     color: "blue",
-    maxSpeed: 7,
+    maxSpeed: 8,
 
-    acceleration: 0.5,
-    deceleration: 0.2,
+    acceleration: 0.6,
+    deceleration: 0.4,
 
     velocityX: 0,
     velocityY: 0,

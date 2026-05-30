@@ -9,9 +9,6 @@ const gameData = {
 
 const difficultyLevels = [
   {
-    requiredEssence: 0,
-  },
-  {
     requiredEssence: 100,
   },
   {
@@ -104,7 +101,7 @@ on("delivered", (orderIndex) => {
   for (const order of activeOrders) {
     order.timeRemaining = Math.min(
       order.maxTime,
-      order.timeRemaining + (ratio / 3) * order.maxTime
+      order.timeRemaining + currentState.baseTime * 3
     );
   }
 
@@ -114,6 +111,10 @@ on("delivered", (orderIndex) => {
 });
 
 function addOrder(recipe) {
+  currentState.timeToNextOrder =
+    (defaultState.orderAdditionRatio * currentState.baseTime) /
+    dynamicDifficulty.scale;
+
   if (activeOrders.length > 2) return;
 
   activeOrders.push({
@@ -126,10 +127,6 @@ function addOrder(recipe) {
       dynamicDifficulty.scale,
   });
   emit("new_order");
-
-  currentState.timeToNextOrder =
-    (defaultState.orderAdditionRatio * currentState.baseTime) /
-    dynamicDifficulty.scale;
 }
 
 function progressOrders(timeStep) {
@@ -140,7 +137,7 @@ function progressOrders(timeStep) {
     order.timeRemaining -= timeStep;
     if (order.timeRemaining <= 0) {
       timedOutPots++;
-      dynamicDifficulty.performance -= 10;
+      dynamicDifficulty.performance -= 15;
       activeOrders.splice(i, 1);
     }
   }
@@ -150,15 +147,23 @@ function progressOrders(timeStep) {
     0.85,
     Math.min(1.25, dynamicDifficulty.scale)
   );
+  if (timedOutPots !== 0) {
+    for (const order of activeOrders) {
+      order.timeRemaining = Math.min(
+        order.maxTime,
+        order.timeRemaining + currentState.baseTime * 2 * timedOutPots
+      );
+    }
+  }
   return timedOutPots;
 }
 
 const defaultState = Object.freeze({
-  baseTime: 9000, // in ms
-  orderAdditionRatio: 10,
-  orderDurationRatio: 8,
-  cookRatio: 3,
-  stationRatio: 2 / 3,
+  baseTime: 5000, // in ms
+  orderAdditionRatio: 8,
+  orderDurationRatio: 10,
+  cookRatio: 7,
+  stationRatio: 3 / 5,
 });
 
 // check reset State for starting values
@@ -172,20 +177,28 @@ const currentState = {
 function resetState() {
   lastDelivery = performance.now();
 
-  gameData.essence = 0;
-  gameData.heat = 1;
+  gameData.essence = 900;
+  gameData.heat = 4;
 
   currentState.ordersFullfilled = 0;
   dynamicDifficulty.scale = 1;
   dynamicDifficulty.performance = 0;
 
   resetGameplayMusic();
-  emit("heatUp", 1);
+  emit("heatUp", 4);
 }
 
 on("heatUp", (heatLevel) => {
-  currentState.nextHeat = difficultyLevels[heatLevel].requiredEssence;
-  currentState.baseTime = defaultState.baseTime / (1 + heatLevel * 0.55);
+  dynamicDifficulty.scale *= 0.9;
+  dynamicDifficulty.scale = Math.max(
+    0.85,
+    Math.min(1.25, dynamicDifficulty.scale)
+  );
+  currentState.nextHeat = difficultyLevels[heatLevel - 1].requiredEssence;
+  currentState.baseTime =
+    heatLevel <= 3
+      ? defaultState.baseTime - heatLevel * 600
+      : defaultState.baseTime - 4 * 600 - (heatLevel - 4) * 400;
   currentState.timeToNextOrder =
     (defaultState.orderAdditionRatio * currentState.baseTime) /
     dynamicDifficulty.scale;

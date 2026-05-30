@@ -170,6 +170,7 @@ function resetGame() {
   resetPlayer();
   activeOrders.length = 0;
   addOrder(getRandomRecipe());
+  addOrder(getRandomRecipe());
 }
 
 export { update, resetGame };

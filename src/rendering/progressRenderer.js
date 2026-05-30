@@ -55,7 +55,7 @@ export function drawCauldronProgress(ctx, obj) {
 
   //OVERBREW PHASE
   else {
-    ratio = (station.progress - station.duration) / (0.5 * station.duration);
+    ratio = (station.progress - station.duration) / (0.35 * station.duration);
 
     ratio = Math.min(1, ratio);
 
